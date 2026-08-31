@@ -41,6 +41,11 @@ node scripts/optimize-images.mjs    # assets/source-images/*.png -> public/image
 lossy encoding makes flat line art bigger and harder to scan. It verifies each
 output by decoding it.
 
+`generate-icons.mjs` rebuilds the favicon set from the brand icon SVG in the
+design-system folder — `app/favicon.ico` (16/32/48), `app/icon.png` (512), and
+`public/apple-touch-icon.png` (180, on brand purple, since iOS composites
+transparency onto black).
+
 `generate-og.mjs` rebuilds the four Open Graph cards from design tokens. Re-run
 it after changing page titles or brand colours.
 
