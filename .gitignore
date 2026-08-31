@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Source images — original generator PNGs (~14 MB).
+# The optimized .webp/.jpg siblings in public/images/ are what ship; these
+# originals are kept locally so images can be re-encoded from full quality
+# (see scripts/optimize-images.mjs) without bloating the repo.
+#
+# They live OUTSIDE public/ deliberately. Next copies public/ into the build
+# verbatim and offers no way to exclude a subfolder, so a public/images/source/
+# would have shipped all 14 MB to production even while git-ignored.
+assets/source-images/

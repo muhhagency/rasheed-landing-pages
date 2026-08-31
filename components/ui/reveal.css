@@ -1,0 +1,35 @@
+/* ============================================================
+   SCROLL REVEAL
+   Opacity + a small translate on section entry. Nothing else —
+   no parallax, no counters, no staggered cascades.
+
+   Content is visible by default. Only an element the script has
+   explicitly armed (`data-reveal-armed`) starts hidden, so with JS
+   disabled nothing is ever invisible.
+   ============================================================ */
+.ui-reveal[data-reveal-armed="true"] {
+  opacity: 0;
+  transform: translateY(var(--spacing-md));
+  transition:
+    opacity 500ms ease-out,
+    transform 500ms ease-out;
+  will-change: opacity, transform;
+}
+
+.ui-reveal[data-reveal-armed="true"][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* Belt and braces: even if an element was armed before the media query
+   changed, reduce means no movement and no hiding. */
+@media (prefers-reduced-motion: reduce) {
+  .ui-reveal[data-reveal-armed="true"],
+  .ui-reveal[data-reveal-armed="true"][data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}

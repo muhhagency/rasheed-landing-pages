@@ -1,0 +1,322 @@
+/* ============================================================
+   PAGE SECTIONS — shared across persona pages.
+   Token-driven; logical properties throughout.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   B2B HERO — shared by /for-retailers and /for-corporates.
+   Product-forward, with a URL indicator under the CTAs.
+   ------------------------------------------------------------ */
+.b2b-hero {
+  padding-block: var(--spacing-3xl);
+  min-block-size: 78vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-page);
+}
+.b2b-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  inline-size: 100%;
+}
+.b2b-hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  max-inline-size: 48ch;
+}
+.b2b-hero__headline {
+  margin: 0;
+  text-wrap: balance;
+  font-size: var(--font-size-display-lg);
+  line-height: var(--line-height-display-lg);
+  letter-spacing: var(--letter-spacing-display-lg);
+}
+.b2b-hero__sub {
+  margin: 0;
+}
+.b2b-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-md);
+}
+/* Hero spacing only — the indicator itself is .ui-url-indicator (shared). */
+.b2b-hero__url {
+  margin-block-start: var(--spacing-xs);
+}
+@media (min-width: 900px) {
+  .b2b-hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--spacing-3xl);
+  }
+}
+@media (max-width: 767px) {
+  .b2b-hero__headline {
+    font-size: var(--font-size-display-md);
+    line-height: var(--line-height-display-md);
+    letter-spacing: var(--letter-spacing-display-md);
+  }
+}
+
+/* ------------------------------------------------------------
+   SECTION HEAD — kicker + headline + optional sub.
+   Shared by every persona page; lives here, not in a persona
+   stylesheet, so no page depends on another page's CSS.
+   ------------------------------------------------------------ */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  max-inline-size: 52ch;
+  margin-block-end: var(--spacing-2xl);
+}
+/* Modifier for heads that sit inside their own grid cell and must not add
+   trailing space (replaces an inline style on the consumer Cabinet). */
+.section-head--flush {
+  margin-block-end: 0;
+}
+.section-head__headline {
+  margin: 0;
+  text-wrap: balance;
+}
+.section-head__sub {
+  margin: 0;
+}
+
+/* ------------------------------------------------------------
+   PILLAR GRID — 2×2 pillars, shared by /for-retailers (#portal)
+   and /for-corporates (#team). Single treatment for both.
+   ------------------------------------------------------------ */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+.pillar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+  padding: var(--spacing-lg);
+  border: var(--border-width-sm) solid var(--border-primary);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--surface-page);
+}
+.pillar__name {
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.pillar__body {
+  color: var(--text-body);
+}
+@media (min-width: 600px) {
+  .pillar-grid {
+    grid-template-columns: 1fr 1fr; /* 2×2 */
+  }
+}
+
+/* ------------------------------------------------------------
+   TRUST STRIP — quiet reassurance bar, five items.
+   ------------------------------------------------------------ */
+.trust-strip__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-lg);
+}
+.trust-strip__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+}
+.trust-strip__icon {
+  inline-size: var(--scale-600); /* 24px — restrained */
+  block-size: var(--scale-600);
+  color: var(--icon-primary);
+  flex: none;
+}
+.trust-strip__label {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  color: var(--text-body);
+  max-inline-size: 22ch;
+}
+
+@media (max-width: 1023px) {
+  .trust-strip__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+@media (max-width: 599px) {
+  .trust-strip__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  .trust-strip__item {
+    flex-direction: row;
+    text-align: start;
+  }
+}
+
+/* ------------------------------------------------------------
+   FINAL CTA — brand-tone section, centered.
+   ------------------------------------------------------------ */
+.final-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+/* Copy-only variant (actions="none"): no button row, so the stack tightens and
+   the body sits closer to the headline. Without this the section keeps the
+   gap sized for an action row and reads as if something failed to render. */
+.final-cta--copy-only {
+  gap: var(--spacing-md);
+  padding-block: var(--spacing-md);
+}
+.final-cta--copy-only .final-cta__body {
+  max-inline-size: 52ch;
+}
+.final-cta__headline {
+  margin: 0;
+  max-inline-size: 20ch;
+  text-wrap: balance;
+}
+.final-cta__body {
+  margin: 0;
+  max-inline-size: 44ch;
+}
+.final-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-sm);
+}
+/* FinalCta always sits on the brand (purple) surface, so the default
+   button treatments (purple fill / purple text) would vanish. Invert them
+   for this surface: a light filled primary and a light-outlined secondary. */
+.final-cta__actions .ui-button--primary {
+  background-color: var(--neutral-white);
+  /* The brand tone scope rebinds --text-action to white for text sitting
+     directly on purple. This button inverts that: a white fill needs the
+     purple label back, so reference the primary alias explicitly. */
+  color: var(--primary-default);
+}
+.final-cta__actions .ui-button--primary:hover {
+  background-color: var(--primary-100);
+  /* Restate the label colour: the brand scope rebinds --text-action-hover, and
+     the global `a:hover` rule would otherwise repaint this to a light value on
+     an almost-white fill. */
+  color: var(--primary-default);
+}
+.final-cta__actions .ui-button--secondary {
+  color: var(--neutral-white);
+  border-color: var(--neutral-white);
+}
+.final-cta__actions .ui-button--ghost {
+  color: var(--neutral-white);
+}
+.final-cta__actions .ui-button--ghost:hover,
+.final-cta__actions .ui-button--secondary:hover {
+  color: var(--neutral-white);
+  background-color: color-mix(in srgb, var(--neutral-white) 12%, transparent);
+  /* The base secondary:hover drops the border to --border-action-hover (dark
+     purple), which all but disappears on the brand surface. Hold it white. */
+  border-color: var(--neutral-white);
+}
+/* The indicator sits on the brand surface, where --text-disabled is rebound
+   to --primary-300; it inherits that automatically. */
+.final-cta__url {
+  margin-block-start: calc(var(--spacing-xs) * -1);
+}
+.final-cta__qrs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-block-start: var(--spacing-lg);
+}
+.final-cta__qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  inline-size: 140px;
+}
+.final-cta__qr-label {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   HOW IT WORKS — three numbered steps. Numerals are a visible
+   design element (large, --primary-300). Connecting line at
+   desktop, dropped at mobile.
+   ------------------------------------------------------------ */
+.how-it-works__head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-block-end: var(--spacing-2xl);
+}
+.how-it-works__steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+}
+.how-step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  position: relative;
+}
+.how-step__num {
+  font-size: var(--font-size-display-md);
+  line-height: 1;
+  font-weight: var(--font-weight-bold);
+  /* primary-300 measured 2.76:1 on the subtle surface — under the 3:1 floor
+     for large text. primary-400 keeps the numerals quiet but compliant. */
+  color: var(--primary-400);
+  letter-spacing: -0.02em;
+}
+.how-step__title {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.how-step__body {
+  color: var(--text-body);
+  max-inline-size: 40ch;
+}
+
+@media (min-width: 900px) {
+  .how-it-works__steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+  /* Connecting line between steps — a hairline crossing the numeral row. */
+  .how-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    inset-block-start: calc(var(--font-size-display-md) / 2);
+    inset-inline-start: calc(var(--spacing-xl) * 2);
+    inline-size: calc(100% - var(--spacing-xl));
+    block-size: var(--border-width-sm);
+    background-color: var(--border-primary);
+  }
+}

@@ -1,0 +1,9 @@
+# Modern evergreen targets. Keeps standard CSS properties like
+# `backdrop-filter` unprefixed (older targets made the build emit
+# only `-webkit-backdrop-filter`, which current Chrome ignores).
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+iOS >= 15
+not dead

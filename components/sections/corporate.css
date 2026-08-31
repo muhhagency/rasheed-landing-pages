@@ -1,0 +1,146 @@
+/* ============================================================
+   CORPORATE PAGE SECTIONS
+   The most restrained page. Professional, data-forward.
+   Token-driven; logical properties throughout.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   BUSINESS POCKET — one pocket with multiple members attached.
+   Communicates "same Pocket family, configured for teams."
+   ------------------------------------------------------------ */
+.c-pocket__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+.c-pocket__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  max-inline-size: 46ch;
+}
+.c-pocket__headline {
+  margin: 0;
+  text-wrap: balance;
+}
+.c-pocket__body {
+  margin: 0;
+}
+/* One pocket card with member chips attached. */
+.c-pocket-viz {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--surface-action-subtle);
+  border: var(--border-width-sm) solid var(--border-primary);
+}
+.c-pocket-viz__label {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-action);
+}
+.c-pocket-viz__name {
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.c-pocket-viz__members {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+.c-pocket-viz__member {
+  display: inline-flex;
+  align-items: center;
+  padding-block: var(--spacing-2xs);
+  padding-inline: var(--spacing-md);
+  border-radius: var(--border-radius-round);
+  background-color: var(--surface-page);
+  border: var(--border-width-sm) solid var(--border-primary);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+}
+@media (min-width: 900px) {
+  .c-pocket__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+  }
+}
+
+/* ------------------------------------------------------------
+   CAPTURE — three EQUAL modes: photo, voice, file.
+   Its OWN treatment — deliberately NOT the /app capture layout
+   (which is built around TapCeipt dominance).
+   ------------------------------------------------------------ */
+.c-capture__modes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+.c-capture-mode {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width-sm) solid var(--border-primary);
+  background-color: var(--surface-page);
+}
+.c-capture-mode__icon {
+  inline-size: var(--scale-800);
+  block-size: var(--scale-800);
+  color: var(--icon-primary);
+}
+.c-capture-mode__name {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.c-capture-mode__body {
+  color: var(--text-body);
+}
+@media (min-width: 700px) {
+  .c-capture__modes {
+    grid-template-columns: repeat(3, 1fr); /* three equal columns */
+  }
+}
+
+/* ------------------------------------------------------------
+   REPORTS — restrained; legibility over drama. Copy + a
+   department-breakdown report placeholder with an export action.
+   ------------------------------------------------------------ */
+.c-reports__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+.c-reports__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  max-inline-size: 44ch;
+}
+.c-reports__headline {
+  margin: 0;
+  text-wrap: balance;
+}
+.c-reports__body {
+  margin: 0;
+}
+@media (min-width: 900px) {
+  .c-reports__grid {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--spacing-3xl);
+  }
+}

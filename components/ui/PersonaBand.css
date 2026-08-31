@@ -1,0 +1,91 @@
+/* ============================================================
+   PERSONA BAND — hub's three full-width persona doors.
+   Token-driven; logical properties throughout.
+   ============================================================ */
+.persona-band {
+  /* Generous height; content sets the floor (no forced exact vh). */
+  min-block-size: 80vh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--spacing-3xl);
+}
+
+/* Tones rebind role tokens (per project rule — never set color directly). */
+.persona-band--default {
+  background-color: var(--surface-page);
+}
+.persona-band--subtle {
+  --surface-page: var(--surface-disabled);
+  background-color: var(--surface-page);
+}
+.persona-band--dark {
+  --surface-page: var(--neutral-800);
+  --text-headings: var(--neutral-white);
+  --text-body: var(--neutral-300);
+  --text-disabled: var(--neutral-400);
+  --text-action: var(--neutral-white);
+  --text-action-hover: var(--neutral-200);
+  --border-primary: var(--neutral-700);
+  --border-disabled: var(--neutral-600);
+  background-color: var(--surface-page);
+  color: var(--text-body);
+}
+
+.persona-band__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  inline-size: 100%;
+}
+
+.persona-band__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  max-inline-size: 44ch;
+}
+.persona-band__headline {
+  /* h2-scale headline, tuned tighter for marketing weight. */
+  margin: 0;
+  text-wrap: balance;
+}
+.persona-band__body {
+  margin: 0;
+}
+.persona-band__cta {
+  margin-block-start: var(--spacing-md);
+}
+.persona-band__cta-arrow {
+  margin-inline-start: var(--spacing-xs);
+  /* Flips with writing direction for the RTL pass. */
+}
+
+.persona-band__media {
+  inline-size: 100%;
+}
+
+/* Two-column at >=900px. Copy first in DOM; `reverse` swaps visual columns. */
+@media (min-width: 900px) {
+  .persona-band__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+  }
+  /* Default: copy left (col 1), media right (col 2). */
+  .persona-band__copy {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .persona-band__media {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  /* reverse: media left, copy right — DOM order unchanged (copy stays first). */
+  .persona-band--reverse .persona-band__copy {
+    grid-column: 2;
+  }
+  .persona-band--reverse .persona-band__media {
+    grid-column: 1;
+  }
+}

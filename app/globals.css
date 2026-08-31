@@ -1,26 +1,181 @@
+/* Design tokens first — defines the CSS custom properties the theme references. */
+@import "./styles/tokens.css";
+
+/* Tailwind layers. */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* UI primitive styles (token-driven). */
+@import "../components/ui/ui.css";
 
+/* Layout shell styles (header, footer, skip link). */
+@import "../components/layout/layout.css";
+
+/* ============================================================
+   TAILWIND @theme — map utilities onto role tokens.
+   Utilities resolve to our tokens, not Tailwind defaults.
+   Reference the MAPPED role tokens (and a few aliases) so that
+   e.g. `bg-surface-action`, `text-headings`, `border-primary`
+   all flow from tokens.css.
+   ============================================================ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts */
+  --font-sans: var(--font-primary);
+  --font-heading: var(--font-secondary);
+  --font-tapceipt: var(--font-tapceipt);
+
+  /* Colors — Text roles */
+  --color-text-headings: var(--text-headings);
+  --color-text-body: var(--text-body);
+  --color-text-action: var(--text-action);
+  --color-text-action-hover: var(--text-action-hover);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-information: var(--text-information);
+  --color-text-success: var(--text-success);
+  --color-text-warning: var(--text-warning);
+  --color-text-error: var(--text-error);
+  --color-text-on-action: var(--text-on-action);
+  --color-text-on-disabled: var(--text-on-disabled);
+
+  /* Colors — Surface roles */
+  --color-surface-page: var(--surface-page);
+  --color-surface-primary: var(--surface-primary);
+  --color-surface-disabled: var(--surface-disabled);
+  --color-surface-info: var(--surface-info);
+  --color-surface-success: var(--surface-success);
+  --color-surface-warning: var(--surface-warning);
+  --color-surface-error: var(--surface-error);
+  --color-surface-action: var(--surface-action);
+  --color-surface-action-hover: var(--surface-action-hover);
+  --color-surface-action-subtle: var(--surface-action-subtle);
+
+  /* Colors — Icon roles */
+  --color-icon-primary: var(--icon-primary);
+  --color-icon-action: var(--icon-action);
+  --color-icon-action-hover: var(--icon-action-hover);
+  --color-icon-info: var(--icon-info);
+  --color-icon-success: var(--icon-success);
+  --color-icon-warning: var(--icon-warning);
+  --color-icon-error: var(--icon-error);
+  --color-icon-on-action: var(--icon-on-action);
+  --color-icon-on-disabled: var(--icon-on-disabled);
+
+  /* Colors — Border roles */
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-info: var(--border-info);
+  --color-border-success: var(--border-success);
+  --color-border-warning: var(--border-warning);
+  --color-border-error: var(--border-error);
+  --color-border-disabled: var(--border-disabled);
+  --color-border-action: var(--border-action);
+  --color-border-action-hover: var(--border-action-hover);
+  --color-border-focus: var(--border-focus);
+
+  /* Colors — Aliases (for cases where no role token fits) */
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-default: var(--primary-default);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --color-secondary-400: var(--secondary-400);
+  --color-secondary-default: var(--secondary-default);
+  --color-secondary-600: var(--secondary-600);
+  --color-secondary-700: var(--secondary-700);
+  --color-secondary-800: var(--secondary-800);
+
+  --color-neutral-100: var(--neutral-100);
+  --color-neutral-200: var(--neutral-200);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-default: var(--neutral-default);
+  --color-neutral-600: var(--neutral-600);
+  --color-neutral-700: var(--neutral-700);
+  --color-neutral-800: var(--neutral-800);
+  --color-neutral-white: var(--neutral-white);
+  --color-neutral-black: var(--neutral-black);
+
+  /* Colors — deepgreen brand ramp (Green Score section, per CLAUDE.md) */
+  --color-brand-deepgreen-100: var(--brand-deepgreen-100);
+  --color-brand-deepgreen-200: var(--brand-deepgreen-200);
+  --color-brand-deepgreen-300: var(--brand-deepgreen-300);
+  --color-brand-deepgreen-400: var(--brand-deepgreen-400);
+  --color-brand-deepgreen-500: var(--brand-deepgreen-500);
+  --color-brand-deepgreen-600: var(--brand-deepgreen-600);
+  --color-brand-deepgreen-700: var(--brand-deepgreen-700);
+  --color-brand-deepgreen-800: var(--brand-deepgreen-800);
+
+  /* Spacing — semantic scale */
+  --spacing-3xs: var(--spacing-3xs);
+  --spacing-2xs: var(--spacing-2xs);
+  --spacing-xs: var(--spacing-xs);
+  --spacing-sm: var(--spacing-sm);
+  --spacing-md: var(--spacing-md);
+  --spacing-lg: var(--spacing-lg);
+  --spacing-xl: var(--spacing-xl);
+  --spacing-2xl: var(--spacing-2xl);
+  --spacing-3xl: var(--spacing-3xl);
+
+  /* Radius */
+  --radius-none: var(--border-radius-none);
+  --radius-sm: var(--border-radius-sm);
+  --radius-md: var(--border-radius-md);
+  --radius-lg: var(--border-radius-lg);
+  --radius-round: var(--border-radius-round);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ------------------------------------------------------------
+   Font wiring — bind the token font families to the self-hosted
+   next/font faces (--font-inter / --font-michroma from layout.tsx).
+   tokens.css names 'Inter' and 'Michroma' as the intended faces;
+   here we point those tokens at the actual loaded font variables,
+   keeping the original names as a fallback. tokens.css is untouched.
+   ------------------------------------------------------------ */
+:root {
+  --font-primary: var(--font-inter), -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-secondary: var(--font-inter), -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  --font-tapceipt: var(--font-michroma), sans-serif;
 }
 
+/* Page defaults driven by tokens. */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-primary);
+}
+
+/* Main landmark grows so the footer sits at the bottom on short pages. */
+main#main {
+  flex: 1 1 auto;
+}
+
+/* Anchor targets clear the sticky header when jumped to. Header is ~64px;
+   scroll-margin keeps a little breathing room above the section. */
+:where(section[id], div[id]) {
+  scroll-margin-block-start: calc(var(--scale-1600) + var(--spacing-lg));
+}
+
+/* ============================================================
+   VISUALLY HIDDEN — present for assistive tech and the document
+   outline, removed from the visual layout. Used for the hub's h1,
+   which the design deliberately has no visible headline for.
+   ============================================================ */
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }

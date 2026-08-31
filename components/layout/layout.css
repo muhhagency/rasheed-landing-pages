@@ -1,0 +1,426 @@
+/* ============================================================
+   LAYOUT SHELL — SiteHeader, SiteFooter, skip link
+   Token-driven; logical properties throughout (RTL groundwork).
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   SKIP LINK — first focusable, visually hidden until focused.
+   ------------------------------------------------------------ */
+.skip-link {
+  position: absolute;
+  inset-block-start: var(--spacing-xs);
+  inset-inline-start: var(--spacing-xs);
+  z-index: 100;
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-md);
+  background-color: var(--surface-action);
+  color: var(--text-on-action);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.15s ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+  outline: var(--border-width-md) solid var(--border-focus);
+  outline-offset: var(--border-width-md);
+}
+
+/* ============================================================
+   SITE HEADER
+   ============================================================ */
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 50;
+  inline-size: 100%;
+  background-color: transparent;
+  border-block-end: var(--border-width-sm) solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+/* Scrolled state — near-opaque page surface + blur + hairline.
+   Blur is not transitioned (per contract); bg + border are.
+   The filter value is held in a custom property so the CSS bundler treats it
+   as opaque and doesn't strip the standard (unprefixed) `backdrop-filter`.
+
+   Opacity is 96%, not the 85% this started at: once real photography sits
+   under the header, 85% let hero images and large headlines read through
+   behind the nav links. 96% + a stronger blur keeps the frosted-glass depth
+   cue while holding the nav legible over anything that scrolls beneath it. */
+.site-header[data-scrolled="true"] {
+  --header-blur: saturate(180%) blur(24px);
+  background-color: color-mix(in srgb, var(--surface-page) 96%, transparent);
+  -webkit-backdrop-filter: var(--header-blur);
+  backdrop-filter: var(--header-blur);
+  border-block-end-color: var(--border-primary);
+}
+
+/* No backdrop-filter (older Firefox, some in-app browsers): fall back to a
+   fully opaque bar. Without this the header is only 96% opaque with NO blur,
+   which is exactly the see-through case being fixed. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header[data-scrolled="true"] {
+    background-color: var(--surface-page);
+  }
+}
+
+/* OVER-DARK — the header is transparent at the top of the page, so when the
+   first section is a dark one its own light-surface text lands near-black on
+   near-black (~1.1:1, effectively invisible).
+
+   Per the token rules in CLAUDE.md this rebinds the role tokens for the scope
+   rather than setting `color` on each element: every descendant (logo, nav
+   links, dropdown trigger, hamburger) then resolves a light value on its own.
+   The complete text set is rebound, not just the roles currently in use.
+
+   Applies only while un-scrolled — once `data-scrolled="true"` the header has
+   its own near-opaque light background and the default tokens are correct
+   again, so the scrolled rule below wins on specificity. */
+.site-header[data-over-dark="true"]:not([data-scrolled="true"]) {
+  --text-headings: var(--neutral-white);
+  --text-body: var(--neutral-300);
+  --text-action: var(--neutral-white);
+  --text-action-hover: var(--neutral-200);
+  --text-disabled: var(--neutral-400);
+  --border-primary: var(--neutral-700);
+  color: var(--text-body);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  min-block-size: var(--scale-1600); /* 64px */
+  padding-block: var(--spacing-sm);
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-headings);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  flex: none;
+}
+.site-header__logo:hover {
+  color: var(--text-headings);
+}
+
+/* Primary nav (in-page anchors / dropdown) */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  margin-inline-start: var(--spacing-md);
+}
+.site-header__nav-link {
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+  text-decoration: none;
+  padding-block: var(--spacing-2xs);
+  border-radius: var(--border-radius-md);
+}
+.site-header__nav-link:hover {
+  color: var(--text-action);
+}
+
+/* Right cluster — CTAs + language toggle, pushed to the end */
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-inline-start: auto;
+}
+
+/* Log in dropdown (hub) */
+.site-header__dropdown {
+  position: relative;
+}
+.site-header__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding-block: var(--spacing-2xs);
+}
+.site-header__dropdown-trigger:hover {
+  color: var(--text-action);
+}
+.site-header__dropdown-caret {
+  inline-size: var(--scale-300);
+  block-size: var(--scale-300);
+}
+.site-header__dropdown-menu {
+  position: absolute;
+  inset-block-start: calc(100% + var(--spacing-xs));
+  inset-inline-end: 0;
+  min-inline-size: 220px;
+  background-color: var(--surface-page);
+  border: var(--border-width-sm) solid var(--border-primary);
+  border-radius: var(--border-radius-lg);
+  padding-block: var(--spacing-xs);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+  display: flex;
+  flex-direction: column;
+}
+.site-header__dropdown-item {
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  font-size: var(--font-size-body-md);
+  color: var(--text-body);
+  text-decoration: none;
+}
+.site-header__dropdown-item:hover {
+  background-color: var(--surface-action-subtle);
+  color: var(--text-action);
+}
+
+/* Language toggle — non-functional placeholder */
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+  flex: none;
+}
+.lang-toggle__opt {
+  padding-block: var(--spacing-3xs);
+  padding-inline: var(--spacing-2xs);
+}
+.lang-toggle__opt[aria-current="true"] {
+  color: var(--text-action);
+}
+/* AR is a non-functional placeholder, but it is still readable UI text rather
+   than a disabled form control, so it must meet AA. --text-disabled is
+   neutral-400 (3.78:1 on white); the body role clears it on both surfaces. */
+.lang-toggle__opt[aria-disabled="true"] {
+  color: var(--text-body);
+}
+/* The separator is decorative (aria-hidden="true"), so WCAG text contrast does
+   not formally apply — but it should still be clearly visible. It uses the body
+   role, which every tone scope rebinds, so it reads on light and dark alike. */
+.lang-toggle__sep {
+  color: var(--text-body);
+  opacity: 0.5;
+}
+
+/* Hamburger — hidden until <900px */
+.site-header__hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--scale-1100); /* 44px tap target */
+  block-size: var(--scale-1100);
+  margin-inline-start: auto;
+  background: transparent;
+  border: none;
+  color: var(--text-headings);
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+}
+.site-header__hamburger svg {
+  inline-size: var(--scale-600);
+  block-size: var(--scale-600);
+}
+
+/* Full-screen mobile menu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--surface-page);
+  padding-block: var(--spacing-lg);
+  padding-inline: var(--spacing-lg);
+}
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-block-size: var(--scale-1600);
+}
+.mobile-menu__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--scale-1100);
+  block-size: var(--scale-1100);
+  background: transparent;
+  border: none;
+  color: var(--text-headings);
+  cursor: pointer;
+  border-radius: var(--border-radius-md);
+}
+.mobile-menu__close svg {
+  inline-size: var(--scale-600);
+  block-size: var(--scale-600);
+}
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-2xl);
+}
+.mobile-menu__link {
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+  text-decoration: none;
+  padding-block: var(--spacing-xs);
+}
+.mobile-menu__link:hover {
+  color: var(--text-action);
+}
+.mobile-menu__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-2xl);
+}
+.mobile-menu__footer {
+  margin-block-start: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media (max-width: 899px) {
+  .site-header__nav,
+  .site-header__actions {
+    display: none;
+  }
+  .site-header__hamburger {
+    display: inline-flex;
+  }
+}
+
+/* ============================================================
+   SITE FOOTER — always the dark surface. Rebinds role tokens
+   per the tone-scope rule (never sets `color` directly).
+   ============================================================ */
+.site-footer {
+  --surface-page: var(--neutral-800);
+  --text-headings: var(--neutral-white);
+  --text-body: var(--neutral-300);
+  --border-primary: var(--neutral-700);
+  /* Also rebind the action/disabled roles: the LangToggle resolves them, and
+     the light-surface values (dark purple on near-black) were 1.26:1. */
+  --text-action: var(--neutral-white);
+  --text-action-hover: var(--neutral-200);
+  --text-disabled: var(--neutral-400);
+  background-color: var(--surface-page);
+  color: var(--text-body);
+  padding-block: var(--spacing-3xl);
+  /* Hairline separates the footer from a preceding dark section (e.g. the
+     hub's dark band 3), which would otherwise blend into one dark mass. */
+  border-block-start: var(--border-width-sm) solid var(--border-primary);
+}
+
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(2, 1fr);
+  gap: var(--spacing-2xl);
+}
+.site-footer--hub .site-footer__grid {
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.site-footer__brand-logo {
+  font-size: var(--font-size-h5);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-headings);
+  letter-spacing: -0.01em;
+}
+.site-footer__tagline {
+  margin-block-start: var(--spacing-md);
+  max-inline-size: 32ch;
+  color: var(--text-body);
+}
+
+.site-footer__col-title {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-headings);
+  margin-block-end: var(--spacing-md);
+}
+.site-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.site-footer__link {
+  color: var(--text-body);
+  text-decoration: none;
+  font-size: var(--font-size-body-md);
+}
+.site-footer__link:hover {
+  color: var(--text-headings);
+}
+
+.site-footer__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+  margin-block-start: var(--spacing-2xl);
+  padding-block-start: var(--spacing-lg);
+  border-block-start: var(--border-width-sm) solid var(--border-primary);
+}
+.site-footer__copyright {
+  font-size: var(--font-size-body-sm);
+  color: var(--text-body);
+}
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+.site-footer__social-link {
+  display: inline-flex;
+  color: var(--neutral-400);
+}
+.site-footer__social-link:hover {
+  color: var(--neutral-white);
+}
+.site-footer__social-link svg {
+  inline-size: var(--scale-500); /* 20px */
+  block-size: var(--scale-500);
+}
+
+/* Shared focus ring for layout interactive elements */
+.site-header a:focus-visible,
+.site-header button:focus-visible,
+.mobile-menu a:focus-visible,
+.mobile-menu button:focus-visible,
+.site-footer a:focus-visible {
+  outline: var(--border-width-md) solid var(--border-focus);
+  outline-offset: var(--border-width-md);
+}
+.site-footer a:focus-visible {
+  outline-color: var(--neutral-white);
+}
+
+@media (max-width: 767px) {
+  .site-footer__grid,
+  .site-footer--hub .site-footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+}

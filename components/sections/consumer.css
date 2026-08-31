@@ -1,0 +1,504 @@
+/* ============================================================
+   CONSUMER PAGE SECTIONS
+   Token-driven; logical properties throughout.
+   ============================================================ */
+
+/* section-head + pillar grid now live in sections.css (shared). */
+
+/* ------------------------------------------------------------
+   HERO — more vertical presence than a standard section.
+   ------------------------------------------------------------ */
+.hero {
+  padding-block: var(--spacing-3xl);
+  min-block-size: 78vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--surface-page);
+}
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  inline-size: 100%;
+}
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  max-inline-size: 46ch;
+}
+.hero__headline {
+  margin: 0;
+  text-wrap: balance;
+  /* Marketing display size so the hero clearly outranks section H2s (48px). */
+  font-size: var(--font-size-display-lg);
+  line-height: var(--line-height-display-lg);
+  letter-spacing: var(--letter-spacing-display-lg);
+}
+@media (max-width: 767px) {
+  .hero__headline {
+    /* Step down to display-md on small screens. */
+    font-size: var(--font-size-display-md);
+    line-height: var(--line-height-display-md);
+    letter-spacing: var(--letter-spacing-display-md);
+  }
+}
+.hero__sub {
+  margin: 0;
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-md);
+}
+@media (min-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: var(--spacing-3xl);
+  }
+}
+
+/* ------------------------------------------------------------
+   CAPTURE — TapCeipt is the hero; three supporting modes.
+   ------------------------------------------------------------ */
+.capture__layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+@media (min-width: 900px) {
+  .capture__layout {
+    /* TapCeipt gets a full, taller column; the trio stacks beside it. */
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: stretch;
+  }
+}
+
+/* The hero capture card — visually dominant. */
+.capture-hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--surface-action);
+  color: var(--text-on-action);
+}
+.capture-hero__label {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary-200);
+}
+.capture-hero__name {
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-semibold);
+}
+.capture-hero__body {
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+  color: var(--neutral-white);
+  max-inline-size: 32ch;
+}
+.capture-hero__media {
+  margin-block-start: auto;
+}
+/* The media placeholder sits on the purple card. Rebind its role tokens to a
+   lighter tint of the brand surface (per the tone-scope rule) so it reads as
+   an inset panel, not a near-black box. */
+.capture-hero__media .ui-placeholder {
+  --surface-page: var(--primary-400);
+  --border-disabled: var(--primary-300);
+  --text-disabled: var(--primary-100);
+  /* The placeholder label reads --text-body (it is informational text, not
+     disabled chrome), so this scope must rebind that role too — otherwise the
+     label inherits the dark page value and lands at 2:1 on the purple tile. */
+  --text-body: var(--primary-100);
+  background-color: var(--surface-page);
+}
+
+/* The supporting trio — quieter cards. */
+.capture-modes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+.capture-mode {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2xs);
+  padding: var(--spacing-lg);
+  border: var(--border-width-sm) solid var(--border-primary);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--surface-page);
+}
+.capture-mode__name {
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.capture-mode__body {
+  color: var(--text-body);
+}
+
+/* ------------------------------------------------------------
+   POCKETS — three differentiated cards + Slices callout.
+   ------------------------------------------------------------ */
+.pockets__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  align-items: stretch; /* all three cards share the tallest card's height */
+}
+@media (min-width: 900px) {
+  .pockets__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.pocket-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width-sm) solid var(--border-primary);
+  background-color: var(--surface-page);
+}
+.pocket-card__badge {
+  align-self: flex-start;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-block: var(--spacing-3xs);
+  padding-inline: var(--spacing-sm);
+  border-radius: var(--border-radius-round);
+}
+.pocket-card__name {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.pocket-card__body {
+  color: var(--text-body);
+}
+/* All three cards share one surface treatment; the badges carry the
+   solo / ongoing / one-off distinction, not the card background. */
+.pocket-card--solo .pocket-card__badge {
+  background-color: var(--surface-action-subtle);
+  color: var(--text-action);
+}
+.pocket-card--ongoing .pocket-card__badge {
+  background-color: var(--surface-action);
+  color: var(--text-on-action);
+}
+.pocket-card--lifecycle .pocket-card__badge {
+  background-color: var(--secondary-200);
+  color: var(--secondary-800);
+}
+.pocket-lifecycle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  margin-block-start: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+.pocket-lifecycle__step {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+  padding-block: var(--spacing-3xs);
+  padding-inline: var(--spacing-sm);
+  border: var(--border-width-sm) solid var(--border-primary);
+  border-radius: var(--border-radius-round);
+}
+.pocket-lifecycle__arrow {
+  color: var(--text-disabled);
+  inline-size: var(--scale-400);
+  block-size: var(--scale-400);
+}
+
+/* Slices callout — subordinate to the three cards. */
+.slices-callout {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-block-start: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--surface-disabled);
+  color: var(--text-body);
+}
+.slices-callout__icon {
+  flex: none;
+  inline-size: var(--scale-600);
+  block-size: var(--scale-600);
+  color: var(--icon-primary);
+}
+.slices-callout strong {
+  color: var(--text-headings);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ------------------------------------------------------------
+   CABINET — safekeeping; layered, retrievable cards.
+   ------------------------------------------------------------ */
+.cabinet__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .cabinet__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+  }
+}
+/* Layered stack — an organized set, offset like filed cards. */
+.cabinet-stack {
+  position: relative;
+  display: grid;
+  gap: var(--spacing-sm);
+  padding-inline-start: var(--spacing-lg);
+}
+.cabinet-file {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--surface-page);
+  border: var(--border-width-sm) solid var(--border-primary);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);
+}
+/* Cascading inline offset conveys a filed, layered set. */
+.cabinet-file:nth-child(2) {
+  margin-inline-start: var(--spacing-lg);
+}
+.cabinet-file:nth-child(3) {
+  margin-inline-start: var(--spacing-2xl);
+}
+.cabinet-file__tab {
+  inline-size: var(--scale-100);
+  align-self: stretch;
+  border-radius: var(--border-radius-round);
+  background-color: var(--surface-action);
+  flex: none;
+}
+.cabinet-file__label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+
+/* ------------------------------------------------------------
+   REWARDS — the one section where the palette shifts to deepgreen.
+   ------------------------------------------------------------ */
+.rewards__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+@media (min-width: 900px) {
+  .rewards__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+/* Green Score card — deepgreen, the louder of the two. */
+.green-score {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--brand-deepgreen-100);
+  border: var(--border-width-sm) solid var(--brand-deepgreen-200);
+}
+.green-score__name {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--brand-deepgreen-700);
+}
+.green-score__body {
+  color: var(--brand-deepgreen-700);
+  max-inline-size: 46ch;
+}
+/* Four-tier progression: Leaf → Plant → Tree → Forest.
+   This is the FOCAL element of the card — large glyphs, a clearly visible
+   size ramp, and generous vertical space. Sizes are derived from --scale-1600
+   (64px) via calc() so they stay token-based while exceeding the base scale. */
+.green-tiers {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  flex-wrap: nowrap;
+  padding-block: var(--spacing-lg);
+  min-block-size: calc(var(--scale-1600) * 2.2); /* room for the tallest tier */
+}
+.green-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  color: var(--brand-deepgreen-600);
+}
+.green-tier__glyph {
+  color: var(--brand-deepgreen-500);
+}
+.green-tier__name {
+  font-weight: var(--font-weight-semibold);
+}
+/* Progression — each tier substantially larger and greener than the last. */
+/* Leaf is the lightest tier, but its LABEL is still normal-size text and must
+   clear 4.5:1 on the deepgreen-100 card. deepgreen-400 measured 3.05:1, so the
+   label takes deepgreen-600 while the glyph keeps the lighter ramp value —
+   the glyph is decorative and the size ramp carries the progression. */
+.green-tier--1 {
+  color: var(--brand-deepgreen-600);
+}
+.green-tier--1 .green-tier__glyph {
+  inline-size: var(--scale-1000); /* 40px */
+  block-size: var(--scale-1000);
+  color: var(--brand-deepgreen-400);
+}
+.green-tier--1 .green-tier__name {
+  font-size: var(--font-size-body-md);
+}
+.green-tier--2 .green-tier__glyph {
+  inline-size: calc(var(--scale-1600) * 0.9); /* ~58px */
+  block-size: calc(var(--scale-1600) * 0.9);
+  color: var(--brand-deepgreen-500);
+}
+.green-tier--2 .green-tier__name {
+  font-size: var(--font-size-body-md);
+}
+.green-tier--3 .green-tier__glyph {
+  inline-size: calc(var(--scale-1600) * 1.2); /* ~77px */
+  block-size: calc(var(--scale-1600) * 1.2);
+  color: var(--brand-deepgreen-600);
+}
+.green-tier--3 .green-tier__name {
+  font-size: var(--font-size-h6);
+}
+.green-tier--4 {
+  color: var(--brand-deepgreen-700);
+}
+.green-tier--4 .green-tier__glyph {
+  inline-size: calc(var(--scale-1600) * 1.6); /* ~102px */
+  block-size: calc(var(--scale-1600) * 1.6);
+  color: var(--brand-deepgreen-700);
+}
+.green-tier--4 .green-tier__name {
+  font-size: var(--font-size-h5);
+}
+.green-tier__arrow {
+  align-self: center;
+  margin-block-end: var(--spacing-lg);
+  color: var(--brand-deepgreen-300);
+  inline-size: var(--scale-500);
+  block-size: var(--scale-500);
+  flex: none;
+}
+
+/* Narrow viewports: the ramp is the focal element and must stay one row —
+   wrapping it would destroy the Leaf → Forest progression it exists to show.
+   So scale the whole ramp down proportionally instead of wrapping, keeping
+   each tier visibly larger than the last. Verified at 390px and 430px. */
+@media (max-width: 560px) {
+  .green-score {
+    padding: var(--spacing-lg);
+  }
+  .green-tiers {
+    gap: var(--spacing-2xs);
+    min-block-size: calc(var(--scale-1600) * 1.5);
+    padding-block: var(--spacing-md);
+  }
+  .green-tier {
+    gap: var(--spacing-2xs);
+    min-inline-size: 0;
+  }
+  .green-tier--1 .green-tier__glyph {
+    inline-size: var(--scale-600); /* 24px */
+    block-size: var(--scale-600);
+  }
+  .green-tier--2 .green-tier__glyph {
+    inline-size: var(--scale-800); /* 32px */
+    block-size: var(--scale-800);
+  }
+  .green-tier--3 .green-tier__glyph {
+    inline-size: var(--scale-1000); /* 40px */
+    block-size: var(--scale-1000);
+  }
+  .green-tier--4 .green-tier__glyph {
+    inline-size: calc(var(--scale-1600) * 0.8); /* ~51px */
+    block-size: calc(var(--scale-1600) * 0.8);
+  }
+  /* Tier labels step down to the smallest real body token. There is no
+     body-xs in the system and inventing one is out of scope, so the ramp's
+     ranking is carried by the glyph sizes; labels stay legible at sm/md. */
+  .green-tier--1 .green-tier__name,
+  .green-tier--2 .green-tier__name,
+  .green-tier--3 .green-tier__name {
+    font-size: var(--font-size-body-sm);
+  }
+  .green-tier--4 .green-tier__name {
+    font-size: var(--font-size-body-md);
+  }
+  .green-tier__arrow {
+    inline-size: var(--scale-300);
+    block-size: var(--scale-300);
+    margin-block-end: var(--spacing-md);
+  }
+}
+
+/* Offers Hub card — the quieter one; sample offers as texture. */
+.offers-hub {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width-sm) solid var(--border-primary);
+  background-color: var(--surface-page);
+}
+.offers-hub__name {
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+.offers-hub__body {
+  color: var(--text-body);
+}
+.offers-hub__samples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-block-start: auto;
+}
+.offer-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background-color: var(--surface-disabled);
+  font-size: var(--font-size-body-sm);
+  color: var(--text-body);
+}
+.offer-chip__merchant {
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}

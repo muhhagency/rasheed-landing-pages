@@ -1,0 +1,461 @@
+/* ============================================================
+   RASHEED — DESIGN TOKENS
+   Extracted from Figma: Rasheed - Design System
+   File: 3hcXxu77vHXA0NU5OAP9Mq
+   ============================================================
+   Three-tier architecture, mirroring the Figma collections:
+     1. BRAND   — raw primitives (never reference directly in UI)
+     2. ALIAS   — semantic scales (primary, success, error…)
+     3. MAPPED  — role tokens (text/, surface/, icon/, border/)
+   Use MAPPED tokens in components. Fall back to ALIAS only when
+   no role token fits. Never hardcode a hex.
+   ============================================================ */
+
+:root {
+
+  /* ========================================================
+     1. BRAND — PRIMITIVES
+     ======================================================== */
+
+  /* Royal Purple — brand primary */
+  --brand-royalpurple-100: #eae7f1;
+  --brand-royalpurple-200: #cbc4dc;
+  --brand-royalpurple-300: #9789b9;
+  --brand-royalpurple-400: #644f96;
+  --brand-royalpurple-500: #301473;  /* brand core */
+  --brand-royalpurple-600: #240f56;
+  --brand-royalpurple-700: #180a3a;
+  --brand-royalpurple-800: #0c051d;
+
+  /* Mint Green — brand secondary */
+  --brand-mintgreen-100: #f4fff7;
+  --brand-mintgreen-200: #e9ffee;
+  --brand-mintgreen-300: #d4ffdd;
+  --brand-mintgreen-400: #beffcd;
+  --brand-mintgreen-500: #93ffab;
+  --brand-mintgreen-600: #6ebf80;
+  --brand-mintgreen-700: #4a8056;
+  --brand-mintgreen-800: #25402b;
+
+  /* Soft Lavender — accent (unmapped) */
+  --brand-softlavender-100: #f3effb;
+  --brand-softlavender-200: #e2d8f5;
+  --brand-softlavender-300: #c5b1eb;
+  --brand-softlavender-400: #a78ae0;
+  --brand-softlavender-500: #8a63d6;
+  --brand-softlavender-600: #684aa0;
+  --brand-softlavender-700: #45326b;
+  --brand-softlavender-800: #231936;
+
+  /* Warm Peach — accent (unmapped) */
+  --brand-warmpeach-100: #fffaf5;
+  --brand-warmpeach-200: #fff2e6;
+  --brand-warmpeach-300: #ffe5cd;
+  --brand-warmpeach-400: #ffd9b4;
+  --brand-warmpeach-500: #ffcc9b;
+  --brand-warmpeach-600: #bf9974;
+  --brand-warmpeach-700: #80664e;
+  --brand-warmpeach-800: #403327;
+
+  /* Deep Green — accent (unmapped; candidate for Green Score) */
+  --brand-deepgreen-100: #e5f1e9;
+  --brand-deepgreen-200: #bfddc9;
+  --brand-deepgreen-300: #80bb93;
+  --brand-deepgreen-400: #40995e;
+  --brand-deepgreen-500: #007728;
+  --brand-deepgreen-600: #00591e;
+  --brand-deepgreen-700: #003c14;
+  --brand-deepgreen-800: #001e0a;
+
+  /* Electric Blue — accent (unmapped) */
+  --brand-electricblue-100: #e8f5fd;
+  --brand-electricblue-200: #c6e7fb;
+  --brand-electricblue-300: #8ecff6;
+  --brand-electricblue-400: #56b6f1;
+  --brand-electricblue-500: #1d9eed;
+  --brand-electricblue-600: #1677b2;
+  --brand-electricblue-700: #0f4f77;
+  --brand-electricblue-800: #07283b;
+
+  /* Functional ramps */
+  --brand-green-100: #ecf9f1;
+  --brand-green-200: #cfefdd;
+  --brand-green-300: #9fe0bb;
+  --brand-green-400: #70d19a;
+  --brand-green-500: #40c178;
+  --brand-green-600: #30915a;
+  --brand-green-700: #20613c;
+  --brand-green-800: #10301e;
+
+  --brand-yellow-100: #fffbee;
+  --brand-yellow-200: #fff5d5;
+  --brand-yellow-300: #ffebab;
+  --brand-yellow-400: #ffe181;
+  --brand-yellow-500: #ffd757;
+  --brand-yellow-600: #bfa141;
+  --brand-yellow-700: #806c2c;
+  --brand-yellow-800: #403616;
+
+  --brand-red-100: #fceef2;
+  --brand-red-200: #f9d4df;
+  --brand-red-300: #f2aabf;
+  --brand-red-400: #eb809f;
+  --brand-red-500: #e5557f;
+  --brand-red-600: #ac405f;
+  --brand-red-700: #732b40;
+  --brand-red-800: #391520;
+
+  --brand-blue-100: #e9f4fd;
+  --brand-blue-200: #c7e4fa;
+  --brand-blue-300: #90c9f5;
+  --brand-blue-400: #59afef;
+  --brand-blue-500: #2194ea;
+  --brand-blue-600: #196faf;
+  --brand-blue-700: #114a75;
+  --brand-blue-800: #08253b;
+
+  --brand-grey-100: #efeef1;
+  --brand-grey-200: #d7d5dc;
+  --brand-grey-300: #afaab9;
+  --brand-grey-400: #878096;
+  --brand-grey-500: #5f5673;
+  --brand-grey-600: #474156;
+  --brand-grey-700: #302b3a;
+  --brand-grey-800: #18161d;
+
+  --brand-white: #ffffff;
+  --brand-black: #000000;
+
+
+  /* ========================================================
+     2. ALIAS — SEMANTIC SCALES
+     ======================================================== */
+
+  --primary-100: var(--brand-royalpurple-100);
+  --primary-200: var(--brand-royalpurple-200);
+  --primary-300: var(--brand-royalpurple-300);
+  --primary-400: var(--brand-royalpurple-400);
+  --primary-default: var(--brand-royalpurple-500);
+  --primary-600: var(--brand-royalpurple-600);
+  --primary-700: var(--brand-royalpurple-700);
+  --primary-800: var(--brand-royalpurple-800);
+
+  --secondary-100: var(--brand-mintgreen-100);
+  --secondary-200: var(--brand-mintgreen-200);
+  --secondary-300: var(--brand-mintgreen-300);
+  --secondary-400: var(--brand-mintgreen-400);
+  --secondary-default: var(--brand-mintgreen-500);
+  --secondary-600: var(--brand-mintgreen-600);
+  --secondary-700: var(--brand-mintgreen-700);
+  --secondary-800: var(--brand-mintgreen-800);
+
+  --success-100: var(--brand-green-100);
+  --success-200: var(--brand-green-200);
+  --success-300: var(--brand-green-300);
+  --success-400: var(--brand-green-400);
+  --success-default: var(--brand-green-500);
+  --success-600: var(--brand-green-600);
+  --success-700: var(--brand-green-700);
+  --success-800: var(--brand-green-800);
+
+  --warning-100: var(--brand-yellow-100);
+  --warning-200: var(--brand-yellow-200);
+  --warning-300: var(--brand-yellow-300);
+  --warning-400: var(--brand-yellow-400);
+  --warning-default: var(--brand-yellow-500);
+  --warning-600: var(--brand-yellow-600);
+  --warning-700: var(--brand-yellow-700);
+  --warning-800: var(--brand-yellow-800);
+
+  --error-100: var(--brand-red-100);
+  --error-200: var(--brand-red-200);
+  --error-300: var(--brand-red-300);
+  --error-400: var(--brand-red-400);
+  --error-default: var(--brand-red-500);
+  --error-600: var(--brand-red-600);
+  --error-700: var(--brand-red-700);
+  --error-800: var(--brand-red-800);
+
+  --info-100: var(--brand-blue-100);
+  --info-200: var(--brand-blue-200);
+  --info-300: var(--brand-blue-300);
+  --info-400: var(--brand-blue-400);
+  --info-default: var(--brand-blue-500);
+  --info-600: var(--brand-blue-600);
+  --info-700: var(--brand-blue-700);
+  --info-800: var(--brand-blue-800);
+
+  --neutral-100: var(--brand-grey-100);
+  --neutral-200: var(--brand-grey-200);
+  --neutral-300: var(--brand-grey-300);
+  --neutral-400: var(--brand-grey-400);
+  --neutral-default: var(--brand-grey-500);
+  --neutral-600: var(--brand-grey-600);
+  --neutral-700: var(--brand-grey-700);
+  --neutral-800: var(--brand-grey-800);
+  --neutral-white: var(--brand-white);
+  --neutral-black: var(--brand-black);
+
+
+  /* ========================================================
+     3. MAPPED — ROLE TOKENS  ← use these in components
+     ======================================================== */
+
+  /* Text */
+  --text-headings: var(--neutral-800);
+  --text-body: var(--neutral-700);
+  --text-action: var(--primary-default);
+  --text-action-hover: var(--primary-600);
+  --text-disabled: var(--neutral-400);
+  --text-information: var(--info-default);
+  --text-success: var(--success-default);
+  --text-warning: var(--warning-default);
+  --text-error: var(--error-default);
+  --text-on-action: var(--neutral-white);
+  --text-on-disabled: var(--neutral-800);
+
+  /* Surface */
+  --surface-page: var(--neutral-white);
+  --surface-primary: var(--neutral-white);
+  --surface-disabled: var(--neutral-100);
+  --surface-info: var(--info-100);
+  --surface-success: var(--success-100);
+  --surface-warning: var(--warning-100);
+  --surface-error: var(--error-100);
+  --surface-action: var(--primary-default);
+  --surface-action-hover: var(--primary-600);
+  --surface-action-subtle: var(--primary-100);
+
+  /* Icon */
+  --icon-primary: var(--primary-default);
+  --icon-action: var(--primary-default);
+  --icon-action-hover: var(--primary-600);
+  --icon-info: var(--info-default);
+  --icon-success: var(--success-default);
+  --icon-warning: var(--warning-default);
+  --icon-error: var(--error-default);
+  --icon-on-action: var(--neutral-white);
+  --icon-on-disabled: var(--neutral-800);
+
+  /* Border */
+  --border-primary: var(--neutral-200);
+  --border-secondary: var(--primary-default);
+  --border-info: var(--info-default);
+  --border-success: var(--success-default);
+  --border-warning: var(--warning-default);
+  --border-error: var(--error-default);
+  --border-disabled: var(--neutral-300);
+  --border-action: var(--primary-default);
+  --border-action-hover: var(--primary-600);
+  --border-focus: var(--primary-default);
+
+
+  /* ========================================================
+     4. TYPOGRAPHY
+     ======================================================== */
+
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-secondary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-tapceipt: 'Michroma', sans-serif;  /* TapCeipt wordmark only */
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Headings */
+  --font-size-h1: 60px;   --line-height-h1: 72px;   --para-spacing-h1: 48px;
+  --font-size-h2: 48px;   --line-height-h2: 56px;   --para-spacing-h2: 40px;
+  --font-size-h3: 40px;   --line-height-h3: 48px;   --para-spacing-h3: 36px;
+  --font-size-h4: 32px;   --line-height-h4: 40px;   --para-spacing-h4: 32px;
+  --font-size-h5: 24px;   --line-height-h5: 28px;   --para-spacing-h5: 28px;
+  --font-size-h6: 20px;   --line-height-h6: 24px;   --para-spacing-h6: 24px;
+
+  /* Body */
+  --font-size-body-lg: 20px;  --line-height-body-lg: 32px;  --para-spacing-body-lg: 20px;
+  --font-size-body-md: 16px;  --line-height-body-md: 24px;  --para-spacing-body-md: 16px;
+  --font-size-body-sm: 12px;  --line-height-body-sm: 20px;  --para-spacing-body-sm: 16px;
+
+
+  /* ========================================================
+     5. SPACING — base scale
+     ======================================================== */
+
+  --scale-0: 0px;
+  --scale-25: 1px;
+  --scale-50: 2px;
+  --scale-100: 4px;
+  --scale-150: 6px;
+  --scale-200: 8px;
+  --scale-300: 12px;
+  --scale-400: 16px;
+  --scale-500: 20px;
+  --scale-600: 24px;
+  --scale-700: 28px;
+  --scale-800: 32px;
+  --scale-900: 36px;
+  --scale-1000: 40px;
+  --scale-1100: 44px;
+  --scale-1200: 48px;
+  --scale-1600: 64px;
+
+  /* Semantic spacing */
+  --spacing-3xs: var(--scale-50);    /* 2px  */
+  --spacing-2xs: var(--scale-100);   /* 4px  */
+  --spacing-xs:  var(--scale-200);   /* 8px  */
+  --spacing-sm:  var(--scale-300);   /* 12px */
+  --spacing-md:  var(--scale-400);   /* 16px */
+  --spacing-lg:  var(--scale-600);   /* 24px */
+  --spacing-xl:  var(--scale-800);   /* 32px */
+  --spacing-2xl: var(--scale-1200);  /* 48px */
+  --spacing-3xl: var(--scale-1600);  /* 64px */
+
+
+  /* ========================================================
+     6. BORDER
+     ======================================================== */
+
+  --border-width-none: var(--scale-0);   /* 0px */
+  --border-width-sm:   var(--scale-25);  /* 1px */
+  --border-width-md:   var(--scale-50);  /* 2px */
+  --border-width-lg:   var(--scale-100); /* 4px */
+
+  --border-radius-none:  var(--scale-0);    /* 0px  */
+  --border-radius-sm:    var(--scale-50);   /* 2px  */
+  --border-radius-md:    var(--scale-100);  /* 4px  */
+  --border-radius-lg:    var(--scale-200);  /* 8px  */
+  --border-radius-round: var(--scale-1600); /* 64px */
+}
+
+
+/* ============================================================
+   TYPE RAMP — ready-to-use classes
+   ============================================================ */
+
+h1, .h1 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+  letter-spacing: 0;
+}
+
+h2, .h2 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+
+h3, .h3 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-h3);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+
+h4, .h4 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h4);
+  line-height: var(--line-height-h4);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+
+h5, .h5 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h5);
+  line-height: var(--line-height-h5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+
+h6, .h6 {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-headings);
+}
+
+.body-lg {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-body);
+}
+
+body, .body-md {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-body);
+}
+
+.body-md-semibold {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+}
+
+.body-sm {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-body);
+}
+
+.body-sm-semibold {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-body);
+}
+
+a, .link {
+  color: var(--text-action);
+  text-decoration: underline;
+}
+a:hover, .link:hover { color: var(--text-action-hover); }
+
+
+/* ============================================================
+   TAPCEIPT WORDMARK
+   Always Michroma. Never the body or heading face.
+   ============================================================ */
+
+.tapceipt {
+  font-family: var(--font-tapceipt);
+  font-size: 0.9em;      /* Michroma runs wide — compensate */
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+
+/* ============================================================
+   MARKETING EXTENSIONS
+   ------------------------------------------------------------
+   Display sizes for marketing headlines that outrank the product
+   type ramp (which tops out at h1 = 60px / 0 tracking). Hero H1s
+   use --font-size-display-lg so a hero clearly outranks section H2s.
+
+   MARKETING-ONLY. These are NOT yet in the Figma design system —
+   push them back to Figma before treating them as canonical.
+   ============================================================ */
+:root {
+  --font-size-display-lg: 80px;
+  --line-height-display-lg: 84px;
+  --letter-spacing-display-lg: -0.02em;
+
+  --font-size-display-md: 64px;
+  --line-height-display-md: 68px;
+  --letter-spacing-display-md: -0.02em;
+}

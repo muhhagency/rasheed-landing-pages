@@ -1,0 +1,390 @@
+/* ============================================================
+   UI PRIMITIVES — token-driven styles
+   Every value here resolves to a token from tokens.css.
+   No hardcoded hex, px spacing, or radius. Logical properties
+   only (padding-inline, margin-inline-start) for RTL groundwork.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   LOGO — width scales from a fixed height via intrinsic ratio.
+   ------------------------------------------------------------ */
+.logo {
+  display: block;
+  inline-size: auto;
+}
+.logo--lockup {
+  block-size: var(--scale-800); /* 32px lockup height */
+}
+.logo--icon {
+  block-size: var(--scale-1000); /* 40px icon height */
+}
+
+/* ------------------------------------------------------------
+   Shared focus ring — visible on keyboard focus only.
+   2px ring in --border-focus with a 2px offset.
+   ------------------------------------------------------------ */
+.ui-focusable:focus-visible {
+  outline: var(--border-width-md) solid var(--border-focus);
+  outline-offset: var(--border-width-md);
+}
+
+/* ============================================================
+   BUTTON
+   ============================================================ */
+.ui-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-body-md);
+  line-height: var(--line-height-body-md);
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width-md) solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* Sizes — block (vertical) / inline (horizontal) padding via logical props */
+.ui-button--md {
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-lg);
+}
+.ui-button--lg {
+  padding-block: var(--spacing-md);
+  padding-inline: var(--spacing-xl);
+  font-size: var(--font-size-body-lg);
+  line-height: var(--line-height-body-lg);
+}
+
+/* Variant — primary */
+.ui-button--primary {
+  background-color: var(--surface-action);
+  color: var(--text-on-action);
+}
+/* `color` is restated on hover, not just the background. A Button with an href
+   renders as <a>, and the global `a:hover { color: var(--text-action-hover) }`
+   in tokens.css outranks `.ui-button--primary` (0,1,1 vs 0,1,0). Without this
+   the label repainted to --text-action-hover, which is --primary-600 — the SAME
+   value as --surface-action-hover, so the text became invisible against its own
+   background at 1:1. Every variant below restates its hover colour for the same
+   reason. */
+.ui-button--primary:hover {
+  background-color: var(--surface-action-hover);
+  color: var(--text-on-action);
+}
+
+/* Variant — secondary */
+.ui-button--secondary {
+  background-color: transparent;
+  color: var(--text-action);
+  border-color: var(--border-action);
+}
+.ui-button--secondary:hover {
+  border-color: var(--border-action-hover);
+  color: var(--text-action-hover);
+}
+
+/* Variant — ghost */
+.ui-button--ghost {
+  background-color: transparent;
+  color: var(--text-action);
+}
+.ui-button--ghost:hover {
+  color: var(--text-action-hover);
+}
+
+/* Disabled — shared: no pointer, no hover shift.
+   Only `primary` gets a filled disabled background. `secondary` and `ghost`
+   keep transparent backgrounds; their text drops to --text-disabled, and
+   `secondary`'s border drops to --border-disabled. */
+.ui-button--disabled,
+.ui-button:disabled {
+  cursor: not-allowed;
+}
+
+/* primary — filled */
+.ui-button--primary.ui-button--disabled,
+.ui-button--primary:disabled {
+  background-color: var(--surface-disabled);
+  color: var(--text-on-disabled);
+  border-color: transparent;
+}
+.ui-button--primary.ui-button--disabled:hover,
+.ui-button--primary:disabled:hover {
+  background-color: var(--surface-disabled);
+}
+
+/* secondary — transparent bg, muted text, muted border */
+.ui-button--secondary.ui-button--disabled,
+.ui-button--secondary:disabled {
+  background-color: transparent;
+  color: var(--text-disabled);
+  border-color: var(--border-disabled);
+}
+.ui-button--secondary.ui-button--disabled:hover,
+.ui-button--secondary:disabled:hover {
+  color: var(--text-disabled);
+  border-color: var(--border-disabled);
+}
+
+/* ghost — transparent bg, muted text, no border */
+.ui-button--ghost.ui-button--disabled,
+.ui-button--ghost:disabled {
+  background-color: transparent;
+  color: var(--text-disabled);
+}
+.ui-button--ghost.ui-button--disabled:hover,
+.ui-button--ghost:disabled:hover {
+  color: var(--text-disabled);
+}
+
+/* ============================================================
+   STORE BUTTON
+   ============================================================ */
+.ui-storebutton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  border: var(--border-width-md) solid transparent;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.ui-storebutton--dark {
+  background-color: var(--neutral-800);
+  color: var(--neutral-white);
+}
+.ui-storebutton--dark:hover {
+  background-color: var(--neutral-700);
+}
+.ui-storebutton--light {
+  background-color: var(--neutral-white);
+  color: var(--neutral-800);
+  border-color: var(--border-primary);
+}
+.ui-storebutton--light:hover {
+  border-color: var(--neutral-300);
+}
+.ui-storebutton__glyph {
+  flex: none;
+  inline-size: var(--scale-800); /* 32px */
+  block-size: var(--scale-800);
+}
+.ui-storebutton__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+.ui-storebutton__lead {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-regular);
+}
+.ui-storebutton__name {
+  font-size: var(--font-size-h6);
+  line-height: var(--line-height-h6);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.ui-container {
+  margin-inline: auto;
+  inline-size: 100%;
+  padding-inline: var(--spacing-md);
+}
+.ui-container--default {
+  max-inline-size: 1200px;
+}
+.ui-container--narrow {
+  max-inline-size: 800px;
+}
+@media (min-width: 768px) {
+  .ui-container {
+    padding-inline: var(--spacing-lg);
+  }
+}
+@media (min-width: 1024px) {
+  .ui-container {
+    padding-inline: var(--spacing-xl);
+  }
+}
+
+/* ============================================================
+   SECTION
+   ============================================================ */
+.ui-section {
+  padding-block: var(--spacing-3xl);
+}
+@media (max-width: 767px) {
+  .ui-section {
+    padding-block: var(--spacing-2xl); /* one step down below 768px */
+  }
+}
+
+.ui-section--default {
+  background-color: var(--surface-page);
+}
+.ui-section--subtle {
+  background-color: var(--surface-disabled);
+}
+/* Dark & brand tones REBIND role tokens inside the scope — they never set
+   `color` directly. Every descendant (body copy, kickers, placeholder labels)
+   resolves the right color with no per-element overrides, even against rules
+   like `.body-md { color: var(--text-body) }` that would otherwise win. */
+.ui-section--dark {
+  --surface-page: var(--neutral-800);
+  --text-headings: var(--neutral-white);
+  --text-body: var(--neutral-300);
+  --text-disabled: var(--neutral-400);
+  --text-action: var(--neutral-white);
+  --text-action-hover: var(--neutral-200);
+  --border-primary: var(--neutral-700);
+  background-color: var(--surface-page);
+  color: var(--text-body);
+}
+.ui-section--brand {
+  --surface-page: var(--primary-default);
+  --text-headings: var(--neutral-white);
+  --text-body: var(--primary-200);
+  /* primary-300 on the brand surface measures 4.48:1 — just under the 4.5 AA
+     floor for normal text. Step to primary-200 (same ramp) to clear it. */
+  --text-disabled: var(--primary-200);
+  --text-action: var(--neutral-white);
+  --text-action-hover: var(--primary-100);
+  --border-primary: var(--primary-400);
+  background-color: var(--surface-page);
+  color: var(--text-body);
+}
+
+/* ============================================================
+   KICKER
+   ============================================================ */
+.ui-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-transform: uppercase;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.15em;
+}
+.ui-kicker__rule {
+  display: inline-block;
+  inline-size: var(--scale-600); /* 24px hairline */
+  block-size: var(--border-width-md);
+  background-color: currentColor;
+}
+/* Tones use role tokens so they inherit correctly inside rebound tone scopes.
+   `on-dark` is kept for explicit use outside a dark Section (e.g. a header on a
+   dark image); inside `.ui-section--dark`/`--brand`, `default` already resolves
+   light because those scopes rebind `--text-body`. */
+.ui-kicker--default {
+  color: var(--text-body);
+}
+.ui-kicker--on-dark {
+  color: var(--neutral-300);
+}
+.ui-kicker--brand {
+  color: var(--text-action);
+}
+
+/* ============================================================
+   PLACEHOLDER MEDIA
+   ============================================================ */
+.ui-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  inline-size: 100%;
+  padding: var(--spacing-lg);
+  border: var(--border-width-md) dashed var(--border-disabled);
+  border-radius: var(--border-radius-lg);
+  /* The label is informational (it names the asset that will ship here), so it
+     must meet AA. --text-disabled is neutral-400 = 3.78:1 on white; the body
+     role is neutral-700 and clears 4.5:1 on every surface we place it on. */
+  color: var(--text-body);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+}
+/* Dark tone rebinds role tokens; it sets no `color` of its own — the base
+   `.ui-placeholder` rule reads the rebound `--text-disabled`/`--border-disabled`
+   so the label and border resolve correctly. Works standalone or when the
+   placeholder is dropped into an already-dark tone scope. */
+.ui-placeholder--dark {
+  --surface-page: var(--neutral-800);
+  --border-disabled: var(--neutral-600);
+  /* Complete text role set — the label reads --text-body, so a partial
+     rebind here would leave dark-on-dark text. See CLAUDE.md token rules. */
+  --text-headings: var(--neutral-white);
+  --text-body: var(--neutral-300);
+  --text-disabled: var(--neutral-400);
+  --text-action: var(--neutral-white);
+  --text-action-hover: var(--neutral-200);
+  background-color: var(--surface-page);
+}
+
+/* ============================================================
+   URL INDICATOR — the small portal-host label under B2B CTAs.
+   Shared by the retailer/corporate heroes and the final CTA so the
+   B2B call-to-action pattern is identical in both places.
+   ============================================================ */
+.ui-url-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  font-size: var(--font-size-body-sm);
+  /* Real content (the portal host), so AA applies: --text-disabled would be
+     3.78:1 on white. */
+  color: var(--text-body);
+}
+.ui-url-indicator__dot {
+  inline-size: var(--scale-150);
+  block-size: var(--scale-150);
+  border-radius: var(--border-radius-round);
+  background-color: var(--success-default);
+  flex: none;
+}
+
+/* ============================================================
+   RESPONSIVE IMAGE — real photography.
+   Replaces PlaceholderMedia slot-for-slot, so it inherits the same
+   radius and fills the same box.
+
+   `aspect-ratio` is set per slot by the section CSS (the same ratios the
+   placeholders declared). `object-fit: cover` means a photo fills that box by
+   cropping rather than distorting — subjects were framed with room around them
+   so the crop stays safe down to 390px.
+   ============================================================ */
+.ui-image {
+  display: block;
+  inline-size: 100%;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  /* Own stacking context so the radius clips the image on Safari. */
+  isolation: isolate;
+  background-color: var(--surface-disabled);
+}
+.ui-image__img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+/* Slot ratios — mirror what each PlaceholderMedia declared. */
+.ui-image--1-1 { aspect-ratio: 1 / 1; }
+.ui-image--4-3 { aspect-ratio: 4 / 3; }
+.ui-image--3-4 { aspect-ratio: 3 / 4; }
+.ui-image--16-9 { aspect-ratio: 16 / 9; }
