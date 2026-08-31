@@ -347,7 +347,7 @@ Logo · tagline · Business Pocket · Team · Reports · Support · Privacy · T
 - Sign Up: unified self-serve form at `rasheedapp.com/signup` with persona toggle.
 - App Store links (from current site):
   - iOS: `apps.apple.com/us/app/rasheed/id6458787414`
-  - Android: `play.google.com/store/apps/details?id=com.rasheed.app`
+  - Android: `play.google.com/store/apps/details?id=com.rasheed.app&pcampaignid=web_share`
 
 ---
 

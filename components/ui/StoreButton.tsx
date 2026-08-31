@@ -21,7 +21,12 @@ const STORES = {
     name: "App Store",
   },
   googleplay: {
-    href: "https://play.google.com/store/apps/details?id=com.rasheed.app",
+    // The pcampaignid parameter is Google's install-attribution tag. It comes
+    // from the Play Store's own share sheet, so clicks from the site are
+    // reported as "web_share" traffic in Play Console. Swap it for a dedicated
+    // campaign id if these installs should be attributed to the website
+    // specifically rather than pooled with shared links.
+    href: "https://play.google.com/store/apps/details?id=com.rasheed.app&pcampaignid=web_share",
     name: "Google Play",
   },
 } as const;

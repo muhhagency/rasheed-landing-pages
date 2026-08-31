@@ -64,7 +64,8 @@ type StoreButtonProps = {
 
 Hrefs are constants inside the component, not props:
 - App Store — `https://apps.apple.com/us/app/rasheed/id6458787414`
-- Google Play — `https://play.google.com/store/apps/details?id=com.rasheed.app`
+- Google Play — `https://play.google.com/store/apps/details?id=com.rasheed.app&pcampaignid=web_share`
+  (`pcampaignid` is Google's install-attribution tag — see the note in `StoreButton.tsx`)
 
 Vendor glyphs as inline SVG. Two-line label: small "Download on" / "Get it on" above a larger store name. Do not use vendor badge images — they're licensed assets with usage rules.
 
