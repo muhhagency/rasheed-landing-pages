@@ -11,7 +11,6 @@
 //
 // Run:  node scripts/generate-icons.mjs
 import sharp from "sharp";
-import pngToIco from "png-to-ico";
 import { writeFileSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
@@ -47,15 +46,49 @@ const square = (size, background) => {
 
 const transparent = { r: 0, g: 0, b: 0, alpha: 0 };
 
-// ---- favicon.ico: 16/32/48 so the browser picks the crispest ----
+// ---- favicon.ico: 16/32/48, with PNG-encoded frames ----
+//
+// The ICO container can hold each frame as either a BMP/DIB or a PNG. The
+// png-to-ico package always writes BMP, and Safari mishandles 32-bit BMP
+// frames with an alpha channel — it renders them wrong or silently falls back
+// to a cached/default icon. Chrome reads both, which is exactly the split
+// observed: correct in Chrome, stale Next.js triangle in Safari.
+//
+// PNG frames are valid ICO (Vista+ and every current browser) and are what
+// Safari handles reliably, so the container is assembled by hand here.
 const icoSizes = [16, 32, 48];
-const icoBuffers = [];
+const frames = [];
 for (const size of icoSizes) {
-  icoBuffers.push(await square(size, transparent).toBuffer());
+  frames.push({ size, png: await square(size, transparent).toBuffer() });
 }
-const ico = await pngToIco(icoBuffers);
+
+// ICONDIR (6 bytes) + ICONDIRENTRY * n (16 bytes each) + the frame data.
+const header = Buffer.alloc(6);
+header.writeUInt16LE(0, 0); // reserved
+header.writeUInt16LE(1, 2); // type 1 = icon
+header.writeUInt16LE(frames.length, 4);
+
+let offset = 6 + frames.length * 16;
+const entries = [];
+for (const { size, png } of frames) {
+  const e = Buffer.alloc(16);
+  e.writeUInt8(size === 256 ? 0 : size, 0); // width  (0 means 256)
+  e.writeUInt8(size === 256 ? 0 : size, 1); // height
+  e.writeUInt8(0, 2); // palette count — 0 for truecolour
+  e.writeUInt8(0, 3); // reserved
+  e.writeUInt16LE(1, 4); // colour planes
+  e.writeUInt16LE(32, 6); // bits per pixel
+  e.writeUInt32LE(png.length, 8);
+  e.writeUInt32LE(offset, 12);
+  entries.push(e);
+  offset += png.length;
+}
+
+const ico = Buffer.concat([header, ...entries, ...frames.map((f) => f.png)]);
 writeFileSync(resolve(root, "app/favicon.ico"), ico);
-console.log(`app/favicon.ico            ${icoSizes.join("/")}  ${(ico.length / 1024).toFixed(1)} KB`);
+console.log(
+  `app/favicon.ico            ${icoSizes.join("/")}  ${(ico.length / 1024).toFixed(1)} KB  (PNG frames, for Safari)`
+);
 
 // ---- app/icon.png: Next's modern favicon route ----
 const iconPath = resolve(root, "app/icon.png");
