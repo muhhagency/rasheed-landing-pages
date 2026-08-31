@@ -28,15 +28,16 @@ export const metadata: Metadata = {
   },
   description:
     "Rasheed — capture receipts, organize your money, and earn rewards.",
-  // Both are declared explicitly: an explicit `icon` would otherwise suppress
-  // Next's file-based app/icon.png convention, leaving only the 48px-max .ico.
-  // Modern browsers take the 512 PNG (sharp on retina tabs); the .ico covers
-  // legacy clients and the 16/32/48 tab sizes.
+  // Next already emits a content-hashed <link> for app/favicon.ico via its
+  // file-based convention, which is what busts the cache when the icon changes.
+  // Declaring `icon` here as well would ADD an unhashed /favicon.ico link that
+  // browsers happily serve from a stale cache — favicons are cached hard and
+  // often survive a hard reload.
+  //
+  // So only app/icon.png is declared explicitly (Next does not auto-link it
+  // alongside a favicon.ico), and the .ico is left to the convention.
   icons: {
-    icon: [
-      { url: "/icon.png", type: "image/png", sizes: "512x512" },
-      { url: "/favicon.ico", sizes: "16x16 32x32 48x48" },
-    ],
+    icon: [{ url: "/icon.png", type: "image/png", sizes: "512x512" }],
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
