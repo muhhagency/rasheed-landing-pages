@@ -47,16 +47,24 @@ export function SiteFooter({ variant }: SiteFooterProps) {
           <span className="site-footer__copyright">© Rasheed 2026</span>
 
           <div className="site-footer__social">
-            {SOCIALS.map(({ key, label, href, Icon }) => (
-              <a
-                key={key}
-                href={href}
-                className="site-footer__social-link"
-                aria-label={label}
-              >
-                <Icon />
-              </a>
-            ))}
+            {/* Entries whose href is still "#" are skipped rather than rendered
+                as dead links — a social icon that goes nowhere is worse than an
+                absent one. They appear automatically once SocialIcons.tsx has
+                the real URL. */}
+            {SOCIALS.filter(({ href }) => href !== "#").map(
+              ({ key, label, href, Icon }) => (
+                <a
+                  key={key}
+                  href={href}
+                  className="site-footer__social-link"
+                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon />
+                </a>
+              )
+            )}
           </div>
 
           {/* TEMPORARILY REMOVED — <LangToggle /> (EN/AR placeholder).

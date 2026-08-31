@@ -297,7 +297,16 @@ change.
 Flag these as a list rather than working around them:
 
 1. **Photography and portal screenshots** — every page still ships `PlaceholderMedia`. This is the single largest gap between current state and launchable.
-2. **Social media handles** — footer hrefs are `#`.
+2. **Social media handles** — partly resolved. Instagram
+   (`instagram.com/rasheedapp_`) and Facebook
+   (`web.facebook.com/Rasheed.application`) are live. **TikTok and LinkedIn are
+   still `#`** — they were supplied as display names ("rasheed App's Creator
+   Profile", "Rasheed - رشيد | LinkedIn") rather than URLs, and a handle is not
+   safe to guess: a wrong one sends visitors to someone else's account. The
+   footer renders only entries with a real href, so those two are absent rather
+   than dead; adding the URLs in `components/layout/SocialIcons.tsx` brings them
+   back automatically. X and YouTube were placeholder guesses and have been
+   dropped.
 3. **`/signup`** — all four B2B CTAs link to a route that doesn't exist yet. Confirm it's live before launch or the primary B2B conversion path 404s.
 4. ~~**QR codes**~~ — **done.** Both decode to exactly the URL their store
    button links to, verified at the 140px they render at (1x and 2x) by
