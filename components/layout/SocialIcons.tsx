@@ -62,13 +62,12 @@ export function TikTokIcon({ className }: IconProps) {
   );
 }
 
-// Order runs most- to least-active for Rasheed's audience.
+// All four accounts are live. Order runs most- to least-active for Rasheed's
+// audience.
 //
-// Two entries are still "#": TikTok and LinkedIn were supplied as display
-// names ("rasheed App's Creator Profile", "Rasheed - \u0631\u0634\u064a\u062f | LinkedIn") rather
-// than URLs, and a social handle is not something to guess — a wrong one sends
-// visitors to somebody else's account. `SiteFooter` renders only entries with a
-// real href, so these two are simply absent from the page until the URLs land.
+// Every entry must have a real URL. Do not add a platform here with a "#"
+// placeholder: SiteFooter renders whatever is in this list, so a placeholder
+// ships as a dead icon. Add the platform when its account exists.
 export const SOCIALS = [
   {
     key: "instagram",
@@ -82,6 +81,16 @@ export const SOCIALS = [
     href: "https://web.facebook.com/Rasheed.application",
     Icon: FacebookIcon,
   },
-  { key: "tiktok", label: "TikTok", href: "#", Icon: TikTokIcon },
-  { key: "linkedin", label: "LinkedIn", href: "#", Icon: LinkedInIcon },
+  {
+    key: "tiktok",
+    label: "TikTok",
+    href: "https://www.tiktok.com/@rasheed_app",
+    Icon: TikTokIcon,
+  },
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/rasheedapp/",
+    Icon: LinkedInIcon,
+  },
 ] as const;
