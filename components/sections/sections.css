@@ -254,6 +254,19 @@
   gap: var(--spacing-sm);
   inline-size: 140px;
 }
+/* QR codes sit on the brand (purple) surface, so they get a white plate with
+   quiet-zone padding. A QR needs a light margin around it to scan reliably —
+   without the plate the dark modules would run straight into the purple. */
+.final-cta__qr-img {
+  inline-size: 100%;
+  block-size: auto;
+  display: block;
+  background-color: var(--neutral-white);
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-md);
+  /* Keep the modules crisp when the 576px source is drawn smaller. */
+  image-rendering: -webkit-optimize-contrast;
+}
 .final-cta__qr-label {
   font-size: var(--font-size-body-sm);
   font-weight: var(--font-weight-semibold);

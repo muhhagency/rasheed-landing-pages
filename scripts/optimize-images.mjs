@@ -43,8 +43,12 @@ const pct = (from, to) => {
 
 mkdirSync(OUT_DIR, { recursive: true });
 
+// QR codes are excluded: they are flat two-colour line art, where lossy
+// encoding is both larger AND risks softening the module edges that scanners
+// depend on. Measured on this pair, WebP came out 19% BIGGER than the PNG and
+// JPEG 4-5x bigger. They are optimised losslessly by optimize-qr.mjs instead.
 const pngs = readdirSync(SRC_DIR)
-  .filter((f) => /\.png$/i.test(f))
+  .filter((f) => /\.png$/i.test(f) && !/^qr-/.test(f))
   .sort();
 
 if (pngs.length === 0) {

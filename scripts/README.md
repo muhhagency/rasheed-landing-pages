@@ -26,6 +26,7 @@ npx serve out -l 4321
 | `picture-check.mjs` | Confirms browsers take the WebP `<source>` and no redundant JPEG is fetched |
 | `font-check.mjs` | Font files per route, paint timing, Michroma not render-blocking (§6) |
 | `copy-audit.mjs` | Every visible string traced back to `docs/content-brief.md` (§8) |
+| `qr-scan-test.mjs` | Decodes the store QR codes **from the live page at their rendered size**, and fails if either does not resolve to its store URL |
 
 ## Image pipeline
 
@@ -35,6 +36,10 @@ Run in this order after adding or regenerating source art:
 node scripts/derive-hub-crops.mjs   # 4:3 hub crops from the two B2B heroes
 node scripts/optimize-images.mjs    # assets/source-images/*.png -> public/images/*.{webp,jpg}
 ```
+
+`optimize-qr.mjs` handles the store QR codes separately — losslessly, since
+lossy encoding makes flat line art bigger and harder to scan. It verifies each
+output by decoding it.
 
 `generate-og.mjs` rebuilds the four Open Graph cards from design tokens. Re-run
 it after changing page titles or brand colours.

@@ -1,9 +1,9 @@
 # Asset Manifest
 
-All ten photographic slots are **swapped in**. Every `PlaceholderMedia` in the
-persona pages is gone; the only placeholders left are the two QR codes in
-`FinalCta` (generated at build time, not photography) and `/kitchen-sink`, which
-demos the primitive itself.
+All ten photographic slots are **swapped in**, and the two store QR codes are
+now real. **No `PlaceholderMedia` remains in use anywhere** — every media slot
+on the site carries a real asset. The component itself is kept for future
+slots.
 
 ## How images are served
 
@@ -46,6 +46,20 @@ size. `object-fit: cover` reconciles the two.
 Four `priority` slots — one per route, each the above-the-fold hero. Each emits a
 single WebP `<link rel="preload" fetchpriority="high">`; everything else is
 `loading="lazy"`.
+
+### Store QR codes
+
+| Slot | File | Source | Shipped | Decodes to |
+|---|---|---|---|---|
+| `/app` final CTA, iOS | `qr-appstore.png` | 576×576 | 0.7 KB | the App Store URL |
+| `/app` final CTA, Android | `qr-googleplay.png` | 576×576 | 0.8 KB | the Play Store URL incl. `pcampaignid` |
+
+**PNG on purpose, not WebP/JPEG.** QR codes are flat two-colour line art, where
+lossy encoding is wrong twice over: it produced files *larger* than the source
+(WebP +19% on the Play code, JPEG 4–5×), and it softens the module edges
+scanners depend on. `scripts/optimize-qr.mjs` compresses them losslessly
+(−91%) and re-decodes every output, failing the run if a code does not resolve
+to its expected store URL.
 
 **Shipped weight:** 656 KB WebP across all ten (1.02 MB if a client fell all the
 way back to JPEG), down from 18.37 MB of source PNG — **−96.5%**.
@@ -139,7 +153,12 @@ The rule applied: any screen in frame is angled away, out of focus, or cropped. 
 - Logo — horizontal wordmark + icon mark
 - Favicon + apple-touch-icon
 - OG images ×4 — currently generated with the icon mark; needs the horizontal wordmark
-- QR codes ×2 — generated at build time; need a scan test on real devices
+- ~~QR codes ×2~~ — **done.** Supplied as artwork, verified by decoding rather
+  than by eye: each resolves to exactly the URL its store button links to,
+  including the Play Store `pcampaignid`. `scripts/qr-scan-test.mjs` re-decodes
+  them from the live page at their rendered 140px on 1x and 2x displays, so a
+  code that only works at full size cannot ship. A real-device camera test is
+  still worth doing before launch.
 - Social handles — footer hrefs are `#`
 
 ---

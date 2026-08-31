@@ -299,7 +299,10 @@ Flag these as a list rather than working around them:
 1. **Photography and portal screenshots** — every page still ships `PlaceholderMedia`. This is the single largest gap between current state and launchable.
 2. **Social media handles** — footer hrefs are `#`.
 3. **`/signup`** — all four B2B CTAs link to a route that doesn't exist yet. Confirm it's live before launch or the primary B2B conversion path 404s.
-4. **QR codes** — verify they generate from the real store URLs and actually scan.
+4. ~~**QR codes**~~ — **done.** Both decode to exactly the URL their store
+   button links to, verified at the 140px they render at (1x and 2x) by
+   `scripts/qr-scan-test.mjs`, not just at source size. Worth one real-device
+   camera check before launch.
 5. **Portal subdomains** — confirm `retailers.rasheedapp.com` and `corporates.rasheedapp.com` resolve.
 6. **Arabic** — EN/AR toggle is a non-functional placeholder. Either wire it or hide it before launch; a visible dead control is worse than no control.
 

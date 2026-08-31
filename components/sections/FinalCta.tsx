@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { StoreButton } from "@/components/ui/StoreButton";
 import { Button } from "@/components/ui/Button";
-import { PlaceholderMedia } from "@/components/ui/PlaceholderMedia";
+import Image from "next/image";
 import { UrlIndicator } from "@/components/ui/UrlIndicator";
 import {
   CONTACT_CTA_LABEL,
@@ -69,22 +69,30 @@ export function FinalCta({
                 <StoreButton store="appstore" tone="light" />
                 <StoreButton store="googleplay" tone="light" />
               </div>
-              {/* QR codes: PlaceholderMedia 1/1 until build-time QR generation
-                  is wired. No third-party QR API at runtime (per Phase 4). */}
+              {/* Real QR codes, shipped as PNG rather than through
+                  ResponsiveImage: they are flat two-colour line art, where
+                  lossy WebP/JPEG is both larger and risks softening the module
+                  edges scanners read. scripts/optimize-qr.mjs compresses them
+                  losslessly and re-decodes each one to prove it still resolves
+                  to the matching store URL. */}
               <div className="final-cta__qrs">
                 <div className="final-cta__qr">
-                  <PlaceholderMedia
-                    aspectRatio="1/1"
-                    label="iOS QR"
+                  <Image
+                    src="/images/qr-appstore.png"
                     alt="QR code linking to Rasheed on the App Store"
+                    width={576}
+                    height={576}
+                    className="final-cta__qr-img"
                   />
                   <span className="final-cta__qr-label">iOS</span>
                 </div>
                 <div className="final-cta__qr">
-                  <PlaceholderMedia
-                    aspectRatio="1/1"
-                    label="Android QR"
+                  <Image
+                    src="/images/qr-googleplay.png"
                     alt="QR code linking to Rasheed on Google Play"
+                    width={576}
+                    height={576}
+                    className="final-cta__qr-img"
                   />
                   <span className="final-cta__qr-label">Android</span>
                 </div>
