@@ -299,7 +299,7 @@ Flag these as a list rather than working around them:
 1. **Photography and portal screenshots** — every page still ships `PlaceholderMedia`. This is the single largest gap between current state and launchable.
 2. ~~**Social media handles**~~ — **done.** All four accounts wired:
    Instagram `instagram.com/rasheedapp_`, Facebook
-   `web.facebook.com/Rasheed.application`, TikTok `tiktok.com/@rasheed_app`,
+   `facebook.com/Rasheed.application`, TikTok `tiktok.com/@rasheed_app`,
    LinkedIn `linkedin.com/company/rasheedapp/`. X and YouTube were
    build-phase guesses and were dropped. All open in a new tab with
    `rel="noopener noreferrer"`. Not yet click-tested against the live

@@ -78,7 +78,7 @@ export const SOCIALS = [
   {
     key: "facebook",
     label: "Facebook",
-    href: "https://web.facebook.com/Rasheed.application",
+    href: "https://facebook.com/Rasheed.application",
     Icon: FacebookIcon,
   },
   {
