@@ -19,7 +19,7 @@ Every page in this repo is a port of that canvas.
 
 | Route | Page | Header CTA | Primary CTAs on the page |
 |---|---|---|---|
-| `/` | Hub: full-screen hero that routes to the three audiences | none (own minimal header) | Get the app, For retailers, For corporates, news pill to `/news` |
+| `/` | Hub: full-screen hero that routes to the three audiences | none (own minimal header) | Get the app (opens the Shoppers page), For retailers, For corporates, news pill to `/news` |
 | `/app` | Shoppers | Get the app | Get the app |
 | `/for-retailers` | Retailers | Book a demo | Book a demo, Get a quote, WhatsApp, call |
 | `/for-corporates` | Corporates | Book a demo | Book a demo, Get a quote, WhatsApp, call |
@@ -31,6 +31,7 @@ Every page in this repo is a port of that canvas.
   Company (Support, Privacy, Terms), Contact (info and sales email; on B2B pages also phone and WhatsApp),
   social icons, EN | AR placeholder.
 - `/signup` and the portals remain out of scope for this repo.
+- "Get the app" (header, footer, Shoppers page): opens the App Store on iPhone and iPad and Google Play on Android; on desktop it scrolls to the Shoppers download section, where "iPhone" and "Android" in the note link to each store. The hub's "Get the app" opens the Shoppers page instead.
 
 ## 3. Page outlines
 
@@ -100,7 +101,6 @@ pages can deep-link to `/news#<slug>`.
 
 - Stats: values shown as `[000K+]`, `[0.0M+]`, `[000+]`, `[00K kg]` until real numbers are confirmed.
 - Phone and WhatsApp: `+000 000 0000`.
-- App store links: header and buttons point to `/app#get-app` until the listings are public.
 - Partner logos, testimonial quotes, news items, event dates, POS integration list, pricing.
 - Store points vs partner points naming; the barcode on the receipt front.
 

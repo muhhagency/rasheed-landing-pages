@@ -39,7 +39,7 @@ export const HUB = {
   leadMore: "Built for shoppers, the stores they buy from, and the teams that spend.",
   ctaLabel: "Choose your Rasheed",
   ctas: [
-    { label: "Get the app", href: CONTACT.appHref, variant: "primary", icon: "download" },
+    { label: "Get the app", href: "/app", variant: "primary", icon: "download" },
     { label: "For retailers", href: "/for-retailers", variant: "ghost", icon: "arrowRight" },
     { label: "For corporates", href: "/for-corporates", variant: "ghost", icon: "arrowRight" },
   ] as HubCta[],

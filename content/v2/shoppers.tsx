@@ -31,7 +31,7 @@ export const SH_HERO = {
   },
   lead: <>Tap your phone on <TapCeipt /> when you pay. Your receipt goes straight to Rasheed. Flip it to win a reward, use your points for gifts, and see where your money goes.</>,
   ctas: CTAS,
-  note: "Free on iPhone and Android. Start without an account.",
+  note: <>Free on <a href={CONTACT.iosHref} target="_blank" rel="noopener noreferrer">iPhone</a> and <a href={CONTACT.androidHref} target="_blank" rel="noopener noreferrer">Android</a>. Start without an account.</>,
   art: {
     gifts: "/v2/ph-scr-gifts.webp",
     home: "/v2/ph-scr-home.webp",
@@ -173,5 +173,5 @@ export const SH_CTA = {
   title: "Start using Rasheed today.",
   lead: "Get your first receipt in seconds. No account needed.",
   ctas: CTAS,
-  note: "Free on iPhone and Android",
+  note: <>Free on <a href={CONTACT.iosHref} target="_blank" rel="noopener noreferrer">iPhone</a> and <a href={CONTACT.androidHref} target="_blank" rel="noopener noreferrer">Android</a></>,
 };

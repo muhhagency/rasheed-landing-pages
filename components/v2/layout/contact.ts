@@ -8,7 +8,12 @@ export const CONTACT = {
   whatsappHref: "https://wa.me/0000000000",
   demoHref: "mailto:sales@rasheedapp.com?subject=Book%20a%20demo",
   quoteHref: "mailto:sales@rasheedapp.com?subject=Get%20a%20quote",
-  // App store links are not live yet; update when the listings are public.
+  // Store listings. The App Store URL has no storefront code, so Apple sends
+  // each visitor to their own store.
+  iosHref: "https://apps.apple.com/app/rasheed/id6458787414",
+  androidHref: "https://play.google.com/store/apps/details?id=com.rasheed.app",
+  // "Get the app" target. AppLink swaps it for the visitor's store on a phone;
+  // on desktop it lands on the Shoppers download section.
   appHref: "/app#get-app",
 } as const;
 

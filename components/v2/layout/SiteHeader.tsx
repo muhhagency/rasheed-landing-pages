@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LangToggle } from "@/components/layout/LangToggle";
 import { Icon } from "@/components/v2/ui/Icon";
-import { NAV, HEADER_CTA, type PageKey } from "./contact";
+import { AppLink } from "@/components/v2/ui/AppLink";
+import { NAV, HEADER_CTA, CONTACT, type PageKey } from "./contact";
 
 // Redesign header. Sits on top of each page's hero (transparent), gains a
 // stage background once the page scrolls. Mobile: menu button → full panel.
@@ -38,7 +39,11 @@ export function SiteHeader({ page }: { page: Exclude<PageKey, "hub"> }) {
             </Link>
           ))}
           <LangToggle />
-          <a className="v2-btn v2-btn--primary v2-btn--sm" href={cta.href}>{cta.label}</a>
+          {cta.href === CONTACT.appHref ? (
+            <AppLink className="v2-btn v2-btn--primary v2-btn--sm">{cta.label}</AppLink>
+          ) : (
+            <a className="v2-btn v2-btn--primary v2-btn--sm" href={cta.href}>{cta.label}</a>
+          )}
         </nav>
         <button type="button" className="v2-header__menu" aria-expanded={open} aria-controls="v2-mobile-menu" aria-label={open ? "Close menu" : "Open menu"} onClick={() => setOpen(!open)}>
           <Icon name={open ? "close" : "menu"} strokeWidth={2} />
@@ -53,7 +58,11 @@ export function SiteHeader({ page }: { page: Exclude<PageKey, "hub"> }) {
               </Link>
             ))}
             <div className="v2-header__panel-foot">
-              <a className="v2-btn v2-btn--primary" href={cta.href}>{cta.label}</a>
+              {cta.href === CONTACT.appHref ? (
+                <AppLink className="v2-btn v2-btn--primary" onClick={() => setOpen(false)}>{cta.label}</AppLink>
+              ) : (
+                <a className="v2-btn v2-btn--primary" href={cta.href}>{cta.label}</a>
+              )}
               <LangToggle />
             </div>
           </nav>

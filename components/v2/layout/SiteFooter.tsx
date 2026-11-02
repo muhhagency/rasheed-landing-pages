@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SOCIALS } from "@/components/layout/SocialIcons";
 import { LangToggle } from "@/components/layout/LangToggle";
 import { Icon } from "@/components/v2/ui/Icon";
+import { AppLink } from "@/components/v2/ui/AppLink";
 import { CONTACT, type PageKey } from "./contact";
 
 // Footer for every inner page. B2B pages swap the app button for Book a demo
@@ -20,7 +21,7 @@ export function SiteFooter({ page }: { page: Exclude<PageKey, "hub"> }) {
             {b2b ? (
               <a className="v2-btn v2-btn--primary v2-btn--sm v2-footer__cta" href={CONTACT.demoHref}><Icon name="calendar" />Book a demo</a>
             ) : (
-              <a className="v2-btn v2-btn--primary v2-btn--sm v2-footer__cta" href={CONTACT.appHref}>Get the app<Icon name="download" /></a>
+              <AppLink className="v2-btn v2-btn--primary v2-btn--sm v2-footer__cta">Get the app<Icon name="download" /></AppLink>
             )}
           </div>
           <nav aria-label="Rasheed" className="v2-footer__col">
