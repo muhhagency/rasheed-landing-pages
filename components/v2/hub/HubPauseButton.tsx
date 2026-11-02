@@ -12,10 +12,14 @@ export function HubPauseButton({ videoId = "hub-video" }: { videoId?: string }) 
     const v = document.getElementById(videoId) as HTMLVideoElement | null;
     if (!v) return;
     const on = () => setPlaying(!v.paused);
+    // Match the real state on mount: autoplay may be blocked or still pending.
+    on();
     v.addEventListener("play", on);
+    v.addEventListener("playing", on);
     v.addEventListener("pause", on);
     return () => {
       v.removeEventListener("play", on);
+      v.removeEventListener("playing", on);
       v.removeEventListener("pause", on);
     };
   }, [videoId]);
