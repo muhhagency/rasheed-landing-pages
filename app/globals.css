@@ -10,6 +10,15 @@
 /* Layout shell styles (header, footer, skip link). */
 @import "../components/layout/layout.css";
 
+/* Redesign 2026: stage styles, primitives and shell. */
+@import "../components/v2/v2.css";
+@import "../components/v2/layout/layout.css";
+@import "../components/v2/hub/hub.css";
+@import "../components/v2/shoppers/shoppers.css";
+@import "../components/v2/retailers/retailers.css";
+@import "../components/v2/corporates/corporates.css";
+@import "../components/v2/news/news.css";
+
 /* ============================================================
    TAILWIND @theme — map utilities onto role tokens.
    Utilities resolve to our tokens, not Tailwind defaults.

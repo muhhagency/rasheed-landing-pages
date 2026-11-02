@@ -1,10 +1,5 @@
-import { PersonaShell } from "@/components/layout/PersonaShell";
+import { PageShell } from "@/components/v2/layout/PageShell";
 
-// Corporate route (`/for-corporates`). Sets the corporate header/footer variant.
-export default function CorporateLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <PersonaShell variant="corporate">{children}</PersonaShell>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <PageShell page="corporates">{children}</PageShell>;
 }

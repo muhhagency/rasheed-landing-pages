@@ -1,5 +1,13 @@
 # Build Plan
 
+> **Redesign 2026 (current).** Phases 0 to 7 below describe the original light-theme build and are kept for history.
+> The redesign replaced every page with a port of the approved canvas:
+>
+> 1. Shared layer: stage tokens in `tokens.css`, `components/v2/v2.css` (`.tone-stage` scope and primitives), `components/v2/ui/`, header, footer and `PageShell` in `components/v2/layout/`.
+> 2. Pages: hub, Shoppers, Retailers, Corporates, and the new News and events page, each with `content/v2/<page>.ts` and `components/v2/<page>/`.
+> 3. Docs: `CLAUDE.md` rules and `docs/content-brief.md` (Brief v3).
+> 4. Still open: real stats, app store links, phone and WhatsApp numbers, partner logos, testimonial quotes, news items, pricing (see Brief v3 section 5); Arabic and RTL pass; pushing the stage tokens back to Figma.
+
 Ordered. Each phase should end in a working, viewable state. Don't start a phase before the previous one renders.
 
 Read `CLAUDE.md` first. Copy comes from `docs/content-brief.md` verbatim.

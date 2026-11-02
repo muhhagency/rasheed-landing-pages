@@ -1,10 +1,5 @@
-import { PersonaShell } from "@/components/layout/PersonaShell";
+import { PageShell } from "@/components/v2/layout/PageShell";
 
-// Consumer route (`/app`). Sets the consumer header/footer variant.
-export default function ConsumerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <PersonaShell variant="consumer">{children}</PersonaShell>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <PageShell page="app">{children}</PageShell>;
 }

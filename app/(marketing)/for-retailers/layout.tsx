@@ -1,10 +1,5 @@
-import { PersonaShell } from "@/components/layout/PersonaShell";
+import { PageShell } from "@/components/v2/layout/PageShell";
 
-// Retailer route (`/for-retailers`). Sets the retailer header/footer variant.
-export default function RetailerLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <PersonaShell variant="retailer">{children}</PersonaShell>;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <PageShell page="retailers">{children}</PageShell>;
 }
