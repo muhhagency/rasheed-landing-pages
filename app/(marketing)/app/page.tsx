@@ -1,50 +1,40 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/consumer/Hero";
-import { Capture } from "@/components/sections/consumer/Capture";
-import { Pockets } from "@/components/sections/consumer/Pockets";
-import { Cabinet } from "@/components/sections/consumer/Cabinet";
-import { Rewards } from "@/components/sections/consumer/Rewards";
-import { TrustStrip } from "@/components/sections/TrustStrip";
-import { FinalCta } from "@/components/sections/FinalCta";
-import { FINAL_CTA } from "@/content/consumer";
+import {
+  SHOPPERS_TITLE, SHOPPERS_DESCRIPTION, SH_HERO, SH_CAPTURE, SH_FLIP, SH_GIFTS,
+  SH_STORES, SH_SPENDING, SH_POCKETS, SH_VOICES, SH_FAQ, SH_CTA,
+} from "@/content/v2/shoppers";
+import { ShHero } from "@/components/v2/shoppers/ShHero";
+import { ShCapture } from "@/components/v2/shoppers/ShCapture";
+import { ShFlip } from "@/components/v2/shoppers/ShFlip";
+import { ShGifts } from "@/components/v2/shoppers/ShGifts";
+import { ShStores } from "@/components/v2/shoppers/ShStores";
+import { ShSpending } from "@/components/v2/shoppers/ShSpending";
+import { ShPockets } from "@/components/v2/shoppers/ShPockets";
+import { ShVoices } from "@/components/v2/shoppers/ShVoices";
+import { ShFaq } from "@/components/v2/shoppers/ShFaq";
+import { ShCta } from "@/components/v2/shoppers/ShCta";
 
 export const metadata: Metadata = {
-  title: "Rasheed — Money that fits your life.",
-  // From §7.3 sub, ~137 chars.
-  description:
-    "Capture receipts your way. Organize into Pockets. Share with family through Fallah. Earn rewards for greener habits — all in one Rasheed.",
-  alternates: {
-    canonical: "/app",
-  },
-  openGraph: {
-    title: "Rasheed — Money that fits your life.",
-    description: "Capture receipts your way. Organize into Pockets. Share with family through Fallah. Earn rewards for greener habits — all in one Rasheed.",
-    url: "/app",
-    images: [{ url: "/og/og-app.png", width: 1200, height: 630, alt: "Rasheed — Money that fits your life." }],
-  },
-  twitter: {
-    title: "Rasheed — Money that fits your life.",
-    description: "Capture receipts your way. Organize into Pockets. Share with family through Fallah. Earn rewards for greener habits — all in one Rasheed.",
-    images: ["/og/og-app.png"],
-  },
+  title: SHOPPERS_TITLE,
+  description: SHOPPERS_DESCRIPTION,
+  alternates: { canonical: "/app" },
+  openGraph: { title: SHOPPERS_TITLE, description: SHOPPERS_DESCRIPTION, url: "/app" },
 };
 
-// Consumer page (`/app`). Sections in content-brief §7 order.
-export default function ConsumerPage() {
+// Shoppers page (`/app`). Sections in canvas order.
+export default function ShoppersPage() {
   return (
     <>
-      <Hero />
-      <Capture />
-      <Pockets />
-      <Cabinet />
-      <Rewards />
-      <TrustStrip />
-      <FinalCta
-        id="cta"
-        headline={FINAL_CTA.headline}
-        body={FINAL_CTA.body}
-        actions="stores"
-      />
+      <ShHero content={SH_HERO} />
+      <ShCapture content={SH_CAPTURE} />
+      <ShFlip content={SH_FLIP} />
+      <ShGifts content={SH_GIFTS} />
+      <ShStores content={SH_STORES} />
+      <ShSpending content={SH_SPENDING} />
+      <ShPockets content={SH_POCKETS} />
+      <ShVoices content={SH_VOICES} />
+      <ShFaq content={SH_FAQ} />
+      <ShCta content={SH_CTA} />
     </>
   );
 }
