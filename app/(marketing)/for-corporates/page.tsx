@@ -1,63 +1,38 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/corporate/Hero";
-import { BusinessPocket } from "@/components/sections/corporate/BusinessPocket";
-import { Control } from "@/components/sections/corporate/Control";
-import { Capture } from "@/components/sections/corporate/Capture";
-import { Reports } from "@/components/sections/corporate/Reports";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { TrustStrip } from "@/components/sections/TrustStrip";
-import { FinalCta } from "@/components/sections/FinalCta";
-import { HOW, FINAL_CTA } from "@/content/corporate";
+import { HERO, PORTAL, WHY, POCKET, CONTROL, CAPTURE, REPORTS, HOW, NEWS, FAQ, CTA, META } from "@/content/v2/corporates";
+import { CoHero } from "@/components/v2/corporates/CoHero";
+import { WhySwitch } from "@/components/v2/corporates/WhySwitch";
+import { BusinessPocket } from "@/components/v2/corporates/BusinessPocket";
+import { Control } from "@/components/v2/corporates/Control";
+import { Capture } from "@/components/v2/corporates/Capture";
+import { Reports } from "@/components/v2/corporates/Reports";
+import { HowItWorks } from "@/components/v2/corporates/HowItWorks";
+import { NewsStrip } from "@/components/v2/corporates/NewsStrip";
+import { CoFaq } from "@/components/v2/corporates/CoFaq";
+import { FinalCta } from "@/components/v2/corporates/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Rasheed for Corporates — The business pocket, built for teams.",
-  // From §9.3 sub, trimmed to ~150 chars.
-  description:
-    "Give your team a shared business pocket, set slices per department, onboard employees, and see every riyal spent — without chasing receipts at month-end.",
-  alternates: {
-    canonical: "/for-corporates",
-  },
-  openGraph: {
-    title: "Rasheed for Corporates — The business pocket, built for teams.",
-    description: "Give your team a shared business pocket, set slices per department, onboard employees, and see every riyal spent — without chasing receipts at month-end.",
-    url: "/for-corporates",
-    images: [{ url: "/og/og-corporates.png", width: 1200, height: 630, alt: "Rasheed for Corporates — The business pocket, built for teams." }],
-  },
-  twitter: {
-    title: "Rasheed for Corporates — The business pocket, built for teams.",
-    description: "Give your team a shared business pocket, set slices per department, onboard employees, and see every riyal spent — without chasing receipts at month-end.",
-    images: ["/og/og-corporates.png"],
-  },
+  title: META.title,
+  description: META.description,
+  alternates: { canonical: "/for-corporates" },
+  openGraph: { title: META.title, description: META.description, url: "/for-corporates" },
 };
 
-// Corporate page (`/for-corporates`). Sections in content-brief §9 order.
-// No TapCeipt anywhere — corporates do not get hardware.
-export default function CorporatePage() {
+// Corporates page. The offer is app + portal only; the TapCeipt news and expo
+// cards in the news strip are owner-approved.
+export default function CorporatesPage() {
   return (
     <>
-      <Hero />
-      <BusinessPocket />
-      <Control />
-      <Capture />
-      <Reports />
-      <HowItWorks
-        kicker={HOW.kicker}
-        headline={HOW.headline}
-        steps={HOW.steps}
-      />
-      <TrustStrip />
-      {/* FinalCta is TEMPORARILY actions="contact" — /signup and the portal
-          are not live, so the CTA offers email + phone instead. Restore with:
-            actions="business"
-            loginHref="https://corporates.rasheedapp.com"
-            loginUrlLabel="corporates.rasheedapp.com"
-          See docs/phase-7-polish.md § Temporarily removed. */}
-      <FinalCta
-        id="cta"
-        headline={FINAL_CTA.headline}
-        body={FINAL_CTA.body}
-        actions="contact"
-      />
+      <CoHero content={HERO} portal={PORTAL} />
+      <WhySwitch content={WHY} />
+      <BusinessPocket content={POCKET} />
+      <Control content={CONTROL} portal={PORTAL} />
+      <Capture content={CAPTURE} />
+      <Reports content={REPORTS} />
+      <HowItWorks content={HOW} />
+      <NewsStrip content={NEWS} />
+      <CoFaq content={FAQ} />
+      <FinalCta content={CTA} />
     </>
   );
 }
