@@ -1,6 +1,7 @@
 import type { IconName } from "@/components/v2/ui/Icon";
 import { TapCeipt } from "@/components/ui/TapCeipt";
 import { CONTACT } from "@/components/v2/layout/contact";
+import type { FlipKind } from "./receiptFlip";
 
 // Shoppers (`/app`) content. Copy is verbatim from the approved canvas (Shoppers board).
 
@@ -61,7 +62,7 @@ export const SH_CAPTURE = {
   ] as { icon: IconName; title: string; body: string }[],
 };
 
-export type FlipKind = "points" | "extra" | "voucher" | "gift";
+export type { FlipKind };
 
 export const SH_FLIP = {
   id: "flip",

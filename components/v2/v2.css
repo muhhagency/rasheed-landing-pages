@@ -196,16 +196,34 @@ html { background: var(--stage-deep); }
   .v2-marquee__list--copy, .v2-marquee__toggle { display: none; }
 }
 
-/* Receipt flip (ReceiptFlip.tsx): full receipt, front then reward on the back. */
-.v2-rflip { perspective: 1400px; aspect-ratio: 1044 / 1740; inline-size: 100%; max-inline-size: 100%; }
-.v2-rflip__inner { position: relative; block-size: 100%; transform-style: preserve-3d; animation: v2-rflip 7s cubic-bezier(.6,0,.3,1) var(--rflip-delay, 0s) 2.5 both; }
-.v2-rflip__face { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: contain; backface-visibility: hidden; -webkit-backface-visibility: hidden; filter: drop-shadow(0 18px 28px var(--stage-shadow)); }
-.v2-rflip__face--back { transform: rotateY(180deg); }
-@keyframes v2-rflip {
-  0%, 30% { transform: rotateY(0deg); }
-  42%, 88% { transform: rotateY(180deg); }
-  100% { transform: rotateY(360deg); }
+/* Receipt flip (ReceiptFlip.tsx): the Figma flip and celebration for one reward.
+   Layers keep Figma px on a fixed stage scaled to the card; their geometry and
+   keyframes are in /receipt-flip.css, built from content/v2/receiptFlip.ts. Plays three cycles and rests on the back. */
+@property --rf-x { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --rf-y { syntax: "<length>"; inherits: false; initial-value: 0px; }
+.v2-rflip {
+  position: relative; container-type: inline-size; inline-size: 100%; max-inline-size: 100%;
+  margin-block: var(--spacing-lg) var(--spacing-md); overflow: hidden;
 }
+.v2-rflip__stage {
+  position: absolute; inset-block-start: 0; inset-inline-start: 0; direction: ltr; /* artwork keeps its Figma geometry */
+  transform-origin: 0 0; scale: 0.7; scale: tan(atan2(100cqi, var(--rf-stage-w)));
+}
+.v2-rflip__out, .v2-rflip__in { position: absolute; inset: 0; transform-origin: 201px 306px; animation-duration: var(--rf-cycle); animation-timing-function: linear; animation-iteration-count: 2; }
+.v2-rflip__out { animation-delay: var(--rf-delay); }
+.v2-rflip__in { animation-delay: calc(var(--rf-delay) + var(--rf-cycle)); }
+.v2-rflip__l {
+  position: absolute; background-repeat: no-repeat;
+  animation-duration: var(--rf-cycle); animation-timing-function: linear; animation-delay: var(--rf-delay);
+  animation-iteration-count: 3; animation-fill-mode: both;
+}
+.v2-rflip__l--img { background-image: var(--rf-sheet); background-size: var(--rf-sheet-size); }
+.v2-rflip__l--xy { translate: var(--rf-x) var(--rf-y); }
+.v2-rflip__glow { border-radius: 50%; background-color: var(--stage-accent); }
+.v2-rflip__glow--under { mix-blend-mode: multiply; } /* drawn under the paper's text in Figma */
+.v2-rflip__kids, .v2-rflip__clip { position: absolute; }
+.v2-rflip__kids--clip, .v2-rflip__clip { overflow: hidden; }
+.v2-rflip__fade { position: absolute; inset: 0; mask-image: radial-gradient(closest-side, var(--stage-ink) 55%, transparent); }
 @media (prefers-reduced-motion: reduce) {
-  .v2-rflip__inner { animation: none; transform: rotateY(180deg); }
+  .v2-rflip__l, .v2-rflip__out, .v2-rflip__in { animation: none !important; }
 }

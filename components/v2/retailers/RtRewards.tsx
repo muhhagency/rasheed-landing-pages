@@ -20,7 +20,7 @@ export function RtRewards({ content }: { content: typeof RT_REWARDS }) {
         {c.cards.map((k, i) => (
           <li key={k.title} className="rt-reward">
             <p className="rt-reward__kicker">{k.kicker}</p>
-            <ReceiptFlip back={k.art} index={i} />
+            <ReceiptFlip kind={k.art} index={i} />
             <h3 className="rt-reward__title">{k.title}</h3>
             <p className="rt-reward__body">{k.body}</p>
           </li>

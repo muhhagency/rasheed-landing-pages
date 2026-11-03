@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { TapCeipt } from "@/components/ui/TapCeipt";
 import { CONTACT } from "@/components/v2/layout/contact";
 import type { IconName } from "@/components/v2/ui/Icon";
+import type { FlipKind } from "./receiptFlip";
 
 export type RtLink = { label: string; href: string; icon?: IconName; iconEnd?: IconName; external?: boolean };
 
@@ -109,7 +110,7 @@ export const RT_AD = {
   tag: "Your ad here",
 };
 
-export type RtReward = { kicker: string; title: string; body: string; art: "points" | "extra" | "voucher" | "gift" };
+export type RtReward = { kicker: string; title: string; body: string; art: FlipKind };
 
 export const RT_REWARDS = {
   badge: "Rewards on the back",

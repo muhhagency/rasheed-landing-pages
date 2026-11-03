@@ -17,7 +17,7 @@ export function ShFlip({ content: c }: { content: typeof SH_FLIP }) {
         {c.cards.map((card, i) => (
           <li key={card.kind} className={`sh-flipcard sh-flipcard--${card.kind}`}>
             <div className="sh-flipcard__kicker">{card.kicker}</div>
-            <ReceiptFlip back={card.kind} index={i} />
+            <ReceiptFlip kind={card.kind} index={i} />
             <h3 className="sh-flipcard__title">{card.title}</h3>
             <p className="sh-flipcard__body">{card.body}</p>
           </li>
