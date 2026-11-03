@@ -5,7 +5,7 @@ import type { HOW as HowContent } from "@/content/v2/corporates";
 
 export function HowItWorks({ content }: { content: typeof HowContent }) {
   return (
-    <Section id="how" tone="raised" labelledBy="co-how" className="co-sec">
+    <Section id="how" tone="down" labelledBy="co-how" className="co-sec">
       <Badge icon={content.badge.icon}>{content.badge.text}</Badge>
       <h2 id="co-how" className="v2-h2 co-maxw-900">{content.title}</h2>
       <ol className="co-how">

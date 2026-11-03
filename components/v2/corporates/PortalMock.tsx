@@ -55,9 +55,13 @@ export function PortalMock({ data, decorative = false, className }: { data: CoPo
             </div>
             <div className="co-portal__col">
               <div className="co-portal__tile co-portal__latest">
-                <div className="co-portal__kicker">{data.latest.kicker}</div>
-                <div className="co-portal__ltitle">{data.latest.title}</div>
-                <div className="co-portal__lmeta">{data.latest.meta}</div>
+                <div className="co-portal__kicker">{data.approval.kicker}</div>
+                <div className="co-portal__ltitle">{data.approval.title}</div>
+                <div className="co-portal__lmeta">{data.approval.meta}</div>
+                <div className="co-portal__actions">
+                  <span className="co-portal__act co-portal__act--yes"><Icon name="check" strokeWidth={2.4} />{data.approval.approve}</span>
+                  <span className="co-portal__act"><Icon name="close" strokeWidth={2.4} />{data.approval.reject}</span>
+                </div>
               </div>
               <div className="co-portal__tile">
                 <div className="co-portal__etitle">{data.exportTitle}</div>

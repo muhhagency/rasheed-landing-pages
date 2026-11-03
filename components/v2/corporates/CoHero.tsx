@@ -1,7 +1,7 @@
 import { Badge } from "@/components/v2/ui/Badge";
 import { Button } from "@/components/v2/ui/Button";
 import { FlipHeadline } from "@/components/v2/ui/FlipHeadline";
-import { Stats } from "@/components/v2/ui/Stats";
+import { Icon } from "@/components/v2/ui/Icon";
 import { CONTACT } from "@/components/v2/layout/contact";
 import type { HERO as HeroContent, CoPortal } from "@/content/v2/corporates";
 import { PortalMock } from "./PortalMock";
@@ -23,9 +23,17 @@ export function CoHero({ content, portal }: { content: typeof HeroContent; porta
             <Button href={CONTACT.whatsappHref} variant="ghost" icon="chat" external>{content.secondary}</Button>
           </div>
         </div>
-        <div className="co-hero__stats">
-          <Stats label={content.statsLabel} items={content.stats} />
-        </div>
+        <ul className="co-hero__points" aria-label={content.pointsLabel}>
+          {content.points.map((p) => (
+            <li key={p.title} className="co-hero__point">
+              <span className="co-hero__picon"><Icon name={p.icon} /></span>
+              <span>
+                <span className="co-hero__ptitle">{p.title}</span>
+                <span className="co-hero__ptext">{p.text}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

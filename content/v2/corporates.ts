@@ -17,7 +17,7 @@ export type CoPortal = {
   slicesTitle: string;
   slicesUsed: string;
   slices: { name: string; people: string; pct: number; alt?: boolean }[];
-  latest: { kicker: string; title: string; meta: string };
+  approval: { kicker: string; title: string; meta: string; approve: string; reject: string };
   exportTitle: string;
   exportChips: string[];
 };
@@ -28,6 +28,7 @@ export const PORTAL: CoPortal = {
   nav: [
     { icon: "barChart", label: "Overview", active: true },
     { icon: "cube", label: "Business Pocket" },
+    { icon: "shieldCheck", label: "Approvals" },
     { icon: "pieSplit", label: "Slices" },
     { icon: "staff", label: "Team" },
     { icon: "report", label: "Reports" },
@@ -38,7 +39,7 @@ export const PORTAL: CoPortal = {
   kpis: [
     { label: "Spent this month", value: "48,250", note: "of 80,000 budget" },
     { label: "Receipts captured", value: "612", note: "0 missing" },
-    { label: "Pending review", value: "7", note: "Oldest: 2 days" },
+    { label: "Pending approval", value: "7", note: "Oldest: 2 days" },
   ],
   slicesTitle: "Slices by department",
   slicesUsed: "Used",
@@ -48,7 +49,13 @@ export const PORTAL: CoPortal = {
     { name: "Marketing", people: "9 people", pct: 78, alt: true },
     { name: "Travel", people: "8 people", pct: 25 },
   ],
-  latest: { kicker: "Latest", title: "Lina · Sales · Client lunch", meta: "320.00 · Photo · Just now" },
+  approval: {
+    kicker: "Pending approval",
+    title: "Lina · Sales · Client lunch",
+    meta: "320.00 · Photo · Just now",
+    approve: "Approve",
+    reject: "Reject",
+  },
   exportTitle: "Export",
   exportChips: ["By department", "By slice", "By employee", "By date"],
 };
@@ -67,11 +74,11 @@ export const HERO = {
   body: "Give your team one Business Pocket. Set a budget for each department and see every expense as it happens. No more collecting receipts at the end of the month.",
   primary: "Book a demo",
   secondary: "Chat on WhatsApp",
-  statsLabel: "In numbers",
-  stats: [
-    { value: "[000+]", label: "Companies on Rasheed" },
-    { value: "[00K+]", label: "Employee receipts captured" },
-    { value: "[0 days]", label: "Spent collecting receipts", accent: true },
+  pointsLabel: "Highlights",
+  points: [
+    { icon: "cube" as IconName, title: "One Business Pocket", text: "One budget for the whole team." },
+    { icon: "shieldCheck" as IconName, title: "Manager approval", text: "Every expense is approved before it counts." },
+    { icon: "sync" as IconName, title: "ERP sync", text: "Approved expenses go straight to your ERP." },
   ],
 };
 
@@ -84,6 +91,7 @@ export const WHY = {
       "Receipts in wallets, drawers and inboxes",
       "Expense reports typed by hand, weeks later",
       "Budgets checked after the money is spent",
+      "Approvals chased by email and on paper",
       "Finance asks everyone for receipts at the end of the month",
     ],
   },
@@ -91,6 +99,7 @@ export const WHY = {
     label: "With Rasheed",
     items: [
       "Every receipt is saved in the app when it is paid",
+      "Each expense is approved by the manager before it counts",
       "Each expense goes to the right department automatically",
       "See how each budget is spent, live",
       "Reports ready whenever finance needs them",
@@ -108,23 +117,28 @@ export const POCKET = {
     "Every expense appears in the pocket as soon as it is added",
   ],
   card: {
-    title: "Business Pocket",
-    members: "46 members",
-    spentLabel: "Spent this month",
-    spent: "48,250",
-    pct: 60,
-    meta: "60% of 80,000 · Monthly cycle",
+    name: "Sales team",
+    type: "Business Pocket",
+    spentLabel: "Total spent",
+    spent: "12,480.00",
+    budgetLabel: "Budget",
+    budget: "20,000.00",
+    available: "Available: 7,520.00",
+    pct: 62,
+    cycle: "Monthly · Ends in 16 days",
+    members: ["LS", "KM", "SN", "OH"],
+    moreMembers: "+14",
+    membersLabel: "18 members",
+    pending: "2 pending approvals",
+    slicesTitle: "Slices",
+    slices: [
+      { name: "Client meals", spent: "4,200", budget: "6,000", pct: 70, icon: "receipt" as IconName },
+      { name: "Travel", spent: "5,100", budget: "8,000", pct: 64, icon: "truck" as IconName },
+      { name: "Supplies", spent: "1,980", budget: "3,000", pct: 66, icon: "store" as IconName },
+      { name: "Events", spent: "1,200", budget: "3,000", pct: 40, icon: "calendar" as IconName },
+    ],
   },
-  // Positions are px on the 600 x 600 artwork.
-  members: [
-    { initials: "LA", name: "Lina", team: "Sales", x: 230, y: 35 },
-    { initials: "KM", name: "Karim", team: "Operations", x: 434, y: 152 },
-    { initials: "SN", name: "Sara", team: "Marketing", x: 434, y: 388 },
-    { initials: "OH", name: "Omar", team: "Finance", x: 230, y: 505 },
-    { initials: "NR", name: "Noor", team: "Support", x: 26, y: 388 },
-    { initials: "YS", name: "Youssef", team: "Travel", x: 26, y: 152 },
-  ],
-  artLabel: "The Business Pocket shared by six team members: Lina in Sales, Karim in Operations, Sara in Marketing, Omar in Finance, Noor in Support and Youssef in Travel",
+  artLabel: "A Business Pocket for the Sales team: 12,480.00 spent of a 20,000.00 budget, 18 members, 2 pending approvals and four Slices: Client meals, Travel, Supplies and Events",
 };
 
 export const CONTROL = {
@@ -137,6 +151,16 @@ export const CONTROL = {
     { icon: "staff", title: "Add employees", text: "Add, remove or move people in a few clicks." },
     { icon: "barChart", title: "Real-time visibility", text: "See every expense as it happens, not weeks later." },
   ] as CoFeature[],
+  cycle: {
+    title: "Every expense is approved before it counts.",
+    text: "Each team expense follows the same four steps.",
+    steps: [
+      { icon: "plus" as IconName, who: "Employee", title: "Add", text: "The employee adds the expense in the Rasheed app." },
+      { icon: "shieldCheck" as IconName, who: "Manager", title: "Approve", text: "The manager approves or rejects it." },
+      { icon: "dashboard" as IconName, who: "Finance", title: "Review", text: "Finance sees it in the company portal." },
+      { icon: "sync" as IconName, who: "Automatic", title: "Sync to ERP", text: "It syncs to your ERP with its receipt." },
+    ],
+  },
 };
 
 export const CAPTURE = {
@@ -176,13 +200,43 @@ export const REPORTS = {
   },
 };
 
+export const ERP = {
+  badge: { icon: "plug" as IconName, text: "ERP integration" },
+  title: "Connects to your ERP.",
+  body: "Approved expenses sync to your ERP automatically. Each one arrives with its receipt, category and cost center. No double entry.",
+  checks: [
+    "Only approved expenses are synced",
+    "Receipt, category and cost center on every line",
+    "No typing the same expense twice",
+  ],
+  diagram: {
+    label: "Approved expenses move from the Rasheed portal to your ERP, sample data",
+    source: "Rasheed portal",
+    rows: [
+      { title: "Client lunch", meta: "Sales · 320.00" },
+      { title: "Taxi to airport", meta: "Travel · 85.00" },
+      { title: "Printer paper", meta: "Operations · 46.50" },
+    ],
+    status: "Approved",
+    sync: "Synced automatically",
+    target: "Your ERP",
+    targetSub: "Your accounting system",
+    tiles: [
+      { icon: "report" as IconName, label: "Accounting" },
+      { icon: "staff" as IconName, label: "Payroll" },
+      { icon: "pieSplit" as IconName, label: "Cost centers" },
+    ],
+    fields: ["Receipt", "Category", "Cost center"],
+  },
+};
+
 export const HOW = {
   badge: { icon: "steps" as IconName, text: "How it works" },
   title: "Start in three simple steps.",
   steps: [
     { icon: "message" as IconName, title: "Book a demo", text: "We show you how it works and send you a quote. Then we set up your Business Pocket with you." },
     { icon: "staff" as IconName, title: "Onboard your team", text: "Add employees, assign roles and create a Slice for each department." },
-    { icon: "barChart" as IconName, title: "Track and report", text: "Follow spending live and export reports whenever you need them." },
+    { icon: "barChart" as IconName, title: "Track and report", text: "Approve expenses, follow spending live and sync them to your ERP. Export reports whenever you need them." },
   ],
 };
 
@@ -223,8 +277,9 @@ export const FAQ = {
     { q: "How do we get started?", a: "Book a demo. We set up your Business Pocket, then you add your team and create Slices for each department." },
     { q: "Can we set a budget per department?", a: "Yes. Slices split your Business Pocket into budgets, one for each department or team. You can follow each one live." },
     { q: "Who can see what?", a: "You decide. Roles and permissions control who can spend, how much, and what each person can see." },
+    { q: "How do expense approvals work?", a: "An employee adds the expense in the Rasheed app. Their manager approves or rejects it. Finance then sees it in the company portal, and it syncs to your ERP." },
     { q: "How do employees add receipts?", a: "In the Rasheed app, by photo, voice or file. Each expense goes to the right Slice automatically." },
-    { q: "Can we export for accounting?", a: "Yes. Export by department, Slice, employee or date range, with every line linked to its receipt." },
+    { q: "Can we export for accounting?", a: "Yes. Export by department, Slice, employee or date range, with every line linked to its receipt. Approved expenses can also sync to your ERP." },
     { q: "How is it priced?", a: "Pricing depends on the size of your team. Ask for a quote and we will suggest the right plan." },
   ],
 };
