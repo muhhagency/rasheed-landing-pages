@@ -49,7 +49,7 @@ a still photo on mobile. News pill, "The paperless receipt" badge, rotating head
 4. Points and gifts: "Use your points to get real gifts."
 5. Store points: "All your store cards in one place."
 6. Your spending: "See every detail of what you buy."
-7. Family Pocket: "Share your expenses with your family." (Shared Pocket; kids learn good spending habits. No cost splitting on the site for now.)
+7. Shared Pocket: "Share your expenses with your family." (family is the main use case; kids learn good spending habits; real app screen. No cost splitting on the site for now.)
 7b. Statistics: "See your spending clearly."
 8. Testimonials: "What people say"
 9. FAQ: "Common questions."

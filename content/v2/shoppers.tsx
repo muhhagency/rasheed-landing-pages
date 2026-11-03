@@ -124,9 +124,9 @@ export const SH_SPENDING = {
   ],
 };
 
-export const SH_FAMILY = {
-  id: "family",
-  badge: { icon: "users" as IconName, label: "Family Pocket" },
+export const SH_SHARED = {
+  id: "shared-pocket",
+  badge: { icon: "users" as IconName, label: "Shared Pocket" },
   title: "Share your expenses with your family.",
   lead: "Make a Shared Pocket for your family. Everyone adds what they spend, and you all see one budget. Add your kids too, so they learn good spending habits.",
   checks: [
@@ -134,41 +134,12 @@ export const SH_FAMILY = {
     "Every expense shows up in one place, for everyone",
     "Add your kids so they learn to plan and spend well",
   ],
-  // HTML mock of the Family Pocket screen. Sample data only.
-  screen: {
-    label:
-      "A Family Pocket in Rasheed: a monthly budget with what was spent and what is left, four members (two parents and two kids), and recent expenses including a kid's small snack",
-    time: "9:41",
-    heading: "Pockets",
-    pocket: {
-      name: "Family",
-      type: "Shared",
-      spentLabel: "Total Spent",
-      spent: "2,480.00",
-      left: "Available Balance: 3,520.00",
-      cycle: "Monthly · Ends in 16 days",
-      progress: 41,
-    },
-    membersTitle: "Members",
-    members: [
-      { initials: "NA", role: "Parent" },
-      { initials: "SA", role: "Parent" },
-      { initials: "LA", role: "Kid" },
-      { initials: "OA", role: "Kid" },
-    ],
-    recentTitle: "Recent Expenses",
-    recent: [
-      { icon: "receipt" as IconName, title: "School canteen", sub: "Snack · Kid", amount: "6.50", kid: true },
-      { icon: "store" as IconName, title: "Green Market", sub: "Groceries · Parent", amount: "84.20", kid: false },
-      { icon: "store" as IconName, title: "Rasheed Store", sub: "Household · Parent", amount: "42.75", kid: false },
-    ],
-    tabs: [
-      { icon: "home" as IconName, label: "Home", active: false },
-      { icon: "card" as IconName, label: "Pockets", active: true },
-      { icon: "pie" as IconName, label: "Stats", active: false },
-    ],
+  // Real app screen (Pocket details, Shared), neutral copy from Figma.
+  phone: {
+    src: "/v2/ph-scr-shared.webp",
+    alt: "A Shared Pocket called Family in the Rasheed app: a monthly budget of 5,000 with 2,480 spent, 4 members, and Slices for groceries, utilities, fitness and transportation",
   },
-  chip: { title: "Snack · 6.50", sub: "Added by Kid" },
+  chip: { title: "4 Members", sub: "You + 3 others" },
 };
 
 export const SH_STATS = {

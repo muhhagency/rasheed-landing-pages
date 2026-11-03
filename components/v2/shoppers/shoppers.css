@@ -319,92 +319,9 @@
   filter: drop-shadow(0 30px 40px var(--stage-shadow)) drop-shadow(0 0 28px color-mix(in srgb, var(--stage-accent) 22%, transparent));
 }
 
-/* ---------- Family Pocket ---------- */
-.sh-family__phone { position: absolute; inset-inline-start: 150px; inset-block-start: 24px; inline-size: 300px; filter: drop-shadow(0 30px 40px var(--stage-shadow)); }
-.sh-family__chip { inset-inline-end: 0; inset-block-start: 452px; }
-
-/* App screen mock (light app UI). A light tone scope: rebinds the full role
-   set. Sizes are in --u, one px of a 402px-wide app screen. */
-.sh-fam {
-  --text-headings: var(--brand-grey-800);
-  --text-body: var(--brand-grey-500);
-  --text-action: var(--brand-royalpurple-500);
-  --text-action-hover: var(--brand-royalpurple-400);
-  --text-disabled: var(--brand-grey-400);
-  --surface-page: var(--brand-white);
-  --border-primary: var(--brand-grey-200);
-  --icon-primary: var(--brand-royalpurple-500);
-  --u: calc(100cqi / 402);
-  position: absolute; inset: 0;
-  padding: calc(18 * var(--u)) calc(22 * var(--u)) 0;
-  background: var(--surface-page);
-  color: var(--text-headings);
-  font-size: calc(14 * var(--u));
-  line-height: 1.3;
-  text-align: start;
-}
-.sh-fam__status { padding-inline-start: calc(36 * var(--u)); font-size: calc(17 * var(--u)); font-weight: var(--font-weight-semibold); }
-.sh-fam__heading { margin-block-start: calc(46 * var(--u)); font-size: calc(26 * var(--u)); font-weight: var(--font-weight-bold); letter-spacing: -0.01em; }
-.sh-fam__pocket {
-  margin-block-start: calc(14 * var(--u));
-  border-radius: calc(18 * var(--u));
-  overflow: hidden;
-  background: linear-gradient(160deg, var(--brand-royalpurple-400), var(--brand-royalpurple-500) 60%);
-  color: var(--brand-white);
-}
-.sh-fam__pocket-top { display: flex; align-items: center; justify-content: space-between; padding: calc(16 * var(--u)) calc(18 * var(--u)) calc(12 * var(--u)); background: color-mix(in srgb, var(--brand-white) 14%, transparent); }
-.sh-fam__pocket-name { display: flex; align-items: center; gap: calc(10 * var(--u)); font-size: calc(22 * var(--u)); font-weight: var(--font-weight-semibold); }
-.sh-fam__pocket-name svg { inline-size: calc(26 * var(--u)); block-size: calc(26 * var(--u)); }
-.sh-fam__pocket-type { padding: calc(4 * var(--u)) calc(10 * var(--u)); border-radius: var(--radius-pill); background: var(--stage-accent); color: var(--brand-royalpurple-500); font-size: calc(12 * var(--u)); font-weight: var(--font-weight-bold); }
-.sh-fam__pocket-body { padding: calc(14 * var(--u)) calc(18 * var(--u)) calc(16 * var(--u)); }
-.sh-fam__pocket-label { font-size: calc(13 * var(--u)); color: color-mix(in srgb, var(--brand-white) 84%, transparent); }
-.sh-fam__pocket-value { margin-block-start: calc(2 * var(--u)); font-size: calc(22 * var(--u)); font-weight: var(--font-weight-bold); }
-.sh-fam__pocket-left { margin-block-start: calc(6 * var(--u)); font-size: calc(13 * var(--u)); color: color-mix(in srgb, var(--brand-white) 84%, transparent); }
-.sh-fam__pocket-foot { display: flex; justify-content: space-between; gap: calc(8 * var(--u)); margin-block-start: calc(12 * var(--u)); }
-.sh-fam__pill { padding: calc(4 * var(--u)) calc(10 * var(--u)); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--brand-royalpurple-800) 40%, transparent); font-size: calc(11 * var(--u)); white-space: nowrap; }
-.sh-fam__bar { margin-block-start: calc(12 * var(--u)); block-size: calc(6 * var(--u)); border-radius: var(--radius-pill); background: color-mix(in srgb, var(--brand-white) 22%, transparent); overflow: hidden; }
-.sh-fam__bar span { display: block; block-size: 100%; border-radius: inherit; background: var(--stage-accent); }
-.sh-fam__title { margin-block-start: calc(22 * var(--u)); font-size: calc(19 * var(--u)); font-weight: var(--font-weight-semibold); }
-.sh-fam__members { display: flex; justify-content: space-between; margin: calc(12 * var(--u)) 0 0; padding: 0; list-style: none; }
-.sh-fam__members li { display: flex; flex-direction: column; align-items: center; gap: calc(6 * var(--u)); }
-.sh-fam__avatar {
-  display: flex; align-items: center; justify-content: center;
-  inline-size: calc(54 * var(--u)); block-size: calc(54 * var(--u)); border-radius: 50%;
-  background: var(--brand-royalpurple-400); color: var(--brand-white);
-  font-size: calc(16 * var(--u)); font-weight: var(--font-weight-semibold);
-}
-.sh-fam__avatar--kid { background: var(--brand-mintgreen-300); color: var(--brand-royalpurple-500); box-shadow: inset 0 0 0 calc(2 * var(--u)) var(--brand-mintgreen-600); }
-.sh-fam__avatar--add { background: var(--brand-royalpurple-100); color: var(--icon-primary); }
-.sh-fam__avatar--add svg { inline-size: calc(22 * var(--u)); block-size: calc(22 * var(--u)); }
-.sh-fam__role { font-size: calc(12 * var(--u)); color: var(--text-body); }
-.sh-fam__list { display: flex; flex-direction: column; gap: calc(10 * var(--u)); margin: calc(12 * var(--u)) 0 0; padding: 0; list-style: none; }
-.sh-fam__row {
-  display: flex; align-items: center; gap: calc(12 * var(--u));
-  padding: calc(12 * var(--u));
-  border: calc(1.5 * var(--u)) solid var(--border-primary);
-  border-radius: calc(12 * var(--u));
-}
-.sh-fam__row--kid { background: var(--brand-mintgreen-200); border-color: var(--brand-mintgreen-600); }
-.sh-fam__row-icon {
-  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-  inline-size: calc(44 * var(--u)); block-size: calc(44 * var(--u)); border-radius: calc(10 * var(--u));
-  background: var(--brand-royalpurple-100); color: var(--icon-primary);
-}
-.sh-fam__row-icon svg { inline-size: calc(22 * var(--u)); block-size: calc(22 * var(--u)); }
-.sh-fam__row-text { flex: 1; min-inline-size: 0; }
-.sh-fam__row-title { display: block; font-size: calc(16 * var(--u)); font-weight: var(--font-weight-semibold); }
-.sh-fam__row-sub { display: block; margin-block-start: calc(2 * var(--u)); font-size: calc(13 * var(--u)); color: var(--text-body); }
-.sh-fam__tabs {
-  position: absolute; inset-inline: 0; inset-block-end: 0;
-  display: flex; justify-content: space-around;
-  padding: calc(12 * var(--u)) calc(22 * var(--u)) calc(30 * var(--u));
-  border-block-start: calc(1 * var(--u)) solid var(--border-primary);
-  background: var(--surface-page);
-}
-.sh-fam__tab { display: flex; flex-direction: column; align-items: center; gap: calc(4 * var(--u)); font-size: calc(13 * var(--u)); font-weight: var(--font-weight-semibold); color: var(--text-body); }
-.sh-fam__tab svg { inline-size: calc(24 * var(--u)); block-size: calc(24 * var(--u)); }
-.sh-fam__tab--active { color: var(--text-action); }
-.sh-fam__row-amount { font-size: calc(19 * var(--u)); font-weight: var(--font-weight-bold); }
+/* ---------- Shared Pocket ---------- */
+.sh-shared__phone { inset-inline-start: 150px; inset-block-start: 24px; inline-size: 300px; }
+.sh-shared__chip { inset-inline-end: 0; inset-block-start: 452px; }
 
 /* ---------- Statistics ---------- */
 .sh-stats { padding-block-end: 72px; }
