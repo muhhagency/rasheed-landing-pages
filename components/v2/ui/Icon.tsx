@@ -24,6 +24,8 @@ const PATHS = {
   check: '<path d="M4 12.5l5 5l11-11"/>',
   arrowRight: '<path d="M5 12h14M13 6l6 6-6 6"/>',
   arrowDown: '<path d="M12 5v14M6 13l6 6 6-6"/>',
+  arrowUp: '<path d="M12 19V5M6 11l6-6 6 6"/>',
+  home: '<path d="M4 10.5L12 4l8 6.5V20h-5v-6H9v6H4z"/>',
   download: '<path d="M12 3v12M7 10l5 5 5-5M4 20h16"/>',
   calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
   doc: '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
@@ -54,6 +56,10 @@ const PATHS = {
   rocket: '<path d="M12 15l-3-3c1-5 4-8 10-9c-1 6-4 9-9 10z"/><path d="M9 12l-4 1l2-4"/><path d="M12 15l-1 4l4-2"/>',
   cube: '<path d="M3 8l9-5 9 5v8l-9 5-9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/>',
   lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  chevronLeft: '<path d="M15 5l-7 7 7 7"/>',
+  chevronRight: '<path d="M9 5l7 7-7 7"/>',
+  sync: '<path d="M20 12a8 8 0 0 1-14 5.3"/><path d="M4 12a8 8 0 0 1 14-5.3"/><path d="M18 3v4h-4"/><path d="M6 21v-4h4"/>',
+  database: '<ellipse cx="12" cy="5.5" rx="8" ry="2.5"/><path d="M4 5.5v13c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-13"/><path d="M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/>',
 } as const;
 
 export type IconName = keyof typeof PATHS;

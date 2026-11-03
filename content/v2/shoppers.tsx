@@ -12,10 +12,11 @@ export const SHOPPERS_DESCRIPTION =
 
 export type ShCta = { label: string; href: string; variant: "primary" | "ghost"; icon: IconName };
 
-const CTAS: ShCta[] = [
-  { label: "Get the app", href: CONTACT.appHref, variant: "primary", icon: "download" },
-  { label: "See how it works", href: "#capture", variant: "ghost", icon: "arrowDown" },
-];
+const GET_APP: ShCta = { label: "Get the app", href: CONTACT.appHref, variant: "primary", icon: "download" };
+
+// "See how it works" jumps to the capture section: down from the hero, up from the final CTA.
+const HERO_CTAS: ShCta[] = [GET_APP, { label: "See how it works", href: "#capture", variant: "ghost", icon: "arrowDown" }];
+const END_CTAS: ShCta[] = [GET_APP, { label: "See how it works", href: "#capture", variant: "ghost", icon: "arrowUp" }];
 
 export const SH_HERO = {
   badge: { icon: "user" as IconName, label: "For shoppers" },
@@ -30,7 +31,7 @@ export const SH_HERO = {
     ] as { text: string; icon: IconName }[],
   },
   lead: <>Tap your phone on <TapCeipt /> when you pay. Your receipt goes straight to Rasheed. Flip it to win a reward, use your points for gifts, and see where your money goes.</>,
-  ctas: CTAS,
+  ctas: HERO_CTAS,
   note: <>Free on <a href={CONTACT.iosHref} target="_blank" rel="noopener noreferrer">iPhone</a> and <a href={CONTACT.androidHref} target="_blank" rel="noopener noreferrer">Android</a>. Start without an account.</>,
   art: {
     gifts: "/v2/ph-scr-gifts.webp",
@@ -123,24 +124,65 @@ export const SH_SPENDING = {
   ],
 };
 
-export const SH_POCKETS = {
-  id: "pockets",
-  badge: { icon: "users" as IconName, label: "Pockets and statistics" },
-  title: "Share costs. See where your money goes.",
-  shared: {
-    kicker: "Shared Pockets",
-    title: "Split costs fairly. Rasheed does the math.",
-    body: "Make a pocket for your home, a trip or your team. Everyone adds expenses. Rasheed shows who owes what.",
-    phone: { src: "/v2/ph-scr-settle.webp", alt: "Receipt Settlement in Rasheed: who is owed back and who owes the group" },
-    chip: { title: "Settled in one tap", sub: "4 members · Family trip" },
+export const SH_FAMILY = {
+  id: "family",
+  badge: { icon: "users" as IconName, label: "Family Pocket" },
+  title: "Share your expenses with your family.",
+  lead: "Make a Shared Pocket for your family. Everyone adds what they spend, and you all see one budget. Add your kids too, so they learn good spending habits.",
+  checks: [
+    "Invite your family to one Shared Pocket",
+    "Every expense shows up in one place, for everyone",
+    "Add your kids so they learn to plan and spend well",
+  ],
+  // HTML mock of the Family Pocket screen. Sample data only.
+  screen: {
+    label:
+      "A Family Pocket in Rasheed: a monthly budget with what was spent and what is left, four members (two parents and two kids), and recent expenses including a kid's small snack",
+    time: "9:41",
+    heading: "Pockets",
+    pocket: {
+      name: "Family",
+      type: "Shared",
+      spentLabel: "Total Spent",
+      spent: "2,480.00",
+      left: "Available Balance: 3,520.00",
+      cycle: "Monthly · Ends in 16 days",
+      progress: 41,
+    },
+    membersTitle: "Members",
+    members: [
+      { initials: "NA", role: "Parent" },
+      { initials: "SA", role: "Parent" },
+      { initials: "LA", role: "Kid" },
+      { initials: "OA", role: "Kid" },
+    ],
+    recentTitle: "Recent Expenses",
+    recent: [
+      { icon: "receipt" as IconName, title: "School canteen", sub: "Snack · Kid", amount: "6.50", kid: true },
+      { icon: "store" as IconName, title: "Green Market", sub: "Groceries · Parent", amount: "84.20", kid: false },
+      { icon: "store" as IconName, title: "Rasheed Store", sub: "Household · Parent", amount: "42.75", kid: false },
+    ],
+    tabs: [
+      { icon: "home" as IconName, label: "Home", active: false },
+      { icon: "card" as IconName, label: "Pockets", active: true },
+      { icon: "pie" as IconName, label: "Stats", active: false },
+    ],
   },
-  stats: {
-    kicker: "Statistics",
-    title: "See your spending clearly.",
-    body: "See your month by category and by store. Compare it with last month and with your budget.",
-    phone: { src: "/v2/ph-scr-stats.webp", alt: "Rasheed Statistics: total expenses, top store and category, budget and a monthly comparison chart" },
-    chip: { kicker: "This month", value: "12% less", tag: "vs last month" },
-  },
+  chip: { title: "Snack · 6.50", sub: "Added by Kid" },
+};
+
+export const SH_STATS = {
+  id: "statistics",
+  badge: { icon: "barChart" as IconName, label: "Statistics" },
+  title: "See your spending clearly.",
+  lead: "See your month by category and by store. Compare it with last month and with your budget.",
+  checks: [
+    "See your top store and top category",
+    "Compare this month with last month",
+    "Know how much of your budget is left",
+  ],
+  phone: { src: "/v2/ph-scr-stats.webp", alt: "Rasheed Statistics: total expenses, top store and category, budget and a monthly comparison chart" },
+  chip: { kicker: "This month", value: "12% less", tag: "vs last month" },
 };
 
 export const SH_VOICES = {
@@ -149,7 +191,7 @@ export const SH_VOICES = {
   quotes: [
     { quote: "Now I know where my money goes every month. I check it every Friday.", initials: "NA", name: "[Name]", role: "Rasheed user" },
     { quote: "I flipped a receipt and won a free gift. Now I always tap.", initials: "SA", name: "[Name]", role: "Rasheed user" },
-    { quote: "We split our trip costs in one tap. No more long chats about who paid.", initials: "KF", name: "[Name]", role: "Rasheed user" },
+    { quote: "Our family shares one Pocket now. My kids add their own expenses and think before they buy.", initials: "KF", name: "[Name]", role: "Rasheed user" },
   ],
 };
 
@@ -172,6 +214,6 @@ export const SH_CTA = {
   id: "get-app",
   title: "Start using Rasheed today.",
   lead: "Get your first receipt in seconds. No account needed.",
-  ctas: CTAS,
+  ctas: END_CTAS,
   note: <>Free on <a href={CONTACT.iosHref} target="_blank" rel="noopener noreferrer">iPhone</a> and <a href={CONTACT.androidHref} target="_blank" rel="noopener noreferrer">Android</a></>,
 };
