@@ -100,7 +100,6 @@ pages can deep-link to `/news#<slug>`.
 ## 5. Placeholders still open (owner input needed)
 
 - Stats: values shown as `[000K+]`, `[0.0M+]`, `[000+]`, `[00K kg]` until real numbers are confirmed.
-- Phone and WhatsApp: `+000 000 0000`.
 - Partner logos, testimonial quotes, news items, event dates, POS integration list, pricing.
 - Store points vs partner points naming; the barcode on the receipt front.
 

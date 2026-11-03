@@ -99,7 +99,7 @@ These are product names. Never substitute, pluralize creatively, or paraphrase.
 - No avatars or imagery implying demographic targeting.
 - Imagery always shows the real TapCeipt device.
 - **Corporates do not get TapCeipt hardware.** The corporate offer is app + portal only. The owner approved the TapCeipt news and expo cards in the Corporates news section; nothing else on `/for-corporates` may imply hardware.
-- Placeholders awaiting real data stay visibly bracketed (`[000K+]`) or use `+000 000 0000`. Do not replace them with invented numbers.
+- Placeholders awaiting real data stay visibly bracketed (`[000K+]`). Do not replace them with invented numbers.
 
 ## TapCeipt wordmark
 

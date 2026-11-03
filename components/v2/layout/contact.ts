@@ -1,11 +1,10 @@
-// Contact points for the redesign. Phone and WhatsApp are placeholders
-// (+000 000 0000) until the real numbers are confirmed.
+// Contact points for the redesign. Phone and WhatsApp share one number.
 export const CONTACT = {
   infoEmail: "info@rasheedapp.com",
   salesEmail: "sales@rasheedapp.com",
-  phoneLabel: "+000 000 0000",
-  phoneHref: "tel:+0000000000",
-  whatsappHref: "https://wa.me/0000000000",
+  phoneLabel: "+966 55 859 3522",
+  phoneHref: "tel:+966558593522",
+  whatsappHref: "https://wa.me/966558593522",
   demoHref: "mailto:sales@rasheedapp.com?subject=Book%20a%20demo",
   quoteHref: "mailto:sales@rasheedapp.com?subject=Get%20a%20quote",
   // Store listings. The App Store URL has no storefront code, so Apple sends
