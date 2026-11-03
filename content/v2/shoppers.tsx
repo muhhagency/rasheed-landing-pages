@@ -163,6 +163,9 @@ export const SH_VOICES = {
     { quote: "Now I know where my money goes every month. I check it every Friday.", initials: "NA", name: "[Name]", role: "Rasheed user" },
     { quote: "I flipped a receipt and won a free gift. Now I always tap.", initials: "SA", name: "[Name]", role: "Rasheed user" },
     { quote: "Our family shares one Pocket now. My kids add their own expenses and think before they buy.", initials: "KF", name: "[Name]", role: "Rasheed user" },
+    { quote: "I just say what I paid and Rasheed saves it. It takes two seconds.", initials: "RM", name: "[Name]", role: "Rasheed user" },
+    { quote: "All my store points are in one place. I don't carry store cards anymore.", initials: "HS", name: "[Name]", role: "Rasheed user" },
+    { quote: "The monthly statistics showed me where I spend too much. Now I plan before I buy.", initials: "YT", name: "[Name]", role: "Rasheed user" },
   ],
 };
 

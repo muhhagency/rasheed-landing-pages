@@ -1,5 +1,6 @@
 import type { RT_PROOF } from "@/content/v2/retailers";
 import { RtEvent } from "./RtEvent";
+import { Marquee } from "@/components/v2/ui/Marquee";
 
 const QUOTE_D = "M4 18v-5.5C4 8.4 6.2 6 10 5l.7 1.6C8.5 7.4 7.6 8.8 7.5 11H10v7zm10 0v-5.5C14 8.4 16.2 6 20 5l.7 1.6c-2.2.8-3.1 2.2-3.2 4.4H20v7z";
 
@@ -12,8 +13,9 @@ export function RtProof({ content }: { content: typeof RT_PROOF }) {
           <h2 id="rt-proof" className="rt-proof__title">{c.quotesTitle}</h2>
           <span className="rt-proof__note">{c.quotesNote}</span>
         </div>
-        <div className="rt-quotes">
-          {c.quotes.map((q) => (
+        <Marquee
+          label="testimonials"
+          items={c.quotes.map((q) => (
             <figure key={q.initials} className="rt-quote">
               <div>
                 <svg className="rt-quote__mark" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d={QUOTE_D} /></svg>
@@ -28,7 +30,7 @@ export function RtProof({ content }: { content: typeof RT_PROOF }) {
               </figcaption>
             </figure>
           ))}
-        </div>
+        />
         <RtEvent event={c.event} />
       </div>
     </section>

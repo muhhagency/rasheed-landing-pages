@@ -126,7 +126,7 @@ English only for now. Include a non-functional EN/AR toggle in nav and footer as
 - No component libraries. No shadcn. Build the primitives.
 - No `localStorage`, no browser storage.
 - Accessibility: semantic landmarks, visible focus states using `--border-focus`, alt text on every image, WCAG AA contrast minimum.
-- Motion: CSS keyframes only, every animation capped to a finite iteration count, and a resting state under `prefers-reduced-motion: reduce`. Background video has a pause control.
+- Motion: CSS keyframes only, every animation capped to a finite iteration count, and a resting state under `prefers-reduced-motion: reduce`. Exceptions that run continuously must have a visible pause control (WCAG 2.2.2): the hub background video and the testimonial rows (`components/v2/ui/Marquee.tsx`, which also pauses on hover and keyboard focus).
 - Logical properties only (`inset-inline-start`, `padding-block`, `inline-size`), never left/right.
 
 ## Assets

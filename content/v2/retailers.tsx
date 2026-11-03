@@ -248,6 +248,24 @@ export const RT_PROOF = {
       name: "[Name]",
       role: "Operations lead · [Chain]",
     },
+    {
+      quote: "Our regulars collect our store points in Rasheed. We did not have to build anything.",
+      initials: "SM",
+      name: "[Name]",
+      role: "Owner · [Bakery]",
+    },
+    {
+      quote: "The portal shows every branch in one place. I check it every morning.",
+      initials: "OH",
+      name: "[Name]",
+      role: "Regional manager · [Chain]",
+    },
+    {
+      quote: "Customers love flipping the receipt. Some come back just for the next reward.",
+      initials: "RA",
+      name: "[Name]",
+      role: "Store manager · [Store]",
+    },
   ],
   event: {
     month: "NOV",
