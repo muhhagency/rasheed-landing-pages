@@ -49,38 +49,40 @@ a still photo on mobile. News pill, "The paperless receipt" badge, rotating head
 4. Points and gifts: "Use your points to get real gifts."
 5. Store points: "All your store cards in one place."
 6. Your spending: "See every detail of what you buy."
-7. Pockets and statistics: "Share costs. See where your money goes."
+7. Family Pocket: "Share your expenses with your family." (Shared Pocket; kids learn good spending habits. No cost splitting on the site for now.)
+7b. Statistics: "See your spending clearly."
 8. Testimonials: "What people say"
 9. FAQ: "Common questions."
 10. Final CTA: "Start using Rasheed today."
 
 ### 3.3 Retailers (`/for-retailers`)
-1. Hero: For retailers, rotating headline "Every checkout, ..."
+1. Hero: For retailers, rotating headline "Every checkout, ...", partner logos strip at the bottom (no numbers)
 2. Paperless: "Go paperless. Better for your store and the planet."
 3. At checkout: "One tap. That is all."
 4. The receipt is your media: "Your ad, on every receipt."
 5. Rewards on the back: "A reason for customers to come back."
-6. Your points program: "No points program? No worries. Rasheed is here."
+6. Your store points: "No points program? No worries. Rasheed is here."
 7. The portal: "One portal. Every branch."
-8. Partners and testimonials, news teasers
+8. Testimonials ("What store owners say") and the event card
 9. Getting started: "Start in three simple steps."
 10. FAQ: "Common questions."
 11. Final CTA: "See it at your store."
 
 ### 3.4 Corporates (`/for-corporates`)
-1. Hero: For corporates, rotating headline "Team spending, ..."
+1. Hero: For corporates, rotating headline "Team spending, ...", three highlights (no numbers)
 2. Why switch: "No more collecting receipts by hand."
 3. The Business Pocket: "One pocket. Every team member."
-4. Control: "Set the budget. Follow the spending."
+4. Control: "Set the budget. Follow the spending." with the approval cycle: Add, Approve, Review, Sync to ERP
 5. Capture: "Add a receipt. Rasheed files it."
 6. Reports: "Clear records, with every receipt."
+6b. ERP integration: "Connects to your ERP." (no real ERP names)
 7. How it works: "Start in three simple steps."
 8. News: "Latest from Rasheed" (may show TapCeipt news and expo cards, approved by the owner)
 9. FAQ: "Common questions."
 10. Final CTA: "Ready to stop collecting receipts?"
 
 ### 3.5 News and events (`/news`)
-Intro "What is new at Rasheed.", featured story, "Latest news" grid, Events "Meet us in person.",
+Next-event banner under the header, intro "What is new at Rasheed.", featured story, "Latest news" sideways row with "See all news", Events "Meet us in person.",
 newsletter "Get the news first." Each item has an anchor id (kebab-case of its headline) so other
 pages can deep-link to `/news#<slug>`.
 

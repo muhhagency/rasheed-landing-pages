@@ -71,9 +71,20 @@ export const NEWS = {
     },
   } satisfies NewsItem,
 
+  // Announcement bar above the intro. Points at the nearest upcoming event
+  // in `events.items` by id; Register uses that event's own mailto link.
+  banner: {
+    label: "Next event",
+    eventId: "rasheed-at-retail-expo-2026",
+  },
+
   latest: {
     title: "Latest news",
     note: "Sample content",
+    seeAll: "See all news",
+    seeFewer: "Show fewer",
+    prev: "Previous news",
+    next: "Next news",
     items: [
       {
         id: "real-gifts-are-now-in-the-app",
@@ -108,24 +119,6 @@ export const NEWS = {
           width: 2200,
           height: 1476,
           position: "55% 55%",
-        },
-      },
-      {
-        id: "split-costs-fairly-with-shared-pockets",
-        tag: "product",
-        tagLabel: "Product",
-        date: "[02 Oct 2026]",
-        title: "Split costs fairly with Shared Pockets",
-        text: "Add expenses together. Rasheed shows who owes what, and you settle in one tap.",
-        cta: "Read more",
-        href: "#split-costs-fairly-with-shared-pockets",
-        backdrop: "brand",
-        image: {
-          src: "/v2/ph-scr-settle.webp",
-          alt: "The Receipt Settlement screen in Rasheed",
-          width: 616,
-          height: 1256,
-          position: "50% 18%",
         },
       },
     ] satisfies NewsItem[],

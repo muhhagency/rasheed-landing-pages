@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { NEWS } from "@/content/v2/news";
 import { NewsFilterRoot } from "@/components/v2/news/NewsFilterRoot";
+import { EventBanner } from "@/components/v2/news/EventBanner";
 import { NewsIntro } from "@/components/v2/news/NewsIntro";
 import { LatestNews } from "@/components/v2/news/LatestNews";
 import { EventsSection } from "@/components/v2/news/EventsSection";
@@ -16,10 +17,14 @@ export const metadata: Metadata = {
   openGraph: { title, description, url: "/news" },
 };
 
+// The banner shows the event named in NEWS.banner, falling back to the first listed.
+const nextEvent = NEWS.events.items.find((e) => e.id === NEWS.banner.eventId) ?? NEWS.events.items[0];
+
 // News and events page (/news).
 export default function NewsPage() {
   return (
     <NewsFilterRoot>
+      <EventBanner label={NEWS.banner.label} item={nextEvent} />
       <NewsIntro intro={NEWS.intro} featured={NEWS.featured} />
       <LatestNews latest={NEWS.latest} />
       <EventsSection events={NEWS.events} />
