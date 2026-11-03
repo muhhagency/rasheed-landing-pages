@@ -121,23 +121,6 @@ export const RT_REWARDS = {
     { kicker: "Better", title: "Vouchers", body: "Money off, used with a QR code.", art: "voucher" },
     { kicker: "The big one", title: "Free gifts", body: "Sometimes, a real product.", art: "gift" },
   ] as RtReward[],
-  // The paper receipt each reward card flips. Front is the same for all four cards.
-  receipt: {
-    store: "Rasheed Store",
-    branch: "Downtown branch",
-    items: [
-      { name: "Chocolate Bar", qty: "1 × 3.27", price: "3.27" },
-      { name: "Sourdough Pita Bread", qty: "2 × 1.37", price: "2.74" },
-    ],
-    totalLabel: "Total",
-    total: "6.01",
-  },
-  backs: {
-    points: { kicker: "You earned", value: "+10", label: "Green Points" },
-    extra: { kicker: "Lucky receipt!", value: "+90", label: "Extra points", chip: "9× your usual" },
-    voucher: { kicker: "You won", value: "20%", unit: "OFF", label: "Voucher", hint: "Scan it at checkout" },
-    gift: { kicker: "You won", label: "A free gift" },
-  },
 };
 
 export const RT_POINTS = {

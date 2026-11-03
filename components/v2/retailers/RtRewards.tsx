@@ -1,7 +1,7 @@
 import { Badge } from "@/components/v2/ui/Badge";
 import { Section } from "@/components/v2/ui/Section";
 import type { RT_REWARDS } from "@/content/v2/retailers";
-import { RewardFlipArt } from "./RewardFlipArt";
+import { ReceiptFlip } from "@/components/v2/ui/ReceiptFlip";
 
 export function RtRewards({ content }: { content: typeof RT_REWARDS }) {
   const c = content;
@@ -20,7 +20,7 @@ export function RtRewards({ content }: { content: typeof RT_REWARDS }) {
         {c.cards.map((k, i) => (
           <li key={k.title} className="rt-reward">
             <p className="rt-reward__kicker">{k.kicker}</p>
-            <RewardFlipArt art={k.art} index={i} receipt={c.receipt} backs={c.backs} />
+            <ReceiptFlip back={k.art} index={i} />
             <h3 className="rt-reward__title">{k.title}</h3>
             <p className="rt-reward__body">{k.body}</p>
           </li>

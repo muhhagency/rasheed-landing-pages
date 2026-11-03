@@ -231,39 +231,6 @@
 @media (max-width: 600px) {
   .sh-flip__grid { grid-template-columns: 1fr; gap: var(--spacing-md); }
 }
-
-/* Flip art: a 190px receipt, fixed geometry */
-.sh-fc-stage { position: relative; block-size: 210px; margin-block-start: 8px; display: flex; align-items: center; justify-content: center; direction: ltr; }
-.sh-fc { position: relative; inline-size: 190px; }
-.sh-fc > *, .sh-fc-tilt > * { position: absolute; }
-.sh-fc-tilt { inset: 0; }
-.sh-fc-glow { border-radius: 50%; opacity: 0; background: radial-gradient(circle, color-mix(in srgb, var(--stage-accent) 45%, transparent) 0%, transparent 65%); }
-.sh-fc-front { transform-origin: 50% 50%; opacity: 0; }
-.sh-fc-back { transform-origin: 50% 50%; }
-.sh-fc-card { display: block; inline-size: 100%; block-size: 100%; max-inline-size: none; border-radius: 10px; box-shadow: 0 18px 32px var(--stage-shadow); }
-.sh-fc-pop { position: absolute; transform-origin: 50% 50%; max-inline-size: none; }
-.sh-fc-sp { color: var(--stage-accent); opacity: 0; }
-.sh-fc-coin { opacity: 0; max-inline-size: none; }
-.sh-fc-bump { inline-size: 100%; block-size: 100%; transform-origin: 50% 90%; }
-.sh-fc-wiggle { display: block; inline-size: 100%; block-size: 100%; max-inline-size: none; transform-origin: 50% 85%; }
-.sh-fc-chip {
-  inset-inline-start: 50%;
-  inset-block-start: 161.9px;
-  margin-inline-start: -66px;
-  inline-size: 132px;
-  box-sizing: border-box;
-  opacity: 0;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
-  padding-block: 7px;
-  border-radius: var(--radius-pill);
-  background: var(--stage-deep);
-  border: 1px solid color-mix(in srgb, var(--stage-accent) 50%, transparent);
-  font-size: 11px; font-weight: var(--font-weight-semibold); color: var(--stage-ink);
-  white-space: nowrap;
-}
-.sh-fc-chip svg { inline-size: 12px; block-size: 12px; color: var(--stage-accent); }
-
-.sh-voucher { display: flex; inline-size: 224px; block-size: 104px; filter: drop-shadow(0 16px 24px var(--stage-shadow)); }
 .sh-voucher__main {
   flex: 1; box-sizing: border-box; padding: 14px 16px;
   display: flex; flex-direction: column; justify-content: space-between;
@@ -563,55 +530,6 @@
 @media (prefers-reduced-motion: reduce) {
   .sh-cel-paper, .sh-cel-torn, .sh-cel-front, .sh-cel-front-edge, .sh-cel-balance-glow, .sh-cel-paper-glow, .sh-cel-mark, .sh-cel-plus10, .sh-cel-from, .sh-cel-to, .sh-cel-old, .sh-cel-done, .sh-cel-flipback, .sh-cel-pulse, .sh-cel-flipbtn, .sh-cel-later, .sh-cel-sp1, .sh-cel-sp2, .sh-cel-sp3, .sh-cel-sp4, .sh-cel-sp5, .sh-cel-sp6, .sh-cel-coin1, .sh-cel-coin2, .sh-cel-coin3, .sh-cel-coin4, .sh-cel-coin5, .sh-cel-chip { animation: none; }
 }
-
-/* Flip cards: 7s cycle, cards staggered by 1.75s (--sh-fc-delay). */
-.sh-fc-front, .sh-fc-back, .sh-fc-pop1, .sh-fc-pop2, .sh-fc-pop3, .sh-fc-chip, .sh-fc-bump, .sh-fc-wiggle,
-.sh-fc-glow, .sh-fc-sp0, .sh-fc-sp1, .sh-fc-sp2, .sh-fc-sp3, .sh-fc-sp4, .sh-fc-sp5, .sh-fc-coin0, .sh-fc-coin1, .sh-fc-coin2 {
-  animation-duration: 7s;
-  animation-delay: var(--sh-fc-delay, 0s);
-  animation-iteration-count: 2.75;
-  animation-fill-mode: both;
-}
-.sh-fc-front { animation-name: sh-fc-front; }
-.sh-fc-back { animation-name: sh-fc-back; }
-.sh-fc-pop1 { animation-name: sh-fc-pop1; }
-.sh-fc-pop2 { animation-name: sh-fc-pop2; }
-.sh-fc-pop3 { animation-name: sh-fc-pop3; }
-.sh-fc-chip { animation-name: sh-fc-chip; }
-.sh-fc-bump { animation-name: sh-fc-bump; }
-.sh-fc-wiggle { animation-name: sh-fc-wiggle; }
-.sh-fc-glow { animation-name: sh-fc-glow; }
-.sh-fc-sp0 { animation-name: sh-fc-sp0; }
-.sh-fc-sp1 { animation-name: sh-fc-sp1; }
-.sh-fc-sp2 { animation-name: sh-fc-sp2; }
-.sh-fc-sp3 { animation-name: sh-fc-sp3; }
-.sh-fc-sp4 { animation-name: sh-fc-sp4; }
-.sh-fc-sp5 { animation-name: sh-fc-sp5; }
-.sh-fc-coin0 { animation-name: sh-fc-coin0; }
-.sh-fc-coin1 { animation-name: sh-fc-coin1; }
-.sh-fc-coin2 { animation-name: sh-fc-coin2; }
-@media (prefers-reduced-motion: reduce) {
-  .sh-fc-front, .sh-fc-back, .sh-fc-pop1, .sh-fc-pop2, .sh-fc-pop3, .sh-fc-chip, .sh-fc-bump, .sh-fc-wiggle,
-  .sh-fc-glow, .sh-fc-sp0, .sh-fc-sp1, .sh-fc-sp2, .sh-fc-sp3, .sh-fc-sp4, .sh-fc-sp5, .sh-fc-coin0, .sh-fc-coin1, .sh-fc-coin2 { animation: none; }
-}
-@keyframes sh-fc-front { 0% { transform: scaleX(1); opacity: 1; animation-timing-function: ease-in; } 9% { transform: scaleX(1); opacity: 1; animation-timing-function: ease-in; } 14% { transform: scaleX(0.02); opacity: 1; } 14.01% { opacity: 0; } 90% { transform: scaleX(0.02); opacity: 0; } 90.01% { opacity: 1; transform: scaleX(0.02); animation-timing-function: ease-out; } 95% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 1; } }
-@keyframes sh-fc-back { 0% { transform: scaleX(0.02); opacity: 0; } 14% { transform: scaleX(0.02); opacity: 0; } 14.01% { opacity: 1; transform: scaleX(0.02); animation-timing-function: ease-out; } 20% { transform: scaleX(1); opacity: 1; } 85% { transform: scaleX(1); opacity: 1; animation-timing-function: ease-in; } 90% { transform: scaleX(0.02); opacity: 1; } 90.01% { opacity: 0; } 100% { transform: scaleX(0.02); opacity: 0; } }
-@keyframes sh-fc-pop1 { 0% { transform: scale(0.3); opacity: 0; } 20% { transform: scale(0.3); opacity: 0; animation-timing-function: linear(0, 0.0985, 0.342, 0.6483, 0.9442, 1.1767, 1.3179, 1.364, 1.3302, 1.2427, 1.1314, 1.0233, 0.9377, 0.8853, 0.8675, 0.8791, 0.9105, 0.9509, 0.9904, 1.0219, 1.0414, 1.0482, 1.0443, 1.033, 1.0183, 1.0039, 0.9923, 0.9851, 0.9825, 0.9838, 0.9878, 0.9932, 0.9984, 1.0027, 1.0054, 1.0064, 1.0059, 1.0045, 1.0025, 1.0006, 0.9991, 0.9981, 0.9977, 0.9978, 0.9983, 0.9991, 0.9998, 1.0003, 1.0007, 1.0008, 1.0008); } 21% { opacity: 1; } 30% { transform: scale(1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-@keyframes sh-fc-pop2 { 0% { transform: scale(0.5); opacity: 0; } 24% { transform: scale(0.5); opacity: 0; animation-timing-function: linear(0, 0.0985, 0.342, 0.6483, 0.9442, 1.1767, 1.3179, 1.364, 1.3302, 1.2427, 1.1314, 1.0233, 0.9377, 0.8853, 0.8675, 0.8791, 0.9105, 0.9509, 0.9904, 1.0219, 1.0414, 1.0482, 1.0443, 1.033, 1.0183, 1.0039, 0.9923, 0.9851, 0.9825, 0.9838, 0.9878, 0.9932, 0.9984, 1.0027, 1.0054, 1.0064, 1.0059, 1.0045, 1.0025, 1.0006, 0.9991, 0.9981, 0.9977, 0.9978, 0.9983, 0.9991, 0.9998, 1.0003, 1.0007, 1.0008, 1.0008); } 25% { opacity: 1; } 34% { transform: scale(1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-@keyframes sh-fc-pop3 { 0% { transform: scale(0.2) rotate(-20deg); opacity: 0; } 28% { transform: scale(0.2) rotate(-20deg); opacity: 0; animation-timing-function: linear(0, 0.0985, 0.342, 0.6483, 0.9442, 1.1767, 1.3179, 1.364, 1.3302, 1.2427, 1.1314, 1.0233, 0.9377, 0.8853, 0.8675, 0.8791, 0.9105, 0.9509, 0.9904, 1.0219, 1.0414, 1.0482, 1.0443, 1.033, 1.0183, 1.0039, 0.9923, 0.9851, 0.9825, 0.9838, 0.9878, 0.9932, 0.9984, 1.0027, 1.0054, 1.0064, 1.0059, 1.0045, 1.0025, 1.0006, 0.9991, 0.9981, 0.9977, 0.9978, 0.9983, 0.9991, 0.9998, 1.0003, 1.0007, 1.0008, 1.0008); } 29% { opacity: 1; } 38% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(1) rotate(0deg); opacity: 1; } }
-@keyframes sh-fc-chip { 0% { transform: translateY(12px); opacity: 0; } 30% { transform: translateY(12px); opacity: 0; animation-timing-function: linear(0, 0.0985, 0.342, 0.6483, 0.9442, 1.1767, 1.3179, 1.364, 1.3302, 1.2427, 1.1314, 1.0233, 0.9377, 0.8853, 0.8675, 0.8791, 0.9105, 0.9509, 0.9904, 1.0219, 1.0414, 1.0482, 1.0443, 1.033, 1.0183, 1.0039, 0.9923, 0.9851, 0.9825, 0.9838, 0.9878, 0.9932, 0.9984, 1.0027, 1.0054, 1.0064, 1.0059, 1.0045, 1.0025, 1.0006, 0.9991, 0.9981, 0.9977, 0.9978, 0.9983, 0.9991, 0.9998, 1.0003, 1.0007, 1.0008, 1.0008); } 31% { opacity: 1; } 40% { transform: translateY(0); opacity: 1; } 80% { transform: translateY(0); opacity: 1; animation-timing-function: ease-in; } 85% { transform: translateY(-6px); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-bump { 0% { transform: scale(0.8); } 18% { transform: scale(0.8); animation-timing-function: linear(0, 0.0985, 0.342, 0.6483, 0.9442, 1.1767, 1.3179, 1.364, 1.3302, 1.2427, 1.1314, 1.0233, 0.9377, 0.8853, 0.8675, 0.8791, 0.9105, 0.9509, 0.9904, 1.0219, 1.0414, 1.0482, 1.0443, 1.033, 1.0183, 1.0039, 0.9923, 0.9851, 0.9825, 0.9838, 0.9878, 0.9932, 0.9984, 1.0027, 1.0054, 1.0064, 1.0059, 1.0045, 1.0025, 1.0006, 0.9991, 0.9981, 0.9977, 0.9978, 0.9983, 0.9991, 0.9998, 1.0003, 1.0007, 1.0008, 1.0008); } 30% { transform: scale(1); } 100% { transform: scale(1); } }
-@keyframes sh-fc-wiggle { 0%, 36% { transform: rotate(0deg); } 39% { transform: rotate(-7deg); } 42% { transform: rotate(6deg); } 45% { transform: rotate(-4deg); } 48% { transform: rotate(2deg); } 51%, 100% { transform: rotate(0deg); } }
-@keyframes sh-fc-glow { 0%, 18% { opacity: 0; transform: scale(0.6); } 30% { opacity: 1; transform: scale(1.05); } 60% { opacity: 0.55; transform: scale(1); } 85% { opacity: 0.55; } 90%, 100% { opacity: 0; transform: scale(0.8); } }
-@keyframes sh-fc-sp0 { 0% { transform: scale(0.2) rotate(0deg); opacity: 0; } 26% { transform: scale(0.2) rotate(0deg); opacity: 0; animation-timing-function: ease-out; } 30% { transform: scale(1.2) rotate(-20deg); opacity: 1; animation-timing-function: ease-in; } 44% { transform: scale(0.5) rotate(-60deg); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-sp1 { 0% { transform: scale(0.2) rotate(0deg); opacity: 0; } 28% { transform: scale(0.2) rotate(0deg); opacity: 0; animation-timing-function: ease-out; } 32% { transform: scale(1.2) rotate(-20deg); opacity: 1; animation-timing-function: ease-in; } 46% { transform: scale(0.5) rotate(-60deg); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-sp2 { 0% { transform: scale(0.2) rotate(0deg); opacity: 0; } 30% { transform: scale(0.2) rotate(0deg); opacity: 0; animation-timing-function: ease-out; } 34% { transform: scale(1.2) rotate(-20deg); opacity: 1; animation-timing-function: ease-in; } 48% { transform: scale(0.5) rotate(-60deg); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-sp3 { 0% { transform: scale(0.2) rotate(0deg); opacity: 0; } 32% { transform: scale(0.2) rotate(0deg); opacity: 0; animation-timing-function: ease-out; } 36% { transform: scale(1.2) rotate(-20deg); opacity: 1; animation-timing-function: ease-in; } 50% { transform: scale(0.5) rotate(-60deg); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-sp4 { 0% { transform: scale(0.2) rotate(0deg); opacity: 0; } 27% { transform: scale(0.2) rotate(0deg); opacity: 0; animation-timing-function: ease-out; } 31% { transform: scale(1.2) rotate(-20deg); opacity: 1; animation-timing-function: ease-in; } 45% { transform: scale(0.5) rotate(-60deg); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-sp5 { 0% { transform: scale(0.2) rotate(0deg); opacity: 0; } 31% { transform: scale(0.2) rotate(0deg); opacity: 0; animation-timing-function: ease-out; } 35% { transform: scale(1.2) rotate(-20deg); opacity: 1; animation-timing-function: ease-in; } 49% { transform: scale(0.5) rotate(-60deg); opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-coin0 { 0% { transform: translate(0,0) scale(0.6); opacity: 0; } 32% { transform: translate(0,0) scale(0.6); opacity: 0; } 33% { opacity: 1; } 36% { transform: translate(var(--sh-mx), var(--sh-my)) scale(1.1); } 41% { transform: translate(var(--sh-tx), var(--sh-ty)) scale(0.55); opacity: 1; } 42% { opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-coin1 { 0% { transform: translate(0,0) scale(0.6); opacity: 0; } 34.5% { transform: translate(0,0) scale(0.6); opacity: 0; } 35.5% { opacity: 1; } 38.5% { transform: translate(var(--sh-mx), var(--sh-my)) scale(1.1); } 43.5% { transform: translate(var(--sh-tx), var(--sh-ty)) scale(0.55); opacity: 1; } 44.5% { opacity: 0; } 100% { opacity: 0; } }
-@keyframes sh-fc-coin2 { 0% { transform: translate(0,0) scale(0.6); opacity: 0; } 37% { transform: translate(0,0) scale(0.6); opacity: 0; } 38% { opacity: 1; } 41% { transform: translate(var(--sh-mx), var(--sh-my)) scale(1.1); } 46% { transform: translate(var(--sh-tx), var(--sh-ty)) scale(0.55); opacity: 1; } 47% { opacity: 0; } 100% { opacity: 0; } }
 
 /* Store links inside the "Free on iPhone and Android" notes. */
 .sh-hero__note a, .sh-cta__note a { color: var(--stage-ink); font-weight: var(--font-weight-semibold); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--stage-accent-line); }

@@ -74,7 +74,6 @@ export const SH_FLIP = {
     { kind: "voucher", kicker: "Better", title: "Vouchers", body: "A discount at a store. It waits in My Gifts. Show the QR code when you pay." },
     { kind: "gift", kicker: "The big one", title: "Free gifts", body: "Sometimes you win a real product. We deliver it, or you pick it up." },
   ] as { kind: FlipKind; kicker: string; title: string; body: string }[],
-  voucher: { label: "Voucher", amount: "20%", unit: "OFF", note: "Scan it at checkout", saved: "Saved to My Gifts" },
 };
 
 export const SH_GIFTS = {

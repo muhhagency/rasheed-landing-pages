@@ -1,7 +1,7 @@
 import type { SH_FLIP } from "@/content/v2/shoppers";
 import { Badge } from "@/components/v2/ui/Badge";
 import { Section } from "@/components/v2/ui/Section";
-import { FlipArt } from "./FlipArt";
+import { ReceiptFlip } from "@/components/v2/ui/ReceiptFlip";
 
 export function ShFlip({ content: c }: { content: typeof SH_FLIP }) {
   return (
@@ -17,7 +17,7 @@ export function ShFlip({ content: c }: { content: typeof SH_FLIP }) {
         {c.cards.map((card, i) => (
           <li key={card.kind} className={`sh-flipcard sh-flipcard--${card.kind}`}>
             <div className="sh-flipcard__kicker">{card.kicker}</div>
-            <FlipArt kind={card.kind} index={i} voucher={c.voucher} />
+            <ReceiptFlip back={card.kind} index={i} />
             <h3 className="sh-flipcard__title">{card.title}</h3>
             <p className="sh-flipcard__body">{card.body}</p>
           </li>
