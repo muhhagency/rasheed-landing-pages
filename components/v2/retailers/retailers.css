@@ -119,38 +119,33 @@
   .rt-hero__h1 .v2-flip__line { white-space: nowrap; }
 }
 
-/* Partner logos strip at the foot of the hero: quiet text logos, no boxes. */
-.rt-partners {
-  display: flex; align-items: center; gap: 16px 40px; flex-wrap: wrap;
-  padding-block-start: 24px; border-block-start: 1px solid var(--stage-line);
-}
-.rt-partners__head { margin: 0; display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; }
-.rt-partners__title { font-size: 14px; font-weight: var(--font-weight-semibold); line-height: 1.4; color: var(--stage-ink-84); }
+/* Partner logos at the foot of the hero: a moving row of logo tiles. */
+.rt-partners { padding-block-start: 24px; border-block-start: 1px solid var(--stage-line); }
+.rt-partners__head { margin: 0; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.rt-partners__title { font-size: 15px; font-weight: var(--font-weight-semibold); line-height: 1.4; color: var(--stage-ink); }
 .rt-partners__note { font-size: 12px; line-height: 1.4; color: var(--stage-ink-60); }
-.rt-logos {
-  list-style: none; padding: 0; margin: 0; flex: 1 1 520px;
-  display: flex; align-items: center; justify-content: space-between; gap: 12px 32px; flex-wrap: wrap;
+.rt-partners .v2-marquee { margin-block-start: var(--spacing-md); }
+.rt-logo {
+  display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+  min-inline-size: 220px; block-size: 88px; padding-inline: var(--spacing-xl);
+  border-radius: var(--radius-card); background: color-mix(in srgb, var(--brand-white) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand-white) 18%, transparent);
+  color: var(--stage-ink); line-height: 1; white-space: nowrap;
 }
-.rt-logo { color: var(--stage-ink-72); line-height: 1.2; white-space: nowrap; }
-.rt-logo--0 { font-weight: 800; letter-spacing: 0.18em; font-size: 14px; }
-.rt-logo--1 { font-weight: var(--font-weight-semibold); font-size: 21px; letter-spacing: -0.04em; }
-.rt-logo--2 { font-family: Georgia, serif; font-style: italic; font-size: 20px; }
-.rt-logo--3 { font-weight: var(--font-weight-bold); letter-spacing: 0.06em; font-size: 15px; }
-.rt-logo--4 { font-weight: 800; font-size: 21px; letter-spacing: -0.03em; }
-.rt-logo--5 { font-weight: 500; font-size: 18px; letter-spacing: 0.02em; }
-@media (max-width: 900px) {
-  .rt-partners { flex-direction: column; align-items: stretch; gap: 16px; padding-block-start: 20px; }
-  .rt-logos { flex-basis: auto; justify-content: flex-start; }
-}
+.rt-logo--0 { font-weight: 800; letter-spacing: 0.18em; font-size: 22px; }
+.rt-logo--1 { font-weight: var(--font-weight-semibold); font-size: 34px; letter-spacing: -0.04em; }
+.rt-logo--2 { font-family: Georgia, serif; font-style: italic; font-size: 32px; }
+.rt-logo--3 { font-weight: var(--font-weight-bold); letter-spacing: 0.06em; font-size: 24px; }
+.rt-logo--4 { font-weight: 800; font-size: 34px; letter-spacing: -0.03em; }
+.rt-logo--5 { font-weight: 500; font-size: 29px; letter-spacing: 0.02em; }
 @media (max-width: 600px) {
-  .rt-partners__head { flex-direction: row; align-items: baseline; justify-content: space-between; gap: 12px; }
-  .rt-logos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 12px; }
-  .rt-logo { text-align: center; }
-  .rt-logo--0 { font-size: 12px; letter-spacing: 0.12em; }
-  .rt-logo--1, .rt-logo--4 { font-size: 19px; }
-  .rt-logo--2 { font-size: 18px; }
-  .rt-logo--3 { font-size: 13px; letter-spacing: 0.04em; }
-  .rt-logo--5 { font-size: 16px; }
+  .rt-partners { padding-block-start: 20px; }
+  .rt-logo { min-inline-size: 168px; block-size: 68px; padding-inline: var(--spacing-lg); }
+  .rt-logo--0 { font-size: 17px; }
+  .rt-logo--1, .rt-logo--4 { font-size: 27px; }
+  .rt-logo--2 { font-size: 25px; }
+  .rt-logo--3 { font-size: 19px; }
+  .rt-logo--5 { font-size: 23px; }
 }
 
 /* ---------- Paperless ---------- */

@@ -184,10 +184,12 @@ html { background: var(--stage-deep); }
 .v2-marquee__list > li > * { flex: 1; }
 .v2-marquee__toggle { display: inline-flex; align-items: center; justify-content: center; inline-size: 36px; block-size: 36px; margin-block-start: var(--spacing-md); border: 1px solid var(--stage-line-strong); border-radius: 50%; background: transparent; color: var(--stage-ink); cursor: pointer; }
 .v2-marquee__toggle svg { inline-size: 14px; block-size: 14px; fill: currentColor; }
+.v2-marquee--logos .v2-marquee__list { gap: var(--spacing-md); padding-inline-end: var(--spacing-md); }
+.v2-marquee--logos .v2-marquee__list > li { inline-size: auto; }
 @keyframes v2-marquee { to { transform: translateX(-50%); } }
 [dir="rtl"] .v2-marquee__track { animation-name: v2-marquee-rtl; }
 @keyframes v2-marquee-rtl { to { transform: translateX(50%); } }
-@media (max-width: 600px) { .v2-marquee__list > li { inline-size: 300px; } }
+@media (max-width: 600px) { .v2-marquee__list > li { inline-size: 300px; } .v2-marquee--logos .v2-marquee__list > li { inline-size: auto; } }
 @media (prefers-reduced-motion: reduce) {
   .v2-marquee__track { animation: none; }
   .v2-marquee__viewport { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }

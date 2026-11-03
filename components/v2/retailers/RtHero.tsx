@@ -2,6 +2,7 @@ import { Badge } from "@/components/v2/ui/Badge";
 import { Button } from "@/components/v2/ui/Button";
 import { FlipHeadline } from "@/components/v2/ui/FlipHeadline";
 import type { RT_HERO } from "@/content/v2/retailers";
+import { Marquee } from "@/components/v2/ui/Marquee";
 
 export function RtHero({ content }: { content: typeof RT_HERO }) {
   const c = content;
@@ -38,11 +39,14 @@ export function RtHero({ content }: { content: typeof RT_HERO }) {
             <span className="rt-partners__title">{c.partners.title}</span>
             <span className="rt-partners__note">{c.partners.note}</span>
           </p>
-          <ul className="rt-logos" aria-label={c.partners.label}>
-            {c.partners.logos.map((l, i) => (
-              <li key={l} className={`rt-logo rt-logo--${i}`}>{l}</li>
+          <Marquee
+            label={c.partners.label}
+            variant="logos"
+            seconds={40}
+            items={c.partners.logos.map((l, i) => (
+              <span key={l} className={`rt-logo rt-logo--${i}`}>{l}</span>
             ))}
-          </ul>
+          />
         </div>
       </div>
     </section>

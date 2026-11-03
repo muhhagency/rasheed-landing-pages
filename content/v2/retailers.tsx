@@ -40,7 +40,7 @@ export const RT_HERO = {
     { label: "Chat on WhatsApp", href: CONTACT.whatsappHref, icon: "chat", external: true },
   ] as RtLink[],
   partners: {
-    label: "Our partners",
+    label: "partner logos",
     title: <>Stores that already use <TapCeipt /></>,
     note: "Sample logos",
     logos: ["NORTHWIND", "lumen", "Oakline", "BRIGHTMART", "kova.", "Palmway"],
