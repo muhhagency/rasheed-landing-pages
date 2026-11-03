@@ -168,7 +168,7 @@ export const CAPTURE = {
   title: "Add a receipt. Rasheed files it.",
   body: "Employees add receipts in the Rasheed app when they pay. Each one goes to the right Slice automatically. No expense reports, no lost receipts.",
   phone: {
-    src: "/v2/ph-scr-bizhome.webp",
+    src: "/v2/ph-scr-bizhome-v2.webp",
     alt: "The Rasheed app on an employee phone: the Sales team Business Pocket and recent work expenses",
   },
   features: [

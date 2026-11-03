@@ -2,7 +2,7 @@ import { Icon } from "@/components/v2/ui/Icon";
 import type { POCKET as PocketContent } from "@/content/v2/corporates";
 
 // Business Pocket card drawn in HTML, in the style of the app's pocket card
-// (see /v2/ph-scr-bizhome.webp): a sleeve with the pocket name, a pocket
+// (see /v2/ph-scr-bizhome-v2.webp): a sleeve with the pocket name, a pocket
 // front with spend and budget, members, then the pocket's Slices.
 export function PocketCard({ content }: { content: typeof PocketContent }) {
   const c = content.card;
