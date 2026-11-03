@@ -39,12 +39,12 @@ export const RT_HERO = {
     { label: "Book a demo at your store", href: CONTACT.demoHref, icon: "calendar" },
     { label: "Chat on WhatsApp", href: CONTACT.whatsappHref, icon: "chat", external: true },
   ] as RtLink[],
-  statsLabel: "TapCeipt in numbers",
-  stats: [
-    { value: "[000+]", label: <>Stores tapping with <TapCeipt /></> },
-    { value: "[0.0M+]", label: "Receipts delivered to customers" },
-    { value: "[00K kg]", label: "Receipt paper saved", accent: true },
-  ] as { value: string; label: ReactNode; accent?: boolean }[],
+  partners: {
+    label: "Our partners",
+    title: <>Stores that already use <TapCeipt /></>,
+    note: "Sample logos",
+    logos: ["NORTHWIND", "lumen", "Oakline", "BRIGHTMART", "kova.", "Palmway"],
+  },
 };
 
 export const RT_PAPERLESS = {
@@ -69,11 +69,6 @@ export const RT_PAPERLESS = {
     ],
     image: { src: "/v2/tap-card2.webp", alt: "A customer taps a phone on the TapCeipt device", width: 1600, height: 1195 },
   },
-  stats: [
-    { icon: "leaf", value: "[00K kg]", label: "Receipt paper saved so far" },
-    { icon: "drop", value: "[0.0M L]", label: "Water saved by not making paper" },
-    { icon: "tree", value: "[000]", label: "Trees left standing" },
-  ] as { icon: IconName; value: string; label: string }[],
 };
 
 export const RT_TILL = {
@@ -120,22 +115,37 @@ export const RT_REWARDS = {
   badge: "Rewards on the back",
   h2: "A reason for customers to come back.",
   intro: "Every receipt has a reward on the back. Customers flip it and win something every time.",
-  introStrong: "Rasheed pays for all the rewards, not you.",
   cards: [
     { kicker: "Every receipt", title: "Green Points", body: "Points on every receipt.", art: "points" },
     { kicker: "Lucky receipt", title: "Extra points", body: "Up to nine times the usual.", art: "extra" },
     { kicker: "Better", title: "Vouchers", body: "Money off, used with a QR code.", art: "voucher" },
     { kicker: "The big one", title: "Free gifts", body: "Sometimes, a real product.", art: "gift" },
   ] as RtReward[],
-  voucher: { label: "Voucher", amount: "20%", unit: "OFF", hint: "Scan it at checkout", chip: "Saved to My Gifts" },
+  // The paper receipt each reward card flips. Front is the same for all four cards.
+  receipt: {
+    store: "Rasheed Store",
+    branch: "Downtown branch",
+    items: [
+      { name: "Chocolate Bar", qty: "1 × 3.27", price: "3.27" },
+      { name: "Sourdough Pita Bread", qty: "2 × 1.37", price: "2.74" },
+    ],
+    totalLabel: "Total",
+    total: "6.01",
+  },
+  backs: {
+    points: { kicker: "You earned", value: "+10", label: "Green Points" },
+    extra: { kicker: "Lucky receipt!", value: "+90", label: "Extra points", chip: "9× your usual" },
+    voucher: { kicker: "You won", value: "20%", unit: "OFF", label: "Voucher", hint: "Scan it at checkout" },
+    gift: { kicker: "You won", label: "A free gift" },
+  },
 };
 
 export const RT_POINTS = {
-  badge: "Your points program",
+  badge: "Your store points",
   h2a: "No points program?",
   h2accent: "No worries.",
   h2b: "Rasheed is here.",
-  lead: "Start your own points program inside Rasheed, with your store's name on it. No cards, no extra system. Customers collect your points on every receipt and use them at your checkout with a QR code.",
+  lead: "Set up your own store points inside Rasheed, with your store's name on them. No cards, no extra system. Customers collect your points on every receipt and use them at your checkout with a QR code.",
   checks: [
     "Customers get your points on every tap, automatically",
     "To use points, they show a QR code. Your cashier scans it and they approve.",
@@ -217,10 +227,6 @@ export const RT_STEPS = {
 };
 
 export const RT_PROOF = {
-  label: "Our partners",
-  logosTitle: <>Stores that already use <TapCeipt /></>,
-  logosNote: "Sample logos",
-  logos: ["NORTHWIND", "lumen", "Oakline", "BRIGHTMART", "kova.", "Palmway"],
   quotesTitle: "What store owners say",
   quotesNote: "Sample quotes",
   quotes: [

@@ -13,14 +13,14 @@ export function RtRewards({ content }: { content: typeof RT_REWARDS }) {
           <h2 id="rt-rewards" className="v2-h2 rt-rewards__h2">{c.h2}</h2>
         </div>
         <p className="rt-intro">
-          {c.intro} <b className="rt-accent">{c.introStrong}</b>
+          {c.intro}
         </p>
       </div>
       <ul className="rt-rewards__grid">
         {c.cards.map((k, i) => (
           <li key={k.title} className="rt-reward">
             <p className="rt-reward__kicker">{k.kicker}</p>
-            <RewardFlipArt art={k.art} index={i} voucher={c.voucher} />
+            <RewardFlipArt art={k.art} index={i} receipt={c.receipt} backs={c.backs} />
             <h3 className="rt-reward__title">{k.title}</h3>
             <p className="rt-reward__body">{k.body}</p>
           </li>

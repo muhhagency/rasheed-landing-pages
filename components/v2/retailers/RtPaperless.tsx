@@ -45,17 +45,6 @@ export function RtPaperless({ content }: { content: typeof RT_PAPERLESS }) {
           </div>
         </div>
       </div>
-      <ul className="rt-eco" aria-label="Paper saved">
-        {c.stats.map((s) => (
-          <li key={s.label} className="rt-eco__item">
-            <span className="rt-eco__icon"><Icon name={s.icon} /></span>
-            <span>
-              <span className="rt-eco__num">{s.value}</span>
-              <span className="rt-eco__label">{s.label}</span>
-            </span>
-          </li>
-        ))}
-      </ul>
     </Section>
   );
 }

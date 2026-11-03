@@ -33,14 +33,17 @@ export function RtHero({ content }: { content: typeof RT_HERO }) {
             ))}
           </div>
         </div>
-        <section aria-label={c.statsLabel} className="v2-stats rt-hero__stats">
-          {c.stats.map((s) => (
-            <div key={s.value}>
-              <div className={`v2-stats__num${s.accent ? " v2-stats__num--accent" : ""}`}>{s.value}</div>
-              <div className="v2-stats__label">{s.label}</div>
-            </div>
-          ))}
-        </section>
+        <div className="rt-partners">
+          <p className="rt-partners__head">
+            <span className="rt-partners__title">{c.partners.title}</span>
+            <span className="rt-partners__note">{c.partners.note}</span>
+          </p>
+          <ul className="rt-logos" aria-label={c.partners.label}>
+            {c.partners.logos.map((l, i) => (
+              <li key={l} className={`rt-logo rt-logo--${i}`}>{l}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );

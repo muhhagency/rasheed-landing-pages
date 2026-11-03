@@ -6,19 +6,10 @@ const QUOTE_D = "M4 18v-5.5C4 8.4 6.2 6 10 5l.7 1.6C8.5 7.4 7.6 8.8 7.5 11H10v7z
 export function RtProof({ content }: { content: typeof RT_PROOF }) {
   const c = content;
   return (
-    <section aria-label={c.label} className="v2-section v2-section--deep rt-proof">
+    <section aria-labelledby="rt-proof" className="v2-section v2-section--deep rt-proof">
       <div className="v2-container">
         <div className="rt-proof__head">
-          <h2 className="rt-proof__title">{c.logosTitle}</h2>
-          <span className="rt-proof__note">{c.logosNote}</span>
-        </div>
-        <ul className="rt-logos">
-          {c.logos.map((l, i) => (
-            <li key={l} className={`rt-logo rt-logo--${i}`}>{l}</li>
-          ))}
-        </ul>
-        <div className="rt-proof__head rt-proof__head--quotes">
-          <h2 className="rt-proof__title">{c.quotesTitle}</h2>
+          <h2 id="rt-proof" className="rt-proof__title">{c.quotesTitle}</h2>
           <span className="rt-proof__note">{c.quotesNote}</span>
         </div>
         <div className="rt-quotes">
