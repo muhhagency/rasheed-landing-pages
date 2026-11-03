@@ -21,7 +21,7 @@ export function ShShared({ content: c }: { content: typeof SH_SHARED }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="sh-shot sh-shared__phone" src={c.phone.src} width={616} height={1256} alt={c.phone.alt} loading="lazy" />
             <div className="sh-card sh-shared__chip" aria-hidden="true">
-              <span className="sh-tick"><Icon name="users" strokeWidth={2.2} /></span>
+              <span className="sh-tick"><Icon name="pie" strokeWidth={2.2} /></span>
               <span>
                 <span className="sh-card__title">{c.chip.title}</span>
                 <span className="sh-card__sub">{c.chip.sub}</span>

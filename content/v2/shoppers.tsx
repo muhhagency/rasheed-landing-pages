@@ -137,9 +137,9 @@ export const SH_SHARED = {
   // Real app screen (Pocket details, Shared), neutral copy from Figma.
   phone: {
     src: "/v2/ph-scr-shared.webp",
-    alt: "A Shared Pocket called Family in the Rasheed app: a monthly budget of 5,000 with 2,480 spent, 4 members, and Slices for groceries, utilities, fitness and transportation",
+    alt: "A Shared Pocket called Family in the Rasheed app: a monthly budget of 5,000 with 2,480 spent, and its 4 members: you as owner, your partner as admin, and two kids, each with what they spent",
   },
-  chip: { title: "4 Members", sub: "You + 3 others" },
+  chip: { title: "2,480 of 5,000", sub: "Spent together this month" },
 };
 
 export const SH_STATS = {
