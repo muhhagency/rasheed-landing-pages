@@ -15,6 +15,7 @@ export const RT_META = {
 };
 
 export const RT_HERO = {
+  ariaLabel: "Rasheed for retailers",
   badge: "For retailers",
   h1Lead: "Every checkout,",
   h1Label: "Every checkout, a customer moment.",
@@ -42,6 +43,8 @@ export const RT_HERO = {
   ] as RtLink[],
   partners: {
     label: "partner logos",
+    pauseLabel: "Pause",
+    playLabel: "Play",
     title: <>Stores that already use <TapCeipt /></>,
     note: "Sample logos",
     logos: ["NORTHWIND", "lumen", "Oakline", "BRIGHTMART", "kova.", "Palmway"],
@@ -213,6 +216,9 @@ export const RT_STEPS = {
 export const RT_PROOF = {
   quotesTitle: "What store owners say",
   quotesNote: "Sample quotes",
+  quotesLabel: "testimonials",
+  pauseLabel: "Pause",
+  playLabel: "Play",
   quotes: [
     {
       quote: "Customers ask to tap now. We stopped buying paper rolls, and checkout is faster.",

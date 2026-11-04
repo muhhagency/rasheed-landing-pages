@@ -29,7 +29,7 @@ export function RtPoints({ content }: { content: typeof RT_POINTS }) {
               <span className="rt-chip__title">{c.chip.title}</span>
               <span className="rt-chip__sub">{c.chip.sub}</span>
             </span>
-            <span className="rt-chip__value">{c.chip.value}</span>
+            <span className="rt-chip__value" dir="ltr">{c.chip.value}</span>
           </div>
         </div>
       </div>

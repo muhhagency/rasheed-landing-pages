@@ -18,7 +18,7 @@ export function RtCta({ content }: { content: typeof RT_CTA }) {
             ))}
           </div>
           <p className="rt-cta__call">
-            {c.callPre} <a href={CONTACT.phoneHref}>{CONTACT.phoneLabel}</a>
+            {c.callPre} <a href={CONTACT.phoneHref}><bdi dir="ltr">{CONTACT.phoneLabel}</bdi></a>
           </p>
         </div>
       </div>

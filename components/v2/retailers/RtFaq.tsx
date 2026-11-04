@@ -15,7 +15,7 @@ export function RtFaq({ content }: { content: typeof RT_FAQ }) {
           <p className="rt-faq__ask">
             {c.askPre}{" "}
             <a href={CONTACT.whatsappHref} target="_blank" rel="noopener noreferrer">{c.askWhatsapp}</a> {c.askMid}{" "}
-            <a href={CONTACT.phoneHref} className="rt-nowrap">{CONTACT.phoneLabel}</a>.
+            <a href={CONTACT.phoneHref} className="rt-nowrap"><bdi dir="ltr">{CONTACT.phoneLabel}</bdi></a>.
           </p>
         </div>
         <div className="rt-faq__list">

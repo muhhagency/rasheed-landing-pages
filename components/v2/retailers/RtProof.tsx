@@ -14,7 +14,9 @@ export function RtProof({ content }: { content: typeof RT_PROOF }) {
           <span className="rt-proof__note">{c.quotesNote}</span>
         </div>
         <Marquee
-          label="testimonials"
+          label={c.quotesLabel}
+          pauseLabel={c.pauseLabel}
+          playLabel={c.playLabel}
           items={c.quotes.map((q) => (
             <figure key={q.initials} className="rt-quote">
               <div>

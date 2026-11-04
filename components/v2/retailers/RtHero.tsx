@@ -7,7 +7,7 @@ import { Marquee } from "@/components/v2/ui/Marquee";
 export function RtHero({ content }: { content: typeof RT_HERO }) {
   const c = content;
   return (
-    <section className="rt-hero" aria-label="Rasheed for retailers">
+    <section className="rt-hero" aria-label={c.ariaLabel}>
       <div className="rt-hero__media">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -41,10 +41,12 @@ export function RtHero({ content }: { content: typeof RT_HERO }) {
           </p>
           <Marquee
             label={c.partners.label}
+            pauseLabel={c.partners.pauseLabel}
+            playLabel={c.partners.playLabel}
             variant="logos"
             seconds={40}
             items={c.partners.logos.map((l, i) => (
-              <span key={l} className={`rt-logo rt-logo--${i}`}>{l}</span>
+              <span key={l} className={`rt-logo rt-logo--${i}`} lang="en" dir="ltr">{l}</span>
             ))}
           />
         </div>
