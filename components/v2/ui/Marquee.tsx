@@ -7,7 +7,7 @@ import { Icon } from "./Icon";
 // with its own Pause button (WCAG 2.2.2). Reduced motion: no movement, the row
 // scrolls by hand instead. The second copy only fills the loop and is hidden
 // from assistive tech.
-export function Marquee({ label, items, seconds = 60, variant }: { label: string; items: React.ReactNode[]; seconds?: number; variant?: "logos" }) {
+export function Marquee({ label, items, seconds = 60, variant, pauseLabel = "Pause", playLabel = "Play" }: { label: string; items: React.ReactNode[]; seconds?: number; variant?: "logos"; pauseLabel?: string; playLabel?: string }) {
   const [paused, setPaused] = useState(false);
   return (
     <div className={`v2-marquee${variant ? ` v2-marquee--${variant}` : ""}`} data-paused={paused ? "true" : undefined}>
@@ -21,7 +21,7 @@ export function Marquee({ label, items, seconds = 60, variant }: { label: string
           </ul>
         </div>
       </div>
-      <button type="button" className="v2-marquee__toggle" aria-label={paused ? `Play ${label}` : `Pause ${label}`} onClick={() => setPaused(!paused)}>
+      <button type="button" className="v2-marquee__toggle" aria-label={`${paused ? playLabel : pauseLabel} ${label}`} onClick={() => setPaused(!paused)}>
         <Icon name={paused ? "playSolid" : "pause"} strokeWidth={0} />
       </button>
     </div>

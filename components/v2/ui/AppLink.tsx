@@ -16,12 +16,12 @@ const getStore = () =>
 
 // "Get the app" link. Server HTML points at the Shoppers download section;
 // after hydration a phone gets its own store, opened in a new tab.
-export function AppLink({ className, children, onClick }: { className?: string; children: React.ReactNode; onClick?: () => void }) {
+export function AppLink({ className, children, onClick, fallback = CONTACT.appHref }: { className?: string; children: React.ReactNode; onClick?: () => void; fallback?: string }) {
   const store = useSyncExternalStore(subscribe, getStore, () => null);
   return (
     <a
       className={className}
-      href={store ?? CONTACT.appHref}
+      href={store ?? fallback}
       onClick={onClick}
       {...(store ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >

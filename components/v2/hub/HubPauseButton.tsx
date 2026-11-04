@@ -5,7 +5,7 @@ import { Icon } from "@/components/v2/ui/Icon";
 
 // Pause/play control for the hub background video (WCAG 2.2.2). Hidden by
 // CSS wherever the video does not play (mobile, reduced motion).
-export function HubPauseButton({ videoId = "hub-video" }: { videoId?: string }) {
+export function HubPauseButton({ videoId = "hub-video", pauseLabel = "Pause background video", playLabel = "Play background video" }: { videoId?: string; pauseLabel?: string; playLabel?: string }) {
   const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export function HubPauseButton({ videoId = "hub-video" }: { videoId?: string }) 
     <button
       type="button"
       className="hub-pause"
-      aria-label={playing ? "Pause background video" : "Play background video"}
+      aria-label={playing ? pauseLabel : playLabel}
       onClick={toggle}
     >
       <Icon name={playing ? "pause" : "playSolid"} strokeWidth={0} />

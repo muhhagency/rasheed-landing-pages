@@ -1,6 +1,6 @@
 import { Icon, type IconName } from "./Icon";
 import { AppLink } from "./AppLink";
-import { CONTACT } from "@/components/v2/layout/contact";
+import { APP_HREF } from "@/components/v2/layout/contact";
 
 type Props = {
   href: string;
@@ -15,9 +15,9 @@ type Props = {
 // Link-styled button for the redesign. Always an <a>: every CTA navigates.
 export function Button({ href, children, variant = "primary", size = "md", icon, iconEnd, external }: Props) {
   const cls = `v2-btn v2-btn--${variant}${size === "sm" ? " v2-btn--sm" : ""}`;
-  if (href === CONTACT.appHref) {
+  if (href === APP_HREF.en || href === APP_HREF.ar) {
     return (
-      <AppLink className={cls}>
+      <AppLink className={cls} fallback={href}>
         {icon && <Icon name={icon} />}
         {children}
         {iconEnd && <Icon name={iconEnd} />}

@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = {
   title: RT_META.title,
   description: RT_META.description,
-  alternates: { canonical: "/for-retailers" },
+  alternates: { canonical: "/for-retailers", languages: { en: "/for-retailers", ar: "/ar/for-retailers" } },
   openGraph: {
     title: RT_META.title,
     description: RT_META.description,

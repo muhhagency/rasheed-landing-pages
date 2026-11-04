@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Two root layouts (English and Arabic) need a global 404.
+  experimental: { globalNotFound: true },
   // Dev-only. Next blocks cross-origin requests for /_next/* dev resources by
   // default, so opening the dev server on the LAN address (to review on a
   // phone, or from another machine) silently fails to load the client chunks:

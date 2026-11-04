@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { HERO, PORTAL, WHY, POCKET, CONTROL, CAPTURE, REPORTS, ERP, HOW, NEWS, FAQ, CTA, META } from "@/content/v2/corporates";
+import { HERO, PORTAL, WHY, POCKET, CONTROL, CAPTURE, REPORTS, ERP, HOW, NEWS, FAQ, CTA, META } from "@/content/v2/ar/corporates";
 import { CoHero } from "@/components/v2/corporates/CoHero";
 import { WhySwitch } from "@/components/v2/corporates/WhySwitch";
 import { BusinessPocket } from "@/components/v2/corporates/BusinessPocket";
@@ -15,8 +15,8 @@ import { FinalCta } from "@/components/v2/corporates/FinalCta";
 export const metadata: Metadata = {
   title: META.title,
   description: META.description,
-  alternates: { canonical: "/for-corporates" },
-  openGraph: { title: META.title, description: META.description, url: "/for-corporates" },
+  alternates: { canonical: "/ar/for-corporates", languages: { en: "/for-corporates", ar: "/ar/for-corporates" } },
+  openGraph: { title: META.title, description: META.description, url: "/ar/for-corporates" },
 };
 
 // Corporates page. The offer is app + portal only; the TapCeipt news and expo

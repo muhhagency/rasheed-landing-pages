@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Michroma } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const michroma = Michroma({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-michroma",
-  display: "swap",
-});
+import { inter, michroma } from "../fonts";
+import "../globals.css";
 
 // Canonical production origin. metadataBase makes every per-route relative
 // canonical/OG URL below resolve to an absolute one.
@@ -27,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Rasheed — capture receipts, organize your money, and earn rewards.",
+    "Rasheed: capture receipts, organize your money, and earn rewards.",
   // Next already emits a content-hashed <link> for app/favicon.ico via its
   // file-based convention, which is what busts the cache when the icon changes.
   // Declaring `icon` here as well would ADD an unhashed /favicon.ico link that

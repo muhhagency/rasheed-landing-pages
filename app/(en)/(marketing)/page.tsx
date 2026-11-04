@@ -10,7 +10,7 @@ import { HUB, HUB_TITLE, HUB_DESCRIPTION } from "@/content/v2/hub";
 export const metadata: Metadata = {
   title: HUB_TITLE,
   description: HUB_DESCRIPTION,
-  alternates: { canonical: "/" },
+  alternates: { canonical: "/", languages: { en: "/", ar: "/ar" } },
   openGraph: { title: HUB_TITLE, description: HUB_DESCRIPTION, url: "/" },
 };
 

@@ -14,5 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/for-retailers`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/for-corporates`, changeFrequency: "monthly", priority: 0.8 },
     { url: `${SITE_URL}/news`, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${SITE_URL}/ar`, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${SITE_URL}/ar/app`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/ar/for-retailers`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/ar/for-corporates`, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${SITE_URL}/ar/news`, changeFrequency: "weekly", priority: 0.6 },
   ];
 }

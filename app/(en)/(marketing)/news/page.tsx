@@ -13,7 +13,7 @@ const description = NEWS.intro.lead;
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/news" },
+  alternates: { canonical: "/news", languages: { en: "/news", ar: "/ar/news" } },
   openGraph: { title, description, url: "/news" },
 };
 

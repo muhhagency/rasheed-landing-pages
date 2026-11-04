@@ -16,18 +16,26 @@ export const CONTACT = {
   appHref: "/app#get-app",
 } as const;
 
+// Arabic pages send "Get the app" to the Arabic Shoppers download section.
+export const APP_HREF = { en: "/app#get-app", ar: "/ar/app#get-app" } as const;
+
 export type PageKey = "hub" | "app" | "retailers" | "corporates" | "news";
 
-export const NAV = [
-  { key: "app", label: "Shoppers", href: "/app" },
-  { key: "retailers", label: "Retailers", href: "/for-retailers" },
-  { key: "corporates", label: "Corporates", href: "/for-corporates" },
-  { key: "news", label: "News", href: "/news" },
-] as const;
+// Page paths without a locale prefix.
+export const PAGE_PATH: Record<PageKey, string> = {
+  hub: "/",
+  app: "/app",
+  retailers: "/for-retailers",
+  corporates: "/for-corporates",
+  news: "/news",
+};
 
-export const HEADER_CTA: Record<Exclude<PageKey, "hub">, { label: string; href: string }> = {
-  app: { label: "Get the app", href: CONTACT.appHref },
-  retailers: { label: "Book a demo", href: CONTACT.demoHref },
-  corporates: { label: "Book a demo", href: CONTACT.demoHref },
-  news: { label: "Get the app", href: CONTACT.appHref },
+export const NAV_KEYS = ["app", "retailers", "corporates", "news"] as const;
+
+// Header button per page: B2B pages book a demo, the rest get the app.
+export const HEADER_CTA_KIND: Record<Exclude<PageKey, "hub">, "app" | "demo"> = {
+  app: "app",
+  retailers: "demo",
+  corporates: "demo",
+  news: "app",
 };
