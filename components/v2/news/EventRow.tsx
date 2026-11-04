@@ -13,7 +13,7 @@ export function EventRow({ item }: { item: EventItem }) {
         <span className="nw-tag">{item.kind}</span>
         <h3 className="nw-event__title">{item.title}</h3>
         <p className="nw-event__info">
-          <span className="v2-sr">{item.month} {item.day}. </span>
+          <span className="v2-sr">{item.dateLabel ?? `${item.month} ${item.day}`}. </span>
           <span>{item.where}</span>
           <span>{item.when}</span>
         </p>

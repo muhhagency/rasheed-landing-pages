@@ -225,3 +225,33 @@
   .nw-rail { scroll-behavior: auto; }
   .nw-arrow { transition: none; }
 }
+
+/* Arabic / RTL. Direction arrows mirror; Arabic labels drop tracking and uppercase
+   so the letters stay joined; gradients that lead from one side follow the reading side. */
+.nw-featured__cta svg:dir(rtl), .nw-more svg:dir(rtl), .nw-event__cta svg:dir(rtl), .nw-ann__cta svg:dir(rtl) { transform: scaleX(-1); }
+.nw-ann__bar:dir(rtl) {
+  background: linear-gradient(270deg, color-mix(in srgb, var(--stage-brand) 70%, transparent), color-mix(in srgb, var(--stage-accent) 14%, var(--stage-deep)));
+}
+.nw-hero:dir(rtl) {
+  background:
+    radial-gradient(900px 420px at 20% 0%, color-mix(in srgb, var(--brand-royalpurple-400) 45%, transparent), transparent 70%),
+    var(--stage-deep);
+}
+.nw-ann__month:lang(ar), .nw-ann__label:lang(ar), .nw-event__month:lang(ar) { letter-spacing: 0; text-transform: none; }
+.nw-ann__month:lang(ar) { font-size: 11px; line-height: 1.3; }
+.nw-ann__label:lang(ar) { font-size: 13px; }
+.nw-event__month:lang(ar) { font-size: 14px; line-height: 1.3; }
+.nw-featured__title:lang(ar), .nw-latest__title:lang(ar), .nw-sub__title:lang(ar) { letter-spacing: 0; line-height: 1.3; }
+.nw-hero__title:lang(ar) { line-height: 1.25; }
+.nw-card__title:lang(ar), .nw-event__title:lang(ar) { line-height: 1.4; }
+.nw-hero__lead:lang(ar), .nw-featured__text:lang(ar), .nw-card__text:lang(ar), .nw-events__lead:lang(ar), .nw-sub__lead:lang(ar) { line-height: 1.7; }
+/* Email addresses are typed left to right. */
+.nw-sub__input:lang(ar) { direction: ltr; text-align: end; }
+.nw-sub__input:lang(ar):placeholder-shown { direction: rtl; text-align: start; }
+
+@media (max-width: 900px) {
+  .nw-event__month:lang(ar) { font-size: 12px; }
+}
+@media (max-width: 600px) {
+  .nw-event__month:lang(ar) { font-size: 11px; }
+}

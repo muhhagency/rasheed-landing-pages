@@ -15,7 +15,7 @@ export function EventBanner({ label, item }: { label: string; item: EventItem })
           <div className="nw-ann__body">
             <p className="nw-ann__title">
               <span className="nw-ann__label">{label}</span>
-              <span className="v2-sr">: {item.month} {item.day}. </span>
+              <span className="v2-sr">: {item.dateLabel ?? `${item.month} ${item.day}`}. </span>
               {item.title}
             </p>
             <p className="nw-ann__info">

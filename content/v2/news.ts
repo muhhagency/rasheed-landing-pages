@@ -28,6 +28,8 @@ export type EventItem = {
   id: string;
   month: string;
   day: string;
+  /** Spoken date for screen readers; defaults to "<month> <day>". */
+  dateLabel?: string;
   kind: string;
   title: string;
   where: string;

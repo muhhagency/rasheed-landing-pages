@@ -7,7 +7,7 @@ import { LatestNews } from "@/components/v2/news/LatestNews";
 import { EventsSection } from "@/components/v2/news/EventsSection";
 import { Subscribe } from "@/components/v2/news/Subscribe";
 
-const title = "News and events | Rasheed";
+const title = NEWS.meta.title;
 const description = NEWS.intro.lead;
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 // The banner shows the event named in NEWS.banner, falling back to the first listed.
 const nextEvent = NEWS.events.items.find((e) => e.id === NEWS.banner.eventId) ?? NEWS.events.items[0];
 
-// News and events page (/news).
+// Arabic news and events page (/ar/news).
 export default function NewsPage() {
   return (
     <NewsFilterRoot>
