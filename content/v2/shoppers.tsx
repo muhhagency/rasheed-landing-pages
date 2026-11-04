@@ -159,6 +159,8 @@ export const SH_STATS = {
 export const SH_VOICES = {
   title: "What people say",
   note: "Sample quotes",
+  // Marquee region name and its Pause/Play button labels.
+  marquee: { label: "testimonials", pause: "Pause", play: "Play" },
   quotes: [
     { quote: "Now I know where my money goes every month. I check it every Friday.", initials: "NA", name: "[Name]", role: "Rasheed user" },
     { quote: "I flipped a receipt and won a free gift. Now I always tap.", initials: "SA", name: "[Name]", role: "Rasheed user" },

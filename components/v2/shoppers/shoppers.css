@@ -534,3 +534,44 @@
 /* Store links inside the "Free on iPhone and Android" notes. */
 .sh-hero__note a, .sh-cta__note a { color: var(--stage-ink); font-weight: var(--font-weight-semibold); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--stage-accent-line); }
 .sh-hero__note a:hover, .sh-cta__note a:hover { color: var(--stage-accent); text-decoration-color: var(--stage-accent); }
+
+/* ============================================================
+   Arabic (RTL). The artwork stages stay ltr (.sh-art), so their
+   own inline insets keep the canvas geometry; only the hero art's
+   anchor, the capture fade and the chip text are mirrored here.
+   ============================================================ */
+/* Hero: text sits on the right, so the art moves to the left. .sh-hero__art is
+   ltr itself, so its inline-start is the left edge. */
+[dir="rtl"] .sh-hero__art { inset-inline-end: auto; inset-inline-start: max(70px, calc(50% - 650px)); }
+[dir="rtl"] .sh-hero {
+  background:
+    radial-gradient(900px 700px at 22% 55%, color-mix(in srgb, var(--brand-softlavender-500) 38%, transparent), transparent 65%),
+    radial-gradient(500px 400px at 28% 92%, color-mix(in srgb, var(--stage-accent) 18%, transparent), transparent 70%),
+    var(--stage-deep);
+}
+@media (max-width: 1199px) {
+  [dir="rtl"] .sh-hero__art { inset: auto; }
+}
+/* Capture: the photo sits at inline-end (left), so the fade runs the other way. */
+[dir="rtl"] .sh-capture__fade { transform: scaleX(-1); }
+
+/* Chips inside the ltr artwork: Arabic text runs rtl, icon on the reading side. */
+[dir="rtl"] .sh-art .sh-card { flex-direction: row-reverse; text-align: end; }
+[dir="rtl"] .sh-art .sh-card > *,
+[dir="rtl"] .sh-gifts__balance > * { direction: rtl; }
+[dir="rtl"] .sh-gifts__balance { text-align: end; }
+[dir="rtl"] .sh-hero__saved { padding-inline: 16px 12px; }
+[dir="rtl"] .sh-gifts__delivery { padding-inline: 18px 12px; }
+[dir="rtl"] .sh-gifts__delivery .sh-tick { margin-inline: 0 6px; }
+
+/* Arabic letters must stay joined: no tracking, no uppercase, and more line height. */
+:lang(ar) .sh-flipcard__kicker { letter-spacing: 0; text-transform: none; font-size: 13px; }
+:lang(ar) .sh-capture__title,
+:lang(ar) .sh-gifts__balance-value,
+:lang(ar) .sh-stat__value,
+:lang(ar) .sh-voucher__amount { letter-spacing: 0; }
+:lang(ar) .sh-capture__title { line-height: 1.3; }
+:lang(ar) .sh-cta__title { letter-spacing: 0; line-height: 1.25; }
+:lang(ar) .sh-hero__lead, :lang(ar) .sh-capture__body, :lang(ar) .sh-way__body,
+:lang(ar) .sh-flip__lead, :lang(ar) .sh-flipcard__body, :lang(ar) .sh-quote__text,
+:lang(ar) .sh-faq__more, :lang(ar) .sh-cta__lead { line-height: 1.7; }

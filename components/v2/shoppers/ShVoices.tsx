@@ -12,7 +12,9 @@ export function ShVoices({ content: c }: { content: typeof SH_VOICES }) {
           <span className="sh-voices__note">{c.note}</span>
         </div>
         <Marquee
-          label="testimonials"
+          label={c.marquee.label}
+          pauseLabel={c.marquee.pause}
+          playLabel={c.marquee.play}
           items={c.quotes.map((q) => (
             <figure key={q.initials} className="sh-quote">
               <div>
