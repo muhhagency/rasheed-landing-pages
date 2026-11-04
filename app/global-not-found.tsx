@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { inter, michroma } from "./fonts";
 import "./globals.css";
 
@@ -12,7 +13,7 @@ export default function GlobalNotFound() {
         <div className="tone-stage v2-page">
           <main id="main" className="v2-container v2-section">
             <h1 className="v2-h2">Page not found.</h1>
-            <p className="v2-lead">This page does not exist. <a href="/">Go to the home page</a> · <a href="/ar" lang="ar">الصفحة الرئيسية</a></p>
+            <p className="v2-lead">This page does not exist. <Link href="/">Go to the home page</Link> · <Link href="/ar" lang="ar">الصفحة الرئيسية</Link></p>
           </main>
         </div>
       </body>
