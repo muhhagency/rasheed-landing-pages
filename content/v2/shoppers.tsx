@@ -105,7 +105,7 @@ export const SH_STORES = {
     "Tell the cashier how many points to use. They scan, and you approve.",
     "Store points belong to each store. They are separate from your Green Points.",
   ],
-  phone: { src: "/v2/ph-scr-partner.webp", alt: "A store points card in Rasheed with a QR code for the till" },
+  phone: { src: "/v2/ph-scr-storelist.webp", alt: "Points & Gifts in Rasheed, Partner Points tab: five store cards (Rasheed Store, Green Market, Care Pharmacy, Book Corner and Oud House), each with its points" },
 };
 
 export const SH_SPENDING = {
