@@ -199,19 +199,13 @@
 .lang-toggle__opt {
   padding-block: var(--spacing-3xs);
   padding-inline: var(--spacing-2xs);
+  color: var(--text-body);
+  text-decoration: none;
 }
+.lang-toggle__opt:hover { color: var(--text-action-hover); }
 .lang-toggle__opt[aria-current="true"] {
   color: var(--text-action);
 }
-/* AR is a non-functional placeholder, but it is still readable UI text rather
-   than a disabled form control, so it must meet AA. --text-disabled is
-   neutral-400 (3.78:1 on white); the body role clears it on both surfaces. */
-.lang-toggle__opt[aria-disabled="true"] {
-  color: var(--text-body);
-}
-/* The separator is decorative (aria-hidden="true"), so WCAG text contrast does
-   not formally apply — but it should still be clearly visible. It uses the body
-   role, which every tone scope rebinds, so it reads on light and dark alike. */
 .lang-toggle__sep {
   color: var(--text-body);
   opacity: 0.5;

@@ -459,3 +459,55 @@ a:hover, .link:hover { color: var(--text-action-hover); }
   --line-height-display-md: 68px;
   --letter-spacing-display-md: -0.02em;
 }
+
+
+/* ============================================================
+   REDESIGN 2026 — STAGE EXTENSIONS (dark marketing surfaces)
+   ------------------------------------------------------------
+   The 2026 redesign runs on dark "stage" surfaces built from the
+   Royal Purple ramp, with Mint Green as the action/reward colour.
+   Values are derived from existing brand primitives (no new hex).
+
+   MARKETING-ONLY. Not yet in the Figma design system — push back
+   to Figma before treating as canonical.
+   ============================================================ */
+:root {
+  /* Stage surfaces (darkest → lightest) */
+  --stage-footer: color-mix(in srgb, var(--brand-royalpurple-800) 70%, var(--brand-black));
+  --stage-deep: var(--brand-royalpurple-800);
+  --stage-raised: color-mix(in srgb, var(--brand-royalpurple-700) 55%, var(--brand-royalpurple-800));
+  --stage-card: color-mix(in srgb, var(--brand-royalpurple-700) 70%, var(--brand-royalpurple-600));
+  --stage-panel: color-mix(in srgb, var(--brand-royalpurple-500) 45%, transparent);
+  --stage-brand: var(--brand-royalpurple-500);
+
+  /* White and mint at fixed opacities, for text and hairlines on stage */
+  --stage-ink: var(--brand-white);
+  --stage-ink-84: color-mix(in srgb, var(--brand-white) 84%, transparent);
+  --stage-ink-72: color-mix(in srgb, var(--brand-white) 72%, transparent);
+  --stage-ink-60: color-mix(in srgb, var(--brand-white) 60%, transparent);
+  --stage-line: color-mix(in srgb, var(--brand-white) 12%, transparent);
+  --stage-line-strong: color-mix(in srgb, var(--brand-white) 50%, transparent);
+  --stage-fill: color-mix(in srgb, var(--brand-white) 5%, transparent);
+  --stage-accent: var(--brand-mintgreen-500);
+  --stage-accent-soft: color-mix(in srgb, var(--brand-mintgreen-500) 10%, transparent);
+  --stage-accent-line: color-mix(in srgb, var(--brand-mintgreen-500) 35%, transparent);
+  --stage-shadow: color-mix(in srgb, var(--brand-black) 45%, transparent);
+
+  /* Marketing type (adds to the display sizes above) */
+  --font-size-display-sm: 56px;
+  --line-height-display-sm: 60px;
+  --letter-spacing-display-sm: -0.03em;
+  --font-size-display-mobile: 40px;
+  --line-height-display-mobile: 44px;
+  --font-size-section-mobile: 34px;
+  --line-height-section-mobile: 38px;
+
+  /* Marketing radii and widths */
+  --radius-card: 22px;
+  --radius-panel: 28px;
+  --radius-pill: 999px;
+  --radius-control: 12px;
+  --content-max: 1280px;
+  --gutter-desktop: 80px;
+  --gutter-mobile: 20px;
+}

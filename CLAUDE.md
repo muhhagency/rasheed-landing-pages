@@ -1,6 +1,8 @@
 # Rasheed — Marketing Site
 
-Rebuild of rasheedapp.com. A hub that routes to three self-contained persona landing pages.
+Rebuild of rasheedapp.com. A full-screen hub that routes to three audience pages (shoppers, retailers, corporates) plus a News and events page.
+
+The current design is **Redesign 2026**: dark "stage" surfaces, ported from the approved Claude Design canvas. Its code lives under `components/v2/` and `content/v2/`. The older light-theme components (`components/sections/`, `components/ui/PersonaBand`, `content/*.tsx`) are retired.
 
 ## Stack
 
@@ -13,16 +15,19 @@ Rebuild of rasheedapp.com. A hub that routes to three self-contained persona lan
 
 | Route | Page | Primary CTA |
 |---|---|---|
-| `/` | Hub — routes to three personas | none (routing only) |
-| `/app` | Consumer | App Store + Google Play |
-| `/for-retailers` | Retailer | Sign Up → `/signup`, Log in → `retailers.rasheedapp.com` |
-| `/for-corporates` | Corporate | Sign Up → `/signup`, Log in → `corporates.rasheedapp.com` |
+| `/` | Hub: full-screen video hero, routes to the three audiences | Get the app, For retailers, For corporates |
+| `/app` | Shoppers | Get the app |
+| `/for-retailers` | Retailers | Book a demo (header shows this only), Get a quote, WhatsApp, call |
+| `/for-corporates` | Corporates | Book a demo (header shows this only), Get a quote, WhatsApp, call |
+| `/news` | News and events | Get the app |
 
-`/signup` is a separate unified registration form with a Retailer/Corporate persona toggle. **Out of scope for this repo** — link to it, don't build it.
+Contact links (demo and quote mailto, WhatsApp, phone placeholder, app link) live in `components/v2/layout/contact.ts`. Use those constants, never inline the URLs.
+
+`/signup` and the retailer/corporate portals are **out of scope for this repo**.
 
 ## Source of truth
 
-- **Copy** — `docs/content-brief.md`. Every headline, subhead, and body string is specified there. Do not paraphrase, rewrite, or "improve" it. If a string is missing, stop and flag it rather than inventing one.
+- **Copy**: the typed objects in `content/v2/`, ported verbatim from the approved canvas. `docs/content-brief.md` (Brief v3) has the page outlines, rules and open placeholders. Do not paraphrase, rewrite, or "improve" copy. If a string is missing, stop and flag it rather than inventing one.
 - **Design tokens** — `app/styles/tokens.css`, extracted from the Figma design system (file `3hcXxu77vHXA0NU5OAP9Mq`). Do not edit values here; they mirror Figma.
 
 ## Token rules
@@ -55,6 +60,13 @@ Three tiers: `--brand-*` primitives → `--primary-*` / `--neutral-*` etc. alias
 
   Surface, border, and icon roles follow the same rule when the scope contains, or could contain, elements that read them.
 
+### Redesign 2026 stage tokens
+
+- The redesign adds a marked `REDESIGN 2026 — STAGE EXTENSIONS` block at the bottom of `tokens.css` (`--stage-*` surfaces, ink and line opacities, accent, display sizes, radii, content width, gutters). All values derive from existing `--brand-*` primitives; none are in Figma yet, so push them back before treating them as canonical.
+- `.tone-stage` (in `components/v2/v2.css`) is the redesign's tone scope. It rebinds the complete text, surface, border and icon role sets. Every page wrapper carries it.
+- Alpha colours are written as `color-mix(in srgb, var(--token) N%, transparent)`, never as `rgba()` or hex.
+- Page CSS lives in `components/v2/<page>/<page>.css` with a page class prefix (`hub-`, `sh-`, `rt-`, `co-`, `nw-`).
+
 ### Known token gaps
 
 These are unresolved in the Figma system. Do not silently invent values.
@@ -80,10 +92,14 @@ These are product names. Never substitute, pluralize creatively, or paraphrase.
 
 ### Hard content rules
 
-- **Never mention Amazon anywhere** — backend fulfillment only. Use "gifts," "rewards," or "partner deals."
-- No avatars or imagery implying demographic targeting (KSA compliance).
-- Currency is **SAR**. Saudi merchant references are fine: Panda, Jarir, Barn's Café, Tamimi.
-- **Corporates do not get TapCeipt hardware.** Value is app + portal only. Never imply hardware on `/for-corporates`.
+- **Never mention any country, city, nationality or national programme.** Rasheed launches in more than one market.
+- **No currency names or symbols** (no SAR, no riyal sign). Amounts are plain numbers.
+- **No real brands or trademarks** in copy or imagery. The placeholder store name is "Rasheed Store". Never mention Amazon; use "gifts," "rewards," or "partner deals."
+- **Never use em dashes** in copy.
+- No avatars or imagery implying demographic targeting.
+- Imagery always shows the real TapCeipt device.
+- **Corporates do not get TapCeipt hardware.** The corporate offer is app + portal only. The owner approved the TapCeipt news and expo cards in the Corporates news section; nothing else on `/for-corporates` may imply hardware.
+- Placeholders awaiting real data stay visibly bracketed (`[000K+]`). Do not replace them with invented numbers.
 
 ## TapCeipt wordmark
 
@@ -104,15 +120,21 @@ English only for now. Include a non-functional EN/AR toggle in nav and footer as
 
 ## Conventions
 
-- Server Components by default. `'use client'` only where interactivity requires it (nav dropdown, mobile menu).
+- Server Components by default. `'use client'` only where interactivity requires it (header scroll state and mobile menu, video pause button).
 - One component per file, colocated under `components/`.
 - Section components take content as props; content objects live in `content/`.
 - No component libraries. No shadcn. Build the primitives.
 - No `localStorage`, no browser storage.
 - Accessibility: semantic landmarks, visible focus states using `--border-focus`, alt text on every image, WCAG AA contrast minimum.
+- Motion: CSS keyframes only, every animation capped to a finite iteration count, and a resting state under `prefers-reduced-motion: reduce`. Exceptions that run continuously must have a visible pause control (WCAG 2.2.2): the hub background video and the testimonial rows (`components/v2/ui/Marquee.tsx`, which also pauses on hover and keyboard focus).
+- Logical properties only (`inset-inline-start`, `padding-block`, `inline-size`), never left/right.
 
 ## Assets
 
-No final photography or portal screenshots exist yet. Use clearly-marked placeholder components with correct aspect ratios and `alt` text written as if the real asset were present. Do not generate decorative filler illustrations.
+Redesign assets live in `public/v2/` (webp, mp4, svg). `public/v2/_manifest.json` maps each canvas blob id to its file, so a canvas change can be re-exported to the same path. Imagery is generated or composited from the real TapCeipt device and real app screens with neutral (brand-free) data. Do not generate decorative filler illustrations.
+
+## Building locally
+
+`npm run build` (static export to `out/`). `next/font/google` downloads Inter and Michroma at build time, so the build machine needs access to fonts.googleapis.com.
 
 See `docs/build-plan.md` for the ordered task list.
