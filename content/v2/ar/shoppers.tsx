@@ -37,8 +37,8 @@ export const SH_HERO = {
   ctas: HERO_CTAS,
   note: <>مجاني على <a href={CONTACT.iosHref} target="_blank" rel="noopener noreferrer">آيفون</a> و<a href={CONTACT.androidHref} target="_blank" rel="noopener noreferrer">أندرويد</a>. ابدأ بدون حساب.</>,
   art: {
-    gifts: "/v2/ph-scr-gifts.webp",
-    home: "/v2/ph-scr-home.webp",
+    gifts: "/v2/ar/ph-scr-gifts.webp",
+    home: "/v2/ar/ph-scr-home.webp",
     label:
       `تطبيق رشيد: الشاشة الرئيسية مع الحافظات ومعاملاتك الأخيرة، وشاشة الهدايا، وإيصال يُقلب ليكشف ${PLUS_10} نقاط خضراء`,
   },
@@ -88,7 +88,7 @@ export const SH_GIFTS = {
     "تجد كل هداياك وقسائمك في هداياي",
   ],
   phone: {
-    src: "/v2/ph-scr-allgifts.webp",
+    src: "/v2/ar/ph-scr-allgifts.webp",
     alt: "تطبيق رشيد يعرض كل الهدايا: طقم عطر عود، وسماعات لاسلكية، وطقم عناية بالبشرة، ويد تحكم للألعاب، ولكل منها سعر بالنقاط",
   },
   balance: { label: "النقاط الخضراء", value: "1,870", unit: "نقطة", note: `${PLUS_10} من آخر إيصال` },
@@ -105,7 +105,7 @@ export const SH_STORES = {
     "أخبر الكاشير كم نقطة تريد أن تستخدم. يمسح الرمز، وأنت توافق.",
     "نقاط كل متجر خاصة به. وهي منفصلة عن نقاطك الخضراء.",
   ],
-  phone: { src: "/v2/ph-scr-partner.webp", alt: "بطاقة نقاط متجر في رشيد مع رمز QR للكاشير" },
+  phone: { src: "/v2/ar/ph-scr-partner.webp", alt: "بطاقة نقاط متجر في رشيد مع رمز QR للكاشير" },
 };
 
 export const SH_SPENDING = {
@@ -119,8 +119,8 @@ export const SH_SPENDING = {
     "الحافظات تعرض ما صرفته وما تبقى هذا الشهر",
   ],
   phones: [
-    { src: "/v2/ph-scr-home.webp", alt: "الشاشة الرئيسية في رشيد مع حافظة، وأزرار إضافة مصروف، ومعاملاتك الأخيرة" },
-    { src: "/v2/ph-scr-details.webp", alt: "تفاصيل الإيصال مع المنتجات والفاتورة الضريبية والفئة وطريقة الدفع" },
+    { src: "/v2/ar/ph-scr-home.webp", alt: "الشاشة الرئيسية في رشيد مع حافظة، وأزرار إضافة مصروف، ومعاملاتك الأخيرة" },
+    { src: "/v2/ar/ph-scr-details.webp", alt: "تفاصيل الإيصال مع المنتجات والفاتورة الضريبية والفئة وطريقة الدفع" },
   ],
 };
 
@@ -135,7 +135,7 @@ export const SH_SHARED = {
     "أضف أطفالك ليتعلموا التخطيط والصرف بحكمة",
   ],
   phone: {
-    src: "/v2/ph-scr-shared.webp",
+    src: "/v2/ar/ph-scr-shared.webp",
     alt: "حافظة جماعية باسم العائلة في تطبيق رشيد: ميزانية شهرية 5,000 صُرف منها 2,480، وأعضاؤها الأربعة: أنت المالك، وشريكك مشرف، وطفلان، مع ما صرفه كل واحد",
   },
   chip: { title: "2,480 من 5,000", sub: "صرفتموها معًا هذا الشهر" },
@@ -151,7 +151,7 @@ export const SH_STATS = {
     "قارن هذا الشهر بالشهر الماضي",
     "اعرف كم تبقى من ميزانيتك",
   ],
-  phone: { src: "/v2/ph-scr-stats.webp", alt: "الإحصائيات في رشيد: إجمالي المصروفات، وأكثر متجر وفئة، والميزانية، ورسم بياني يقارن الأشهر" },
+  phone: { src: "/v2/ar/ph-scr-stats.webp", alt: "الإحصائيات في رشيد: إجمالي المصروفات، وأكثر متجر وفئة، والميزانية، ورسم بياني يقارن الأشهر" },
   chip: { kicker: "هذا الشهر", value: "12% أقل", tag: "مقارنة بالشهر الماضي" },
 };
 
