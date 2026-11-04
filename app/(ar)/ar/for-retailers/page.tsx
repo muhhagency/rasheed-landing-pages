@@ -44,7 +44,7 @@ export default function RetailersPage() {
       <RtPaperless content={RT_PAPERLESS} />
       <RtTill content={RT_TILL} />
       <RtAd content={RT_AD} />
-      <RtRewards content={RT_REWARDS} />
+      <RtRewards content={RT_REWARDS} locale="ar" />
       <RtPoints content={RT_POINTS} />
       <RtPortal content={RT_PORTAL} />
       <RtSteps content={RT_STEPS} />

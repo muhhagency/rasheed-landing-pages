@@ -531,6 +531,26 @@
   .sh-cel-paper, .sh-cel-torn, .sh-cel-front, .sh-cel-front-edge, .sh-cel-balance-glow, .sh-cel-paper-glow, .sh-cel-mark, .sh-cel-plus10, .sh-cel-from, .sh-cel-to, .sh-cel-old, .sh-cel-done, .sh-cel-flipback, .sh-cel-pulse, .sh-cel-flipbtn, .sh-cel-later, .sh-cel-sp1, .sh-cel-sp2, .sh-cel-sp3, .sh-cel-sp4, .sh-cel-sp5, .sh-cel-sp6, .sh-cel-coin1, .sh-cel-coin2, .sh-cel-coin3, .sh-cel-coin4, .sh-cel-coin5, .sh-cel-chip { animation: none; }
 }
 
+/* Arabic celebration (CelebrationScene locale="ar", Figma "Website AR · Hero v2 · Celebration"):
+   same timeline; the balance sits on the left, so the coins fly in mirrored, and the
+   layer boxes differ, so the transform origins are re-anchored to the same Figma centres. */
+.sh-cel--ar .sh-cel-mark { transform-origin: 24.33px 24.40px; }
+.sh-cel--ar .sh-cel-plus10 { transform-origin: 40.33px 18.80px; }
+.sh-cel--ar .sh-cel-to { transform-origin: 37.17px 9.53px; }
+.sh-cel--ar .sh-cel-torn { transform-origin: 174.33px 5.33px; }
+.sh-cel--ar .sh-cel-front { transform-origin: 173.00px 284.00px; }
+.sh-cel--ar .sh-cel-front-edge { transform-origin: 174.33px 5.33px; }
+@keyframes sh-cel-ar-coin1-translate { 0% { translate: 47px -89px; } 12.5% { translate: 47px -89px; } 24.375% { translate: 47px -89px; } 25.313% { translate: 25.7px -86px; } 26.25% { translate: -3.3px -77.9px; } 27.187% { translate: -25.8px -60.3px; } 28.125% { translate: -25.7px -35.4px; } 29.062% { translate: -12.4px -13.8px; } 30.0% { translate: 0px 0px; } 60.0% { translate: 0px 0px; } 100% { translate: 0px 0px; } }
+@keyframes sh-cel-ar-coin2-translate { 0% { translate: 47px -89px; } 12.5% { translate: 47px -89px; } 25.25% { translate: 47px -89px; } 26.188% { translate: 25.7px -86px; } 27.125% { translate: -3.3px -77.9px; } 28.062% { translate: -25.8px -60.3px; } 29.0% { translate: -25.7px -35.4px; } 29.937% { translate: -12.4px -13.8px; } 30.875% { translate: 0px 0px; } 60.0% { translate: 0px 0px; } 100% { translate: 0px 0px; } }
+@keyframes sh-cel-ar-coin3-translate { 0% { translate: 47px -89px; } 12.5% { translate: 47px -89px; } 26.125% { translate: 47px -89px; } 27.063% { translate: 25.7px -86px; } 28.0% { translate: -3.3px -77.9px; } 28.937% { translate: -25.8px -60.3px; } 29.875% { translate: -25.7px -35.4px; } 30.812% { translate: -12.4px -13.8px; } 31.75% { translate: 0px 0px; } 60.0% { translate: 0px 0px; } 100% { translate: 0px 0px; } }
+@keyframes sh-cel-ar-coin4-translate { 0% { translate: 47px -89px; } 12.5% { translate: 47px -89px; } 27.0% { translate: 47px -89px; } 27.938% { translate: 25.7px -86px; } 28.875% { translate: -3.3px -77.9px; } 29.812% { translate: -25.8px -60.3px; } 30.75% { translate: -25.7px -35.4px; } 31.687% { translate: -12.4px -13.8px; } 32.625% { translate: 0px 0px; } 60.0% { translate: 0px 0px; } 100% { translate: 0px 0px; } }
+@keyframes sh-cel-ar-coin5-translate { 0% { translate: 47px -89px; } 12.5% { translate: 47px -89px; } 27.875% { translate: 47px -89px; } 28.812% { translate: 25.7px -86px; } 29.75% { translate: -3.3px -77.9px; } 30.687% { translate: -25.8px -60.3px; } 31.625% { translate: -25.7px -35.4px; } 32.562% { translate: -12.4px -13.8px; } 33.5% { translate: 0px 0px; } 60.0% { translate: 0px 0px; } 100% { translate: 0px 0px; } }
+.sh-cel--ar .sh-cel-coin1 { animation-name: sh-cel-coin1-opacity, sh-cel-ar-coin1-translate, sh-cel-coin1-scale; }
+.sh-cel--ar .sh-cel-coin2 { animation-name: sh-cel-coin2-opacity, sh-cel-ar-coin2-translate, sh-cel-coin2-scale; }
+.sh-cel--ar .sh-cel-coin3 { animation-name: sh-cel-coin3-opacity, sh-cel-ar-coin3-translate, sh-cel-coin3-scale; }
+.sh-cel--ar .sh-cel-coin4 { animation-name: sh-cel-coin4-opacity, sh-cel-ar-coin4-translate, sh-cel-coin4-scale; }
+.sh-cel--ar .sh-cel-coin5 { animation-name: sh-cel-coin5-opacity, sh-cel-ar-coin5-translate, sh-cel-coin5-scale; }
+
 /* Store links inside the "Free on iPhone and Android" notes. */
 .sh-hero__note a, .sh-cta__note a { color: var(--stage-ink); font-weight: var(--font-weight-semibold); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--stage-accent-line); }
 .sh-hero__note a:hover, .sh-cta__note a:hover { color: var(--stage-accent); text-decoration-color: var(--stage-accent); }

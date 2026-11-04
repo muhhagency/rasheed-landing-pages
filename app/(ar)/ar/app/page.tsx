@@ -26,9 +26,9 @@ export const metadata: Metadata = {
 export default function ShoppersPage() {
   return (
     <>
-      <ShHero content={SH_HERO} />
+      <ShHero content={SH_HERO} locale="ar" />
       <ShCapture content={SH_CAPTURE} />
-      <ShFlip content={SH_FLIP} />
+      <ShFlip content={SH_FLIP} locale="ar" />
       <ShGifts content={SH_GIFTS} />
       <ShStores content={SH_STORES} />
       <ShSpending content={SH_SPENDING} />

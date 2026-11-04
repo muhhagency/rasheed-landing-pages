@@ -4,11 +4,11 @@ import { Button } from "@/components/v2/ui/Button";
 import { FlipHeadline } from "@/components/v2/ui/FlipHeadline";
 import { Icon } from "@/components/v2/ui/Icon";
 import { PhoneFrame } from "./PhoneFrame";
-import { CelebrationScene } from "./CelebrationScene";
+import { CelebrationScene, type CelebrationLocale } from "./CelebrationScene";
 
 // Hero: rotating headline on the left, a 640x760 phone composition on the
 // right (scaled as one piece to fit narrower screens).
-export function ShHero({ content: c }: { content: typeof SH_HERO }) {
+export function ShHero({ content: c, locale = "en" }: { content: typeof SH_HERO; locale?: CelebrationLocale }) {
   return (
     <section className="sh-hero" aria-label={c.headline.label}>
       <div className="v2-container sh-hero__inner">
@@ -31,7 +31,7 @@ export function ShHero({ content: c }: { content: typeof SH_HERO }) {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img className="sh-shot sh-hero__ph2" src={c.art.home} width={616} height={1256} alt="" />
           <PhoneFrame className="sh-hero__ph3">
-            <CelebrationScene />
+            <CelebrationScene locale={locale} />
           </PhoneFrame>
           <div className="sh-card v2-float sh-hero__earned">
             <span className="sh-hero__earned-icon"><Icon name="leaf" /></span>

@@ -8,6 +8,7 @@ import {
   type FlipNode,
   type FlipTrack,
 } from "@/content/v2/receiptFlip";
+import { RECEIPT_FLIPS_AR } from "@/content/v2/ar/receiptFlip";
 
 // Builds the stylesheet for ReceiptFlip from the layer data in content/v2/receiptFlip.ts:
 // one @keyframes per shared track, placed inside the cycle, plus one rule per layer
@@ -27,10 +28,20 @@ export const FLIP_TIMING = {
 export const FLIP_KINDS = Object.keys(RECEIPT_FLIPS) as FlipKind[];
 export const flipCycle = (art: FlipArt) => FLIP_TIMING.lead + art.figma + FLIP_TIMING.hold + FLIP_TIMING.flip;
 export const flipRound = (v: number) => Math.round(v * 1000) / 1000;
-const anim = (kind: FlipKind, i: number | string) => `rf-${kind}-${i}`;
+
+/** The artwork locales. Arabic art (right to left, from the Arabic Figma copies) uses an `rfa-` class prefix. */
+export type FlipLocale = "en" | "ar";
+export const FLIP_ART: Record<FlipLocale, Record<FlipKind, FlipArt>> = { en: RECEIPT_FLIPS, ar: RECEIPT_FLIPS_AR };
+/** Stylesheet per locale, served by app/receipt-flip.css and app/receipt-flip-ar.css. */
+export const FLIP_SHEET: Record<FlipLocale, string> = { en: "/receipt-flip.css", ar: "/receipt-flip-ar.css" };
+const prefix = (locale: FlipLocale) => (locale === "ar" ? "rfa" : "rf");
+const anim = (kind: FlipKind, i: number | string, locale: FlipLocale) => `${prefix(locale)}-${kind}-${i}`;
+
+/** Root class of a kind's art. */
+export const flipRootClass = (kind: FlipKind, locale: FlipLocale = "en") => `${prefix(locale)}-${kind}`;
 
 /** Class of the n-th node (pre-order) of a kind's layer tree. */
-export const flipNodeClass = (kind: FlipKind, n: number) => `rf-${kind[0]}${n}`;
+export const flipNodeClass = (kind: FlipKind, n: number, locale: FlipLocale = "en") => `${prefix(locale)}-${kind[0]}${n}`;
 
 /** Visits every node in pre-order with its index; the component and the stylesheet share it. */
 export function walkFlip(nodes: FlipNode[], visit: (n: FlipNode, i: number) => void, counter = { i: 0 }) {
@@ -54,7 +65,7 @@ function decl(p: FlipTrack[0], v: number | [number, number]): string {
   }
 }
 
-function keyframes(kind: FlipKind, art: FlipArt): string[] {
+function keyframes(kind: FlipKind, art: FlipArt, locale: FlipLocale): string[] {
   const total = flipCycle(art);
   const at = (t: number) => flipRound(((FLIP_TIMING.lead + t * art.figma) / total) * 100);
   const css = art.tracks.map(([p, times, values, eases], i) => {
@@ -65,12 +76,12 @@ function keyframes(kind: FlipKind, art: FlipArt): string[] {
       stops.push(`${at(t)}%{${ease}${decl(p, vals[j])}}`);
     });
     stops.push(`100%{${decl(p, vals[vals.length - 1])}}`);
-    return `@keyframes ${anim(kind, i)}{${stops.join("")}}`;
+    return `@keyframes ${anim(kind, i, locale)}{${stops.join("")}}`;
   });
   const out = flipRound(((total - FLIP_TIMING.flip) / total) * 100);
   const back = flipRound((FLIP_TIMING.flip / total) * 100);
-  css.push(`@keyframes ${anim(kind, "out")}{0%,${out}%{animation-timing-function:${FLIP_EASES[1]};scale:1 1}100%{scale:.02 1}}`);
-  css.push(`@keyframes ${anim(kind, "in")}{0%{animation-timing-function:${FLIP_EASES[2]};scale:.02 1}${back}%,100%{scale:1 1}}`);
+  css.push(`@keyframes ${anim(kind, "out", locale)}{0%,${out}%{animation-timing-function:${FLIP_EASES[1]};scale:1 1}100%{scale:.02 1}}`);
+  css.push(`@keyframes ${anim(kind, "in", locale)}{0%{animation-timing-function:${FLIP_EASES[2]};scale:.02 1}${back}%,100%{scale:1 1}}`);
   return css;
 }
 
@@ -90,12 +101,12 @@ function rotatedClip([, , w0, h0]: number[], deg: number): string {
   return `polygon(${pts.join(",")})`;
 }
 
-function layerRule(kind: FlipKind, art: FlipArt, l: FlipLayer): string {
+function layerRule(kind: FlipKind, l: FlipLayer, locale: FlipLocale): string {
   const d = [box(l.b)];
   if (l.s) d.push(`background-position:${-l.s[0]}px ${-l.s[1]}px`);
   if (l.g) d.push(`filter:blur(${l.g / 2}px)`);
   if (l.o) d.push(`transform-origin:${l.o[0]}px ${l.o[1]}px`);
-  if (l.k) d.push(`animation-name:${l.k.map((i) => anim(kind, i)).join(",")}`);
+  if (l.k) d.push(`animation-name:${l.k.map((i) => anim(kind, i, locale)).join(",")}`);
   const e = l.e ?? {};
   if (e.o !== undefined) d.push(`opacity:${e.o}`);
   if (e.t) d.push(`translate:${e.t[0]}px ${e.t[1]}px`);
@@ -110,23 +121,23 @@ function layerRule(kind: FlipKind, art: FlipArt, l: FlipLayer): string {
 export const flipSplitsXY = (art: FlipArt, l: FlipLayer) =>
   !!l.k?.some((i) => art.tracks[i][0] === "x" || art.tracks[i][0] === "y");
 
-export function receiptFlipCss(): string {
+export function receiptFlipCss(locale: FlipLocale = "en"): string {
   const css: string[] = [];
   for (const kind of FLIP_KINDS) {
-    const art = RECEIPT_FLIPS[kind];
-    const root = `.rf-${kind}`;
+    const art = FLIP_ART[locale][kind];
+    const root = `.${flipRootClass(kind, locale)}`;
     css.push(
       `${root}{--rf-cycle:${flipRound(flipCycle(art))}s;--rf-stage-w:${FLIP_STAGE.w}px;--rf-sheet:url(${art.sheet.src});` +
         `--rf-sheet-size:${art.sheet.w}px ${art.sheet.h}px;aspect-ratio:${FLIP_STAGE.w}/${FLIP_STAGE.h}}`,
-      `${root} .v2-rflip__out{animation-name:${anim(kind, "out")}}`,
-      `${root} .v2-rflip__in{animation-name:${anim(kind, "in")}}`,
-      ...keyframes(kind, art),
+      `${root} .v2-rflip__out{animation-name:${anim(kind, "out", locale)}}`,
+      `${root} .v2-rflip__in{animation-name:${anim(kind, "in", locale)}}`,
+      ...keyframes(kind, art, locale),
     );
     walkFlip(art.layers, (n, i) => {
-      const sel = `.${flipNodeClass(kind, i)}`;
+      const sel = `.${flipNodeClass(kind, i, locale)}`;
       if ("clip" in n) css.push(`${sel}{${box(n.clip)}}`);
       else {
-        css.push(`${sel}{${layerRule(kind, art, n)}}`);
+        css.push(`${sel}{${layerRule(kind, n, locale)}}`);
         if (n.kb) {
           const clip = n.kc && n.kc !== 1 ? `;clip-path:${rotatedClip(n.kb, n.kc)}` : "";
           css.push(`${sel}>.v2-rflip__kids{${box(n.kb)}${clip}}`);

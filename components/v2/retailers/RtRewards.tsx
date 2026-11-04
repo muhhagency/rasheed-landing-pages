@@ -2,8 +2,9 @@ import { Badge } from "@/components/v2/ui/Badge";
 import { Section } from "@/components/v2/ui/Section";
 import type { RT_REWARDS } from "@/content/v2/retailers";
 import { ReceiptFlip } from "@/components/v2/ui/ReceiptFlip";
+import type { FlipLocale } from "@/components/v2/ui/receiptFlipCss";
 
-export function RtRewards({ content }: { content: typeof RT_REWARDS }) {
+export function RtRewards({ content, locale = "en" }: { content: typeof RT_REWARDS; locale?: FlipLocale }) {
   const c = content;
   return (
     <Section tone="deep" labelledBy="rt-rewards" className="rt-rewards">
@@ -20,7 +21,7 @@ export function RtRewards({ content }: { content: typeof RT_REWARDS }) {
         {c.cards.map((k, i) => (
           <li key={k.title} className="rt-reward">
             <p className="rt-reward__kicker">{k.kicker}</p>
-            <ReceiptFlip kind={k.art} index={i} />
+            <ReceiptFlip kind={k.art} index={i} locale={locale} />
             <h3 className="rt-reward__title">{k.title}</h3>
             <p className="rt-reward__body">{k.body}</p>
           </li>

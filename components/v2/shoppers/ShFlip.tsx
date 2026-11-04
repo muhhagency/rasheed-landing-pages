@@ -2,8 +2,9 @@ import type { SH_FLIP } from "@/content/v2/shoppers";
 import { Badge } from "@/components/v2/ui/Badge";
 import { Section } from "@/components/v2/ui/Section";
 import { ReceiptFlip } from "@/components/v2/ui/ReceiptFlip";
+import type { FlipLocale } from "@/components/v2/ui/receiptFlipCss";
 
-export function ShFlip({ content: c }: { content: typeof SH_FLIP }) {
+export function ShFlip({ content: c, locale = "en" }: { content: typeof SH_FLIP; locale?: FlipLocale }) {
   return (
     <Section id={c.id} tone="raised" labelledBy="sh-flip" className="sh-flip">
       <div className="sh-flip__head">
@@ -17,7 +18,7 @@ export function ShFlip({ content: c }: { content: typeof SH_FLIP }) {
         {c.cards.map((card, i) => (
           <li key={card.kind} className={`sh-flipcard sh-flipcard--${card.kind}`}>
             <div className="sh-flipcard__kicker">{card.kicker}</div>
-            <ReceiptFlip kind={card.kind} index={i} />
+            <ReceiptFlip kind={card.kind} index={i} locale={locale} />
             <h3 className="sh-flipcard__title">{card.title}</h3>
             <p className="sh-flipcard__body">{card.body}</p>
           </li>
