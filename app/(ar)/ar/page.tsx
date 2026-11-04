@@ -22,7 +22,7 @@ export default function HubPage() {
       <SkipLink locale="ar" />
       <HubMedia alt={HUB.heroAlt} />
       <div className="hub-frame">
-        <HubHeader logoAlt={HUB.logoAlt} locale="ar" />
+        <HubHeader logoAlt={HUB.logoAlt} locale="ar" pauseLabel={HUB.pauseLabel} playLabel={HUB.playLabel} />
         <HubHero
           news={HUB.news}
           badge={HUB.badge}
@@ -33,7 +33,7 @@ export default function HubPage() {
           ctas={HUB.ctas}
         />
         <HubStats label={HUB.statsLabel} items={HUB.stats} />
-        <HubFooter locale="ar" copyright={HUB.footer.copyright} links={HUB.footer.links} />
+        <HubFooter locale="ar" copyright={HUB.footer.copyright} navLabel={HUB.footer.navLabel} links={HUB.footer.links} />
       </div>
     </div>
   );

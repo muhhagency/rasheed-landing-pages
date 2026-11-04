@@ -3,7 +3,7 @@ import { LangToggle } from "@/components/layout/LangToggle";
 import { HubPauseButton } from "./HubPauseButton";
 import { localePath, UI, type Locale } from "@/components/v2/i18n";
 
-export function HubHeader({ logoAlt, locale = "en", pauseLabel, playLabel }: { logoAlt: string; locale?: Locale; pauseLabel?: string; playLabel?: string }) {
+export function HubHeader({ logoAlt, locale = "en", pauseLabel, playLabel }: { logoAlt: string; locale?: Locale; pauseLabel: string; playLabel: string }) {
   return (
     <header className="hub-header">
       <Link href={localePath(locale, "/")} aria-label={UI[locale].home} className="hub-header__logo">

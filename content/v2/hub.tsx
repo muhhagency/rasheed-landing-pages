@@ -16,6 +16,9 @@ export const HUB_DESCRIPTION =
 
 export const HUB = {
   logoAlt: "Rasheed",
+  // Hub video control (header) and footer nav names, for assistive tech.
+  pauseLabel: "Pause background video",
+  playLabel: "Play background video",
   heroAlt: "A customer taps a phone on the TapCeipt device at a cafe counter",
   news: {
     href: "/news",
@@ -55,6 +58,7 @@ export const HUB = {
   ],
   footer: {
     copyright: "© Rasheed 2026",
+    navLabel: "Footer",
     // mobileHidden: links the Mobile canvas leaves out of its slim footer.
     links: [
       { label: "News", href: "/news" },

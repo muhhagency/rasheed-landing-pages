@@ -3,9 +3,9 @@ import { SOCIALS } from "@/components/layout/SocialIcons";
 import { UI, type Locale } from "@/components/v2/i18n";
 
 // Slim footer row from the hub canvas.
-export function HubFooter({ copyright, links, locale = "en", navLabel = "Footer" }: {
+export function HubFooter({ copyright, links, locale = "en", navLabel }: {
   locale?: Locale;
-  navLabel?: string;
+  navLabel: string;
   copyright: string;
   links: { label: string; href: string; mobileHidden?: boolean }[];
 }) {

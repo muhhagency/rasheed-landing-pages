@@ -190,6 +190,30 @@
   .hub-footer { flex-wrap: wrap; }
 }
 
+/* ---------- Arabic ---------- */
+/* Arabic glyphs need a taller line than 1.12em, so the rotating line gets a
+   taller window and its own steps (same timing as v2-flip). No tracking. */
+.hub-h1.v2-h1:lang(ar) { letter-spacing: 0; }
+.hub-h1:lang(ar) .v2-flip,
+.hub-h1:lang(ar) .v2-flip__line { block-size: 1.3em; }
+.hub-h1:lang(ar) .v2-flip__track { animation-name: hub-flip-ar; }
+@keyframes hub-flip-ar {
+  0%, 20% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-1.3em); }
+  50%, 70% { transform: translateY(-2.6em); }
+  75%, 95% { transform: translateY(-3.9em); }
+  100% { transform: translateY(-5.2em); }
+}
+.hub-lead:lang(ar) { line-height: 1.6; }
+.hub-stats .v2-stats__label:lang(ar) { line-height: 1.6; }
+/* Bracketed figures are Latin: lay them out LTR so the brackets and "+" do
+   not mirror, aligned to the RTL start edge (the end of an LTR line). */
+[dir="rtl"] .hub-stats .v2-stats__num { direction: ltr; text-align: end; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-h1:lang(ar) .v2-flip__track { animation: none; }
+}
+
 /* Reduced motion: no video, poster shows (kept last so it wins). */
 @media (prefers-reduced-motion: reduce) {
   .hub-media__video, .hub-pause { display: none; }
