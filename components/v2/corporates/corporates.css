@@ -440,3 +440,27 @@
   .co-cta__body { font-size: 17px; }
   .co-cta__btns { margin-block-start: 28px; }
 }
+
+/* ---------- Arabic / RTL ---------- */
+/* Hero: the tilted portal sits on the inline-end side, so mirror its glow and tilt. */
+.co-hero:dir(rtl) {
+  background: radial-gradient(900px 700px at 15% 50%, color-mix(in srgb, var(--brand-softlavender-500) 36%, transparent), transparent 65%), var(--stage-deep);
+}
+@media (min-width: 901px) {
+  .co-hero__tilt:dir(rtl) { transform: rotateY(16deg) rotateX(4deg); transform-origin: 100% 50%; }
+}
+/* Direction arrows point the reading way. */
+.co-link:dir(rtl) svg { transform: scaleX(-1); }
+/* Phone numbers keep their digit order inside Arabic sentences. */
+.co-faq__contact a.co-nowrap:dir(rtl), .co-cta__call a:dir(rtl) { direction: ltr; unicode-bidi: isolate; }
+/* Arabic letters must stay joined: no tracking, no uppercase; a little more line height. */
+:lang(ar) .co-portal__kicker, :lang(ar) .co-why__label, :lang(ar) .co-cycle__who { letter-spacing: 0; text-transform: none; }
+:lang(ar) .co-portal__kicker { font-size: 12px; }
+:lang(ar) .co-why__label, :lang(ar) .co-cycle__who { font-size: 14px; }
+:lang(ar) .co-pcard__name, :lang(ar) .co-cycle__title, :lang(ar) .co-news__title, :lang(ar) .co-cta__title { letter-spacing: 0; }
+:lang(ar) .co-cycle__title { line-height: 1.35; }
+:lang(ar) .co-news__title { line-height: 1.3; }
+:lang(ar) .co-cta__title { line-height: 1.25; }
+:lang(ar) .co-why__label { line-height: 1.4; }
+:lang(ar) .co-hero__body, :lang(ar) .co-cta__body, :lang(ar) .co-head-body { line-height: 1.6; }
+:lang(ar) .co-pcard__avatar { letter-spacing: 0; font-size: 13px; }
