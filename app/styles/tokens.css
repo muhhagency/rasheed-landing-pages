@@ -459,3 +459,68 @@ a:hover, .link:hover { color: var(--text-action-hover); }
   --line-height-display-md: 68px;
   --letter-spacing-display-md: -0.02em;
 }
+
+
+/* ============================================================
+   V2 ADDITIONS — mirrors "Rasheed - Design System" (file
+   u2QVrJusUpAHpuls7TFhsy), collections brand / alias / mapped /
+   shape / layout. Additive: nothing above this line changed.
+   ============================================================ */
+:root {
+  /* Brand */
+  --brand-grey-50: #f8f7fa;
+  --brand-royalpurple-50: #f6f4fa;
+
+  /* Alias */
+  --neutral-50: var(--brand-grey-50);
+  --primary-50: var(--brand-royalpurple-50);
+
+  /* Mapped — text */
+  --text-secondary: var(--neutral-default);
+  --text-points: var(--secondary-800);
+  --text-on-stage: var(--neutral-white);
+  --text-on-stage-subtle: var(--brand-softlavender-300);
+  --text-points-on-stage: var(--secondary-default);
+
+  /* Mapped — surface */
+  --surface-canvas: var(--neutral-50);
+  --surface-brand-subtle: var(--primary-50);
+  --surface-selected: var(--primary-100);
+  --surface-points: var(--secondary-200);
+  --surface-stage: var(--primary-700);
+  --surface-stage-raised: var(--primary-600);
+  --surface-pocket: var(--primary-default);
+  --pocket-personal-from: var(--brand-royalpurple-400);
+  --pocket-personal-to: var(--brand-softlavender-700);
+  --pocket-shared-from: var(--brand-deepgreen-400);
+  --pocket-shared-to: var(--brand-mintgreen-800);
+  --pocket-business-from: var(--brand-warmpeach-600);
+  --pocket-business-to: var(--brand-warmpeach-700);
+  --pocket-business-subtle: var(--brand-warmpeach-200);
+
+  /* Mapped — border and icon */
+  --border-subtle: var(--neutral-100);
+  --border-on-stage: var(--primary-400);
+  --border-points: var(--secondary-default);
+  --stitch: var(--secondary-default);
+
+  /* Shape */
+  --radius-control: 12px;
+  --radius-card: 16px;
+  --radius-card-lg: 24px;
+  --radius-panel: 32px;
+  --radius-pill: 999px;
+
+  /* Layout — fluid versions of layout/section and layout/fontSize */
+  --section-y: clamp(64px, 9vw, 128px);
+  --section-gap: clamp(32px, 5vw, 64px);
+  --font-size-display: clamp(44px, 6.1vw, 88px);
+  --line-height-display: 1.04;
+  --font-size-title: clamp(32px, 4vw, 56px);
+  --line-height-title: 1.08;
+
+  /* Elevation */
+  --elevation-card: 0 1px 2px rgb(24 10 58 / 0.04), 0 4px 12px rgb(24 10 58 / 0.04);
+  --elevation-lg: 0 12px 32px rgb(24 10 58 / 0.1), 0 2px 6px rgb(24 10 58 / 0.05);
+  --elevation-xl: 0 32px 80px rgb(24 10 58 / 0.18), 0 8px 20px rgb(24 10 58 / 0.08);
+}

@@ -31,7 +31,12 @@ export const HEADER_CONFIG: Record<HeaderVariant, HeaderConfig> = {
     // The hub is a pure router: no nav, no CTA. The Log in dropdown that used
     // to sit here was removed with the portals and does NOT come back as a
     // Contact us — routing only. See docs/phase-7-polish.md.
-    navLinks: [],
+    // V2: three doors are also reachable from the header.
+    navLinks: [
+      { label: "For you", href: "/app" },
+      { label: "For retailers", href: "/for-retailers" },
+      { label: "For corporates", href: "/for-corporates" },
+    ],
     ctas: [],
   },
   consumer: {
@@ -40,8 +45,8 @@ export const HEADER_CONFIG: Record<HeaderVariant, HeaderConfig> = {
     navLinks: [
       { label: <TapCeipt />, href: "#tapceipt" },
       { label: "Features", href: "#features" },
-      { label: "Cabinet", href: "#cabinet" },
       { label: "Rewards", href: "#rewards" },
+      { label: "Cabinet", href: "#cabinet" },
     ],
     ctas: [{ label: "Download", href: "#cta", variant: "primary" }],
   },

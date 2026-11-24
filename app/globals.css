@@ -10,6 +10,9 @@
 /* Layout shell styles (header, footer, skip link). */
 @import "../components/layout/layout.css";
 
+/* V2 marketing styles (token-driven, after the v1 layers so it wins). */
+@import "./styles/site-v2.css";
+
 /* ============================================================
    TAILWIND @theme — map utilities onto role tokens.
    Utilities resolve to our tokens, not Tailwind defaults.

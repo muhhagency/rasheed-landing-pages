@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { PersonaShell } from "@/components/layout/PersonaShell";
-import { PersonaBand } from "@/components/ui/PersonaBand";
-import { HUB_BANDS } from "@/content/hub";
-import { FOOTER_TAGLINE } from "@/components/layout/footerConfig";
+import { Hub } from "@/components/site/pages/Hub";
 
 export const metadata: Metadata = {
   title: "Rasheed — Every receipt. Every riyal.",
@@ -27,27 +25,11 @@ export const metadata: Metadata = {
   },
 };
 
-// Hub (`/`). Three persona doors, nothing else — no hero, no download buttons.
+// Hub (`/`). V2: a visible headline, then three doors.
 export default function HubPage() {
   return (
     <PersonaShell variant="hub">
-      {/* The hub has no visible headline by design (routing only, no hero),
-          but the document still needs a single h1 root above the band h2s.
-          Uses the existing approved tagline — no new copy invented. */}
-      <h1 className="sr-only">{FOOTER_TAGLINE}</h1>
-      {HUB_BANDS.map((band, i) => (
-        <PersonaBand
-          key={i}
-          kicker={band.kicker}
-          headline={band.headline}
-          body={band.body}
-          ctaLabel={band.ctaLabel}
-          ctaHref={band.ctaHref}
-          media={band.media}
-          tone={band.tone}
-          reverse={band.reverse}
-        />
-      ))}
+      <Hub />
     </PersonaShell>
   );
 }

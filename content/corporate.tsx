@@ -68,7 +68,7 @@ export const REPORTS = {
 // --- How it works (§9.8) ---
 export const HOW = {
   kicker: "How it works",
-  headline: "From sign-up to first report.",
+  headline: "From sign‑up to first report.",
   steps: [
     {
       title: "Sign Up",

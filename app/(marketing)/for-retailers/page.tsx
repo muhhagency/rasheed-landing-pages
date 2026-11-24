@@ -1,13 +1,5 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/retailer/Hero";
-import { Meet } from "@/components/sections/retailer/Meet";
-import { Portal } from "@/components/sections/retailer/Portal";
-import { Loyalty } from "@/components/sections/retailer/Loyalty";
-import { Vision } from "@/components/sections/retailer/Vision";
-import { HowItWorks } from "@/components/sections/HowItWorks";
-import { TrustStrip } from "@/components/sections/TrustStrip";
-import { FinalCta } from "@/components/sections/FinalCta";
-import { HOW, FINAL_CTA } from "@/content/retailer";
+import { Retailer } from "@/components/site/pages/Retailer";
 
 export const metadata: Metadata = {
   title:
@@ -31,34 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Retailer page (`/for-retailers`). Sections in content-brief §8 order.
+
 export default function RetailerPage() {
-  return (
-    <>
-      <Hero />
-      <Meet />
-      <Portal />
-      <Loyalty />
-      <Vision />
-      <HowItWorks
-        kicker={HOW.kicker}
-        headline={HOW.headline}
-        steps={HOW.steps}
-        tone="subtle"
-      />
-      <TrustStrip tone="default" />
-      {/* FinalCta is TEMPORARILY actions="contact" — /signup and the portal
-          are not live, so the CTA offers email + phone instead. Restore with:
-            actions="business"
-            loginHref="https://retailers.rasheedapp.com"
-            loginUrlLabel="retailers.rasheedapp.com"
-          See docs/phase-7-polish.md § Temporarily removed. */}
-      <FinalCta
-        id="cta"
-        headline={FINAL_CTA.headline}
-        body={FINAL_CTA.body}
-        actions="contact"
-      />
-    </>
-  );
+  return <Retailer />;
 }
