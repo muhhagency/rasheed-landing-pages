@@ -89,7 +89,7 @@ export const VISION = {
 // --- How it works (§8.8) ---
 export const HOW = {
   kicker: "How it works",
-  headline: "From sign-up to first tap.",
+  headline: "From sign‑up to first tap.",
   steps: [
     {
       title: "Sign Up",

@@ -1,12 +1,5 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/sections/consumer/Hero";
-import { Capture } from "@/components/sections/consumer/Capture";
-import { Pockets } from "@/components/sections/consumer/Pockets";
-import { Cabinet } from "@/components/sections/consumer/Cabinet";
-import { Rewards } from "@/components/sections/consumer/Rewards";
-import { TrustStrip } from "@/components/sections/TrustStrip";
-import { FinalCta } from "@/components/sections/FinalCta";
-import { FINAL_CTA } from "@/content/consumer";
+import { Consumer } from "@/components/site/pages/Consumer";
 
 export const metadata: Metadata = {
   title: "Rasheed — Money that fits your life.",
@@ -29,22 +22,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Consumer page (`/app`). Sections in content-brief §7 order.
+
 export default function ConsumerPage() {
-  return (
-    <>
-      <Hero />
-      <Capture />
-      <Pockets />
-      <Cabinet />
-      <Rewards />
-      <TrustStrip />
-      <FinalCta
-        id="cta"
-        headline={FINAL_CTA.headline}
-        body={FINAL_CTA.body}
-        actions="stores"
-      />
-    </>
-  );
+  return <Consumer />;
 }
